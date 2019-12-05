@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include
+        layout="@layout/action_bar_toolbar"></include>
+
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/teal"
+                android:textSize="24dp"
+                android:text="Order Confirmed"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/txt_order_id"
+                android:gravity="center"
+                android:textColor="@color/teal"
+                android:textSize="16dp"
+                android:text="Order Confirmed"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/txt_track_id"
+                android:gravity="center"
+                android:textColor="@color/teal"
+                android:textSize="16dp"
+                android:text="Order Confirmed"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_marginLeft="@dimen/dimen_10dp"
+                        android:id="@+id/btn_cancel"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="110dp"
+                        android:textSize="13dp"
+                        android:paddingTop="@dimen/dimen_15dp"
+                        android:drawableTop="@mipmap/ic_cancel_white_48dp"
+                        android:backgroundTint="@color/red"
+                        android:text="@string/cancel"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.button.MaterialButton
+                        android:paddingTop="@dimen/dimen_15dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:id="@+id/btn_reschedule"
+                        android:drawableTop="@mipmap/ic_schedule_white_48dp"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="110dp"
+                        android:textSize="13dp"
+                        android:backgroundTint="@color/red_pop"
+                        android:text="@string/reschedule"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.button.MaterialButton
+                        android:paddingTop="@dimen/dimen_15dp"
+                        android:layout_marginRight="@dimen/dimen_10dp"
+                        android:id="@+id/btn_call"
+                        android:drawableTop="@drawable/ic_baseline_call_24px"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="110dp"
+                        android:textSize="13dp"
+                        android:backgroundTint="@color/gray"
+                        android:text="@string/call_support"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <dimen name="detail_backdrop_height">256dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="list_item_avatar_size">40dp</dimen>
+
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="button_height_sm">30dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_margin_register">5dp</dimen>
+    <dimen name="activity_margin_mainscreen">30dp</dimen>
+    <dimen name="activity_margin_feedback">20dp</dimen>
+
+
+    <dimen name="design_navigation_separator_vertical_padding">0dp</dimen>
+    <dimen name="camera_phone">250dp</dimen>
+    <dimen name="camera_tablet">500dp</dimen>
+
+
+    <dimen name="main_title">16dp</dimen>
+    <dimen name="title">14dp</dimen>
+    <dimen name="edit_size">14dp</dimen>
+    <dimen name="text_size">12dp</dimen>
+
+    <dimen name="divider_height_small">1.0dip</dimen>
+
+
+    <dimen name="cardCornerRadius"> 5dp </dimen>
+    <dimen name="cardElevation"> 5dp </dimen>
+    <dimen name="cardPreventCornerOverlap">5dp</dimen>
+    <dimen name="cardUseCompatPadding">5dp</dimen>
+    <dimen name="dimen_3dp">3dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dimen_18sp">18dp</dimen>
+    <dimen name="dimen_50dp">50dp</dimen>
+    <dimen name="dimen_40dp">40dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_15dp">15dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="m_text_font">17dp</dimen>
+
+</resources>

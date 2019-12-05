@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--<include-->
+        <!--layout="@layout/action_bar"></include>-->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/txt_business_type"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Business Type"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/txt_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:text="Contact Info"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_account" />
+                    <EditText
+                        android:id="@+id/edt_first"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="First Name"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:background="@color/white"
+                        android:nextFocusForward="@+id/edt_last"
+                        android:padding="10dp"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_first_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/line_first"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_account" />
+                    <EditText
+                        android:id="@+id/edt_last"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Last Name"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:background="@color/white"
+                        android:nextFocusForward="@+id/edt_phone"
+                        android:padding="10dp"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_last_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+
+                <View
+                    android:id="@+id/line_last"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@drawable/ic_baseline_call_24px" />
+
+                    <EditText
+                        android:editable="false"
+                        android:id="@+id/edt_phone"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:background="@color/white"
+                        android:nextFocusForward="@+id/edt_address1"
+                        android:padding="10dp"
+                        android:phoneNumber="true"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_phone_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <View
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/line_phone"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+            </LinearLayout>
+
+
+
+            <TextView
+                android:visibility="gone"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/txt_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Address Info"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/chk_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="Preferred Address"
+                            android:textColor="@color/dark_gray"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_home" />
+                    <EditText
+                        android:id="@+id/edt_address1"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="Address"
+                        android:padding="10dp"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_address1_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/line_address"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_house_no" />
+                    <EditText
+                        android:id="@+id/edt_landmark"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="House No, Flat No"
+                        android:imeOptions="actionNext"
+                        android:lines="2"
+                        android:nextFocusForward="@+id/edt_email"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_landmark_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/line_landmark"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_area" />
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_address2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="Area, Locality"
+                        android:padding="10dp"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_address2_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/line_address2"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_city" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_city"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="City"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:nextFocusForward="@+id/edt_state"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_city_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/line_city"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_state" />
+
+                    <EditText
+                        android:id="@+id/edt_state"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="State"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:nextFocusForward="@+id/edt_pincode"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_state_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/line_state"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_house_no" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_pincode"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="Pin Code"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:nextFocusForward="@+id/edt_landmark"
+                        android:numeric="integer"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_pincode_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/line_pincode"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/txt_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email and Password"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:orientation="vertical">
+
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_email" />
+                    <EditText
+                        android:id="@+id/edt_email"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        android:enabled="false"
+                        android:background="@color/white"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:nextFocusForward="@+id/edt_password"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_email_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:id="@+id/line_email"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_password" />
+                    <EditText
+                        android:id="@+id/edt_password"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="Password "
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:nextFocusForward="@+id/edt_confirmpassword"
+                        android:padding="10dp"
+                        android:password="true"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_password_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <View
+                    android:id="@+id/line_password"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_password" />
+                    <EditText
+                        android:id="@+id/edt_confirmpassword"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:hint="Retype Password"
+                        android:imeOptions="actionNext"
+                        android:lines="1"
+                        android:nextFocusForward="@+id/edt_answer"
+                        android:padding="10dp"
+                        android:password="true"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_confirmpassword_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/line_confirmpassword"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+                <EditText
+                    android:id="@+id/edt_security"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Security Question"
+                    android:lines="1"
+                    android:padding="10dp"
+                    android:textSize="14dp"
+                    android:visibility="gone" />
+
+
+                <org.angmarch.views.NiceSpinner
+                    android:id="@+id/sp_security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Security Question"
+                    android:padding="10dp"></org.angmarch.views.NiceSpinner>
+
+
+                <EditText
+                    android:id="@+id/edt_answer"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Answer"
+                    android:lines="1"
+                    android:padding="10dp"
+                    android:textSize="14dp" />
+                <View
+                    android:visibility="gone"
+                    android:id="@+id/line_answer"
+                    android:background="@color/dark_gray"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_term"
+                        android:padding="10dp"
+                        android:text="@string/term"
+                        android:layout_width="fill_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/txt_privacy"
+                        android:padding="10dp"
+                        android:text="@string/privacy"
+                        android:layout_width="fill_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:id="@+id/btn_create"
+                style="@style/Widget.MaterialComponents.Button"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:text="@string/save_changes"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

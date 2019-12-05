@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/img_city"
+            android:src="@mipmap/ic_launcher"
+            android:minHeight="200dp"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="City Name"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <LinearLayout
+            android:background="@color/trans_black35"
+            android:orientation="vertical"
+            android:id="@+id/lin_mask"
+            android:minHeight="200dp"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

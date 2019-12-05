@@ -1,0 +1,120 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2019-10-18 18:22:18",
+    "containerVersion": {
+        "path": "accounts/4702128235/containers/12112785/versions/2",
+        "accountId": "4702128235",
+        "containerId": "12112785",
+        "containerVersionId": "2",
+        "name": "vesion2",
+        "description": "version2",
+        "container": {
+            "path": "accounts/4702128235/containers/12112785",
+            "accountId": "4702128235",
+            "containerId": "12112785",
+            "name": "HurryR Android",
+            "publicId": "GTM-WM9TZP4",
+            "usageContext": [
+                "ANDROID_SDK_5"
+            ],
+            "fingerprint": "1571422516913",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/4702128235/containers/12112785/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "tagId": "1",
+                "name": "Google Analytics Universal Analytics",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_SCREENVIEW"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "gaSettings",
+                        "value": "{{Event Name Google analytics}}"
+                    }
+                ],
+                "fingerprint": "1571422464525",
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "triggerId": "6",
+                "name": "Container Loaded",
+                "type": "WINDOW_LOADED",
+                "fingerprint": "1571422497333"
+            },
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "triggerId": "7",
+                "name": "User Engagement",
+                "type": "FIREBASE_USER_ENGAGEMENT",
+                "fingerprint": "1571422516913"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "variableId": "1",
+                "name": "Event Name Google analytics",
+                "type": "gas",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "collectAdid",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "event_name{{Event Name}}"
+                    }
+                ],
+                "fingerprint": "1571422450909"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "type": "EVENT_NAME",
+                "name": "Event Name"
+            },
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "type": "APP_ID",
+                "name": "App ID"
+            },
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "type": "APP_NAME",
+                "name": "App Name"
+            },
+            {
+                "accountId": "4702128235",
+                "containerId": "12112785",
+                "type": "APP_VERSION_CODE",
+                "name": "App Version Code"
+            }
+        ],
+        "fingerprint": "1571422561127",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/4702128235/containers/12112785/versions/2?apiLink=version"
+    }
+}

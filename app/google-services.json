@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1023493446419",
+    "firebase_url": "https://hurryrrcustomer.firebaseio.com",
+    "project_id": "hurryrrcustomer",
+    "storage_bucket": "hurryrrcustomer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023493446419:android:1876432a9300fbb4",
+        "android_client_info": {
+          "package_name": "com.hurry.custom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023493446419-oduv9hupklehajr5ah671sbpibr76uda.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hurry.custom",
+            "certificate_hash": "350218a96119a90d3f3300c15adb9a08f8869ade"
+          }
+        },
+        {
+          "client_id": "1023493446419-1ob9kl4f95ai8pnvgk3m9lpfvri9qfl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaIOyTGF54G7WgnSLgt2KC1dfXExi06sk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023493446419-1ob9kl4f95ai8pnvgk3m9lpfvri9qfl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

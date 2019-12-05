@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:background="@color/gray"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:layout_height="40dp">
+                <TextView
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:id="@+id/txt_about_us"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:paddingLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="@string/about_us"
+                    android:textColor="@color/light_black" />
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@mipmap/ic_right_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/light_gray"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"></View>
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:background="@color/gray"
+            android:orientation="vertical"
+
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:id="@+id/txt_contact_us"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:paddingLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="@string/contact_us"
+                    android:textColor="@color/light_black" />
+
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@mipmap/ic_right_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/light_gray"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"></View>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:background="@color/gray"
+            android:orientation="vertical"
+
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:id="@+id/txt_privacy_policy"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:paddingLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/light_black" />
+
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@mipmap/ic_right_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/light_gray"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"></View>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:background="@color/gray"
+            android:orientation="vertical"
+
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:id="@+id/txt_sign_out"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:paddingLeft="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="@string/sign_out"
+                    android:textColor="@color/light_black" />
+
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@mipmap/ic_right_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/light_gray"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"></View>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

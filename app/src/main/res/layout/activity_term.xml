@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <include
+        android:visibility="gone"
+        layout="@layout/action_bar"></include>
+
+
+    <include
+        layout="@layout/action_bar_toolbar"></include>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <WebView
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/txt_privacy"
+        android:layout_marginTop="30dp"
+        android:text="Policy and Terms"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

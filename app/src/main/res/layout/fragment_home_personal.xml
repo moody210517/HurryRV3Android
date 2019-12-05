@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="0dp"
+    android:id="@+id/lin_container"
+    android:layout_height="match_parent">
+
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressbar"
+        style="@style/CustomProgressBarHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_gravity="bottom"
+        android:maxHeight="40dp"
+        android:minHeight="40dp" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_circle"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What would you like to do" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_marginTop="55dp"
+                    android:id="@+id/textView4"
+                    android:textSize="10dp"
+                    android:textColor="@color/hint_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send anything you want using the below options" />
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:background="@mipmap/ic_i_send"
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <LinearLayout
+
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/lin_camera"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_gravity="center"
+                                android:id="@+id/rl_camera"
+                                android:layout_marginLeft="40dp"
+                                android:layout_marginRight="40dp"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/option_background"
+                                android:clickable="true"
+                                android:gravity="center">
+
+                                <Button
+                                    android:id="@+id/btn_camera"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:background="@drawable/btn_login"
+                                    android:text=""
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/dark_gray"
+                                    android:visibility="gone" />
+
+                                <LinearLayout
+
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent">
+                                    <ImageView
+
+                                        android:id="@+id/img_back"
+                                        android:layout_width="40dp"
+                                        android:layout_height="30dp"
+                                        android:layout_toRightOf="@+id/btn_ca"
+                                        android:src="@mipmap/carmera"
+                                        android:visibility="visible" />
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1.2"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_marginRight="@dimen/dimen_5dp"
+                                        android:gravity="center"
+                                        android:id="@+id/txt_option1"
+                                        android:padding="7dp"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@android:color/transparent"
+                                        android:clickable="false"
+                                        android:layout_marginLeft="0dp"
+                                        android:text="@string/take_photo"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/black"
+                                        android:textSize="16dp"
+                                        android:visibility="visible" />
+                                </LinearLayout>
+
+
+
+
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:id="@+id/rl_item"
+                                android:layout_marginLeft="40dp"
+                                android:layout_marginRight="40dp"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/option_background"
+                                android:clickable="true"
+                                android:gravity="center">
+
+                                <SurfaceView
+                                    android:id="@+id/surface"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/option_background"
+                                    android:visibility="gone" />
+
+                                <Button
+                                    android:id="@+id/btn_item"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@android:color/transparent"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/dark_gray"
+                                    android:visibility="gone" />
+
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+                                    <RelativeLayout
+                                        android:gravity="center"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="match_parent">
+                                        <WebView
+                                            android:id="@+id/webview"
+                                            android:layout_centerInParent="true"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="20dp"
+                                            android:background="@color/white"
+                                            android:src="@mipmap/option_package" />
+
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:id="@+id/lin_webview"
+                                            android:gravity="center"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="fill_parent">
+
+                                        </LinearLayout>
+
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1.2"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_marginRight="@dimen/dimen_5dp"
+                                        android:gravity="center"
+                                        android:id="@+id/txt_option2"
+                                        android:padding="5dp"
+                                        android:layout_marginLeft="0dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@android:color/transparent"
+                                        android:clickable="false"
+                                        android:text="@string/enter_items"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/black"
+                                        android:textSize="16dp"
+                                        android:visibility="visible" />
+
+                                </LinearLayout>
+
+
+
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:id="@+id/lin_send"
+                android:background="@drawable/black_transparent35"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            </LinearLayout>
+
+
+            <!--android:background="#CCCCCC"-->
+            <!--card_view:cardBackgroundColor="#CCCCCC"-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_centerHorizontal="true"
+                android:background="#FFCC00"
+                card_view:cardBackgroundColor="#FFCC00"
+                card_view:cardCornerRadius="18dp"
+                card_view:cardElevation="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="2dp">
+
+
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/txt_send"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:background="@drawable/bg_order"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="@string/i_want_to_send" />
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center|top"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textSize="10dp"
+                    android:textColor="@color/hint_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="55dp"
+                    android:text="Order from your choice of business place"
+                     />
+
+                <!--android:text="@string/will_send"-->
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:background="@mipmap/ic_want"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <LinearLayout
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:background="@drawable/black_transparent35"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <TextView
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:text="@string/get_me" />
+
+                        <EditText
+                            android:id="@+id/edt_cake"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/hint_color"
+                            android:layout_width="fill_parent"
+                            android:layout_marginRight="60dp"
+                            android:layout_marginLeft="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:imeOptions="actionDone"
+                            android:lines="1"
+                            android:textSize="14dp"
+                            android:theme="@style/MyEditTextStyle"
+                            android:nextFocusForward="@+id/btn_continue"
+                            android:background="@android:color/transparent"
+                            android:hint="Chocolate Cake " />
+
+
+                        <View
+                            android:layout_marginRight="70dp"
+                            android:layout_marginLeft="70dp"
+                            android:background="@color/white"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"></View>
+
+                        <TextView
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:text="From" />
+
+                        <Button
+                            android:visibility="gone"
+                            android:id="@+id/btn_package"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/btn_teal"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:text="Continue"
+                            android:layout_marginLeft="@dimen/dimen_50dp"
+                            android:layout_marginRight="@dimen/dimen_50dp"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:clickable="true"
+                android:orientation="vertical"
+                android:id="@+id/lin_order"
+                android:background="@drawable/black_transparent35"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_centerHorizontal="true"
+                android:background="#FFCC00"
+                card_view:cardBackgroundColor="#FFCC00"
+                card_view:cardCornerRadius="18dp"
+                card_view:cardElevation="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="2dp">
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/txt_order"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_order"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="@string/i_want_to_order" />
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rl_package"
+            android:clickable="true"
+            android:gravity="center"
+            android:background="@drawable/option_background"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:visibility="gone"
+                android:clickable="false"
+
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textAllCaps="false"
+                android:background="@android:color/transparent"
+                 />
+
+            <!--<org.angmarch.views.NiceSpinner-->
+                <!--android:id="@+id/sp_package"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="45dp"-->
+                <!--android:gravity="center"-->
+                <!--android:hint="Select Work"-->
+                <!--android:visibility="gone"></org.angmarch.views.NiceSpinner>-->
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:id="@+id/img_package"
+                    android:layout_width="210dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/option_package"
+                    android:visibility="visible" />
+
+                <Button
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/img_package"
+                    android:visibility="visible"
+                    android:clickable="false"
+                    android:id="@+id/txt_package"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    android:text="@string/pick_package"
+                    android:textColor="@color/option_title" />
+
+            </LinearLayout>
+
+            <!--android:text="Enter the Item details you wish to send \n\nEasy Pick from our Preferred List"-->
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

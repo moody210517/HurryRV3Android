@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+
+<resources>
+  <string name="app_name">HurryR</string>
+  <string name="welcome">Welcome</string>
+
+  <string name="facebook_app_id">385891605363039</string>
+
+
+  <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
+    cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
+    bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
+    cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
+    the big cheese.</string>
+  <string name="checkin">Checkin</string>
+  <string name="menu_settings">Settings</string>
+
+  <string name="crash">Crash</string>
+  <string name="app_deliver">An App that Delivers</string>
+
+  <string name="forgot_username">Forgot User Name</string>
+  <string name="retrieve_username">RETRIEVE YOUR USERNAME </string>
+  <string name="forgot_password">Forgot Password</string>
+  <string name="try_again">We don\'t recognize that email or Password. \nPlease try again</string>
+
+  <string name="reset_password">RETRIEVE YOUR PASSWORD</string>
+  <string name="recognize_email">We don\'t recognize that email and security answer combination.</string>
+  <string name="recognize_email_hint">Please enter username</string>
+  <!--Please enter your user name, which is the email address you-->
+  <string name="food">What is your Favorite Food?</string>
+  <string name="food_hint">Security Answer</string>
+  <string name="recovery_email">Recovery Email Sent</string>
+  <string name="recovery_email_content">"Thank You. Please check your email for your temporary password" If you do not receive an email in 10 minutes, please call Customer Service at 9372863299</string>
+
+  <string name="forgot_user">Forgot User Name</string>
+  <string name="recognize_phone">We don\'t recognize that phone number and security answer combination \nPlease try again</string>
+  <string name="recognize_phone_hint">Please enter your Phone Number</string>
+  <string name="text_message">Text Message Sent</string>
+  <string name="text_message_content">"Thank You. Please check your messages on the phone number entered" If you do not receive a text message with login directions in 10 minutes. Please call Customer Service at 9372863299</string>
+
+  <string name="email_corporation">"Thank You. An email will be sent to the email address provided . If you do not receive on email with in 1 hour. Please call Customer Service at 9372863299</string>
+  <string name="get_back">We\'ll get back to you with in 1 hour!</string>
+
+  <string name="upload_more"><u>Upload More Items</u></string>
+  <string name="add_more"><u>Add More Items</u></string>
+  <string name="add_more_package"><u>Add More</u></string>
+
+  <string name="dialog_address_details">A quote will be sent to your registered email address in 30 minutes</string>
+  <string name="camera_alert">The total weight in your order exceeds 10Kgs and our current delivery model for this option only accepts less than 10Kgs. Please continue to provide the Address details and submit
+  A quote will be sent to your registered email address within 30 minutes</string>
+  <string name="carmera_alert_guest">The total weight in your order exceeds 10Kgs and Our current delivery model for this option only accepts Orders less than 10 Kgs. Please Sign up to get a quote.</string>
+  <string name="camera_alarm">Take a picture in a good light environment where the object is centered in the picture. Offensive images will lead to uploader being blocked from application. Order Pick up will be upon review of the uploaded images.</string>
+  <string name="input_all">"Please enter all info"</string>
+
+  <string name="from_profile">Address Book</string>
+
+  <string name="loading">Loading </string>
+
+  <string name="success">Success</string>
+  <string name="failed">Fail</string>
+  <string name="quote_message">Thank you. A quote will be sent to your \n registered email address in 30 minutes. Alternatively you can check Quotes section in Menu. </string>
+  <string name="alert_forgot_username">Thank you. You will receive a text message with your username.</string>
+  <string name="alert_forgot_password">Thank you. Please check your email for your password.</string>
+
+  <string name="record_error"> We didn’t find the details in our records. Please try again </string>
+  <string name="notfound_email">We didn’t find the email</string>
+  <string name="notfound_phone">We didn’t find the phone number</string>
+
+  <string name="term_and_condition"><u>Terms and Conditions</u> </string>
+  <string name="term"> <u> By Signing in I agree to the <b>Terms</b> </u></string>
+  <string name="privacy"> <u> By Signing in I agree to the <b>Privacy Policy </b> </u> </string>
+  <string name="take_photo">Take a Pic and let us Pickup </string>
+  <!--Take a Pic and  \n let us Pickup-->
+  <string name="pick_package">Pick from a predefined list</string>
+
+  <string name="select_load">Please select your load</string>
+
+  <!--<string name="forgot_password">Forgot Password</string>-->
+  <!--<string name="forgot_username">Forgot User Name</string>-->
+
+  <string name="forgot_username_alert">Thank you. A text message will be sent to the registered phone number.</string>
+  <string name="forgot_password_alert">Thank You. An email will be sent to the registered email address.</string>
+  <string name="google_map_key">AIzaSyCZn4_PcyuXv6FdKrDvm3CqmyvoFACBCNY</string>
+  <string name="gecode_api_key">AIzaSyAV5o7ip5AaL2fUeOnYqZaEUBJgVZuX50U</string>
+  <string name="gecode_api_key2">AIzaSyBRHZ24e9OnPUSM4J2pLfOzVGrXBkFia_g</string>
+
+  <!---->
+  <string name="choose_source">Choose pickup address</string>
+  <string name="enter_source">Enter the address of pickup business place</string>
+  <string name="choose_destination">Choose drop off address</string>
+  <string name="need_package">Packaging Required</string>
+  <string name="already_paid">Already Paid</string>
+  <string name="driver_information">Driver Information</string>
+  <string name="landmark">Building Name - House No,Flat No</string>
+  <string name="instruction">Landmark, Instruction to Associate(optional)</string>
+  <string name="please_wait">Please wait</string>
+  <string name="log_out_user">Log out user</string>
+  <string name="rupee">₹</string>
+  <string name="submit">Submit</string>
+  <string name="term_of_use"><u>By continuing I agree to the <b>Terms of Use</b></u></string>
+  <string name="enter_otp">Please enter valid OTP</string>
+  <string name="enter_phone">Please enter a valid phone number</string>
+  <string name="phone_number">Phone Number</string>
+  <string name="pin_code">Pin Code</string>
+  <string name="sender_name">Sender Name</string>
+  <string name="receiver_name">Receiver Name</string>
+  <string name="phone_prefix">+91</string>
+  <string name="receiver_phone">Receiver phone</string>
+  <string name="sender_phone">Sender Phone</string>
+  <string name="default_phone">+19372863299</string>
+  <string name="already_register"> Phone number is already registered</string>
+  <string name="can_reschedule">You can Reschedule or Cancel this order anytime before our associate leaves for Pickup</string>
+  <string name="estimated_time">Estimated Time: </string>
+  <string name="login_title">Hello! Please enter your credentials below.</string>
+  <string name="login">Log In</string>
+
+  <string name="create_accounts"> Create Account </string>
+
+  <string name="contact_info">Contact Info</string>
+  <string name="address_info">Address Info</string>
+  <string name="email_address">Email and Password</string>
+  <string name="call_hub">Call to schedule</string>
+  <string name="enter_items">Tell us what you wish to send</string>
+  <!--Enter the Items \n you wish to send-->
+
+  <string name="will_send">We will send you a quote in 30 minutes</string>
+  <string name="if_already">If already paid, then you will be charged only for logistics</string>
+
+  <string name="i_want_to_order">Order from a Business Place</string>
+  <string name="i_want_to_send">Schedule a Pickup &amp; Delivery</string>
+
+
+  <string name="reschedule_pickup">Reschedule Pick Up</string>
+  <string name="cancel">Cancel</string>
+  <string name="get_me">Get me</string>
+
+  <string name="step1">Associated </string>
+  <string name="step2">Order Picked up &amp; in transit to drop off</string>
+  <string name="order_delivered">Order Delivered</string>
+  <string name="order_on_hold">Order On Hold</string>
+  <string name="order_returned">Order Returned</string>
+  <string name="associate">Associate on the \n way</string>
+  <string name="pickup_cancelled">Pickup Cancelled</string>
+  <string name="we_love">We would love to hear from you!</string>
+  <string name="continu">Continue</string>
+
+
+  <string name="set_pickup">SET PICKUP ADDRESS</string>
+  <string name="set_dropoff">SET DROP OFF ADDRESS</string>
+  <string name="your_order_cancel">Your order has been cancelled. Amount will be processed in the same account through which the payment was made with in 3 to 5 business days</string>
+  <string name="your_order_cancel_cash">Your order has been cancelled</string>
+  <string name="pickup_time">Pickup time should not be in the past</string>
+  <string name="wait_awhile">Please wait while we upload the images.</string>
+  <string name="enter_valid_phone">Please enter a valid phone number</string>
+  <string name="dimension_option">Dimensions (optional)</string>
+  <string name="my_address_book">My Address Book</string>
+
+  <string name="wait_your_profile">Please wait while we load your profile</string>
+  <string name="search_address_book">Search Address Book</string>
+  <string name="individual_user">Individual User</string>
+  <string name="business_user">Business User</string>
+  <string name="my_address">My \n Addresses</string>
+  <string name="select_new">Select \n a new Address</string>
+  <string name="sign_up">Sign Up</string>
+  <string name="sign_in">Log in</string>
+  <string name="facebook">Log in with facebook</string>
+  <string name="google">Log in with google</string>
+  <string name="invalid_email">Invalid Email</string>
+  <string name="about_us">About Us</string>
+  <string name="contact_us">Contact Us</string>
+  <string name="privacy_policy">Privacy Policy</string>
+  <string name="sign_out">Sign Out</string>
+  <string name="my_account">Account</string>
+  <string name="order_his">Order His</string>
+  <string name="quote">Quote</string>
+  <string name="setting">Setting</string>
+  <string name="same_city">Same City Delivery</string>
+  <string name="out_station">Out Station Delivery</string>
+  <string name="international_delivery">International Delivery</string>
+  <string name="select_the_item">Select the Item</string>
+  <string name="payment">Payment</string>
+  <string name="pickup_myorder">Pickup my order</string>
+  <string name="create_profile">Create Profile</string>
+  <string name="verify_your_mobile">Verify your mobile number </string>
+  <string name="otp_has_sent">OTP has been sent to you on your mobile number </string>
+  <string name="please_enter_below">Please enter it below </string>
+  <string name="resend_otp">Resend OTP</string>
+  <string name="verify_and_proceed">Verify And Proceed </string>
+  <string name="save_changes">Save Changes</string>
+  <string name="policy_and_term">Policy and Terms</string>
+  <string name="address_detail">Address Details</string>
+  <string name="by_creating_term">By creating an account you agree to our Terms and Conditions</string>
+  <string name="by_creating_privacy">By creating an account you agree to our Privacy Policy</string>
+  <string name="not_correct">Not the correct address?</string>
+  <string name="search_address">Search Address</string>
+  <string name="sender_details">Sender Details</string>
+  <string name="receiver_details">Receiver Details</string>
+  <string name="select_service_level">Select Service Level </string>
+  <string name="select_pickup_date_time">Select PickUp Date &amp; Time</string>
+  <string name="choose_service">Choose Service</string>
+  <string name="review_your_order">Review your Order</string>
+  <string name="pickup_address">Pick Up Address</string>
+  <string name="cash_on_pickup">Cash On Pickup</string>
+  <string name="have_coupon">Have a coupon code?</string>
+  <string name="place_order">Place Order</string>
+  <string name="cod">Cod</string>
+  <string name="pay_using_card">Pay Using Card</string>
+  <string name="net_banking">Net Banking</string>
+  <string name="choose_payment">Choose Payment </string>
+  <string name="reschedule">Reschedule</string>
+  <string name="call_support">Call Support</string>
+  <string name="order_confirmed">Order Confirmed</string>
+  <string name="order_id">Order Id: </string>
+  <string name="track_id">Track Id: </string>
+
+
+</resources>

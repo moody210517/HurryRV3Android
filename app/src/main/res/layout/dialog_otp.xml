@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="@dimen/dimen_20dp"
+            android:gravity="center"
+            android:textSize="@dimen/dimen_16dp"
+            android:textColor="@color/red_pop"
+            android:text="@string/verify_your_mobile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/dimen_30dp"
+            android:layout_marginRight="@dimen/dimen_30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/txt_phone_number"
+                android:textColor="@color/black"
+                android:text="@string/otp_has_sent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/please_enter_below"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edt_code1"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text=""
+                android:numeric="integer"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/bg_verification_code"
+                android:textSize="@dimen/m_text_font" />
+
+            <EditText
+                android:id="@+id/edt_code2"
+                android:layout_marginLeft="5dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text=""
+                android:numeric="integer"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/bg_verification_code"
+                android:textSize="@dimen/m_text_font" />
+
+            <EditText
+                android:id="@+id/edt_code3"
+                android:layout_marginLeft="5dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text=""
+                android:numeric="integer"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/bg_verification_code"
+                android:textSize="@dimen/m_text_font" />
+
+            <EditText
+                android:id="@+id/edt_code4"
+                android:layout_marginLeft="5dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text=""
+                android:maxLength="1"
+                android:numeric="integer"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/bg_verification_code"
+                android:textSize="@dimen/m_text_font" />
+
+            <EditText
+                android:id="@+id/edt_code5"
+                android:layout_marginLeft="5dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text=""
+                android:maxLength="1"
+                android:numeric="integer"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/bg_verification_code"
+                android:textSize="@dimen/m_text_font" />
+
+            <EditText
+                android:id="@+id/edt_code6"
+                android:layout_marginLeft="5dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text=""
+                android:maxLength="1"
+                android:numeric="integer"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/bg_verification_code"
+                android:textSize="@dimen/m_text_font" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:background="@drawable/border_circle"
+                android:id="@+id/txt_resend"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:paddingRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="Resend OTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_30dp"
+            android:layout_marginRight="@dimen/dimen_30dp"
+            android:id="@+id/btn_next"
+            style="@style/Widget.MaterialComponents.Button"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="@string/verify_and_proceed"/>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

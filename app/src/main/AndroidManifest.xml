@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hurry.custom">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/mylogosquare"
+        android:label="@string/app_name"
+        tools:overrideLibrary="com.payumoney.sdkui"
+        tools:replace = "android:appComponentFactory,android:theme,android:allowBackup,android:usesCleartextTraffic"
+        android:appComponentFactory="whateverString"
+        android:largeHeap="true"
+        android:name="com.hurry.custom.MyApplication"
+        android:theme="@style/Theme.DesignDemo">
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+        <meta-data android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+
+
+
+        <activity android:name="com.hurry.custom.view.activity.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name="com.hurry.custom.view.activity.HomeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name="com.hurry.custom.view.activity.setting.AboutUsActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.hurry.custom.view.activity.setting.ContactUsActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.hurry.custom.view.activity.setting.PrivacyPolicyActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+
+        <activity
+            android:name="com.hurry.custom.view.activity.login.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity android:name=".view.activity.OrderConfirmNewActivity">
+
+        </activity>
+
+
+
+
+        <activity android:name="com.hurry.custom.view.BaseActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.login.SignUpActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.login.LoginActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name="com.hurry.custom.view.activity.login.PhoneNumberActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.login.ForgotActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.AddressDetailsActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.AddressDetailsNewActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait"
+            ></activity>
+
+
+        <activity android:name="com.hurry.custom.view.activity.DateTimeActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
+        <activity android:name="com.hurry.custom.view.activity.ReviewActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+
+
+        <activity android:name="com.hurry.custom.view.activity.OrderConfirmActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.AddressBookActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+
+
+        <activity android:name="com.hurry.custom.view.activity.UpdateProfileActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.setting.TermActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="io.card.payment.CardIOActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity
+            android:name="io.card.payment.DataEntryActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.gun0912.tedpicker.ImagePickerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_picker" />
+
+        <activity android:name="com.hurry.custom.view.activity.map.LocationMapActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity android:name="com.hurry.custom.view.activity.ItemOrderActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name="com.hurry.custom.view.activity.PackageOrderActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"></activity>
+
+
+        <activity android:name="com.hurry.custom.view.activity.CameraOrderActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"></activity>
+
+
+        <activity android:name="com.hurry.custom.view.activity.map.TouchMapActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name="com.hurry.custom.view.activity.map.MyAutoCompleteActivity"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+
+        <activity android:name="com.hurry.custom.payumoney.PayumoneyActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <service android:name="com.hurry.custom.service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name="com.hurry.custom.service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--<meta-data-->
+            <!--android:name="com.google.android.maps.v2.API_KEY"-->
+            <!--android:value="AIzaSyBeb71_p062g_PwDXHvpVWivild2HnnquI" />-->
+
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBRHZ24e9OnPUSM4J2pLfOzVGrXBkFia_g"/>
+
+
+    </application>
+
+</manifest>

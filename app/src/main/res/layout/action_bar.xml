@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/teal">
+
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Groups"
+                android:id="@+id/txt_groups"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:padding="5dp"
+                android:textColor="@color/dark_gray" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:text="Message"
+                android:textStyle="bold"
+                android:id="@+id/txt_title" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/txt_edit"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="Edit" />
+
+
+            <LinearLayout
+                android:id="@+id/lin_back"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_back"
+                    android:background="@mipmap/blue_back"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/img_home"
+                android:background="@mipmap/ic_home_white"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp" />
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        android:background="@color/teal_back">
+
+    </LinearLayout>
+
+</LinearLayout>

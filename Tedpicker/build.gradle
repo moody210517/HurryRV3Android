@@ -1,0 +1,51 @@
+/*
+ * Copyright (c) 2016. Ted Park. All Rights Reserved
+ */
+
+apply plugin: 'com.android.library'
+//apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven'
+group = 'com.github.ParkSangGwon'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 20
+        targetSdkVersion 28
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+repositories {
+    maven { url 'https://repo.commonsware.com.s3.amazonaws.com' }
+    maven { url 'https://jitpack.io' }
+    maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+    mavenCentral()
+    google()
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:design:28.0.0'
+    //implementation 'com.github.bumptech.glide:glide:3.6.1'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    //compile 'com.commonsware.cwac:camera:0.6.+'
+    //implementation 'com.commonsware.cwac:camera:0.6.+'
+    implementation project(':camera')
+//    compile('com.commonsware.cwac:camera-v9:0.6.+') {
+//        exclude module: 'support-v4'
+//    }
+
+    implementation 'id.zelory:compressor:2.1.0'
+}

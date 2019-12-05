@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--<include-->
+        <!--layout="@layout/action_bar"></include>-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:background="@mipmap/capture"
+            android:layout_width="fill_parent"
+            android:gravity="bottom|center"
+            android:minHeight="200dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/txt_message"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:gravity="center|bottom"
+                android:text="Please choose one of our operating  locations below to continue"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</LinearLayout>

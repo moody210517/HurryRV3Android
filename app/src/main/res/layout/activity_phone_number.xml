@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        android:visibility="gone"
+        layout="@layout/action_bar"></include>
+    <include
+        layout="@layout/action_bar_toolbar"></include>
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:textColor="@color/light_mustard_color"
+                        android:checked="true"
+                        android:textAllCaps="true"
+                        android:id="@+id/rd_individual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_individual"
+                        android:textSize="12dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange_accent"
+                        android:text="@string/individual_user"/>
+
+                    <RadioButton
+                        android:textColor="@color/track"
+                        android:textAllCaps="true"
+                        android:id="@+id/rd_business"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_business"
+                        android:textSize="12dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/red_pop"
+                        android:text="@string/business_user"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lin_create"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_marginLeft="40dp"
+
+                    android:layout_marginRight="40dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                        android:id="@+id/ccp"
+                        app:ccp_defaultNameCode="IN"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/txt_phone_hint"
+                        android:layout_marginLeft="@dimen/dimen_10dp"
+                        android:layout_toRightOf="@+id/ccp"
+                        android:layout_centerVertical="true"
+                        android:hint="@string/phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:layout_toRightOf="@+id/ccp"
+                        android:layout_centerVertical="true"
+                        android:lines="1"
+                        android:id="@+id/edt_phone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:phoneNumber="true"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:backgroundTint="@android:color/transparent"
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@+id/edt_instruction"/>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:background="@drawable/border_circle"
+                        android:id="@+id/txt_resend"
+                        android:paddingLeft="@dimen/dimen_10dp"
+                        android:paddingRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="Resend OTP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/lin_phone"
+                        android:background="@color/hint_color"
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"></View>
+
+                </RelativeLayout>
+
+
+
+                <!--<EditText-->
+                    <!--android:layout_marginLeft="40dp"-->
+                    <!--android:layout_marginRight="40dp"-->
+                    <!--android:id="@+id/edt_phone"-->
+                    <!--android:text="@string/phone_prefix"-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:hint="Mobile number"-->
+                    <!--android:imeOptions="actionNext"-->
+                    <!--android:lines="1"-->
+                    <!--android:nextFocusForward="@+id/edt_address1"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:phoneNumber="true"-->
+                    <!--android:textSize="14dp" />-->
+                <!---->
+
+
+
+                <EditText
+                    android:visibility="gone"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:id="@+id/edt_otp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Otp code"
+                    android:imeOptions="actionNext"
+                    android:lines="1"
+                    android:nextFocusForward="@+id/edt_address1"
+                    android:padding="10dp"
+                    android:phoneNumber="true"
+                    android:textSize="14dp" />
+
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lin_term"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp">
+
+                <CheckBox
+                    android:id="@+id/chk_term"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/by_creating_term" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lin_privacy"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp">
+
+                <CheckBox
+                    android:id="@+id/chk_privacy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/by_creating_privacy" />
+            </LinearLayout>
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:id="@+id/btn_create"
+                style="@style/Widget.MaterialComponents.Button"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:text="@string/create_accounts"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

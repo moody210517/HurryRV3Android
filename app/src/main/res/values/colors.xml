@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~light_mustard_color
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <color name="window_background">#FFF5F5F5</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="teal">#008080</color>
+    <color name="teal_back">#008B8B</color>
+
+
+    <color name="gray">#808080</color>
+    <color name="dark_gray">#2F4F4F</color>
+
+    <color name="bgBackSideColor">#f4f0ff</color>
+    <color name="bgContentTop">#594691</color>
+
+    <color name="gray_title">#eeeeee</color>
+    <color name="splash_back">#f9f9f9</color>
+    <color name="trans_black35">#99000000</color>
+    <color name="trans_black">#88000000</color>
+    <color name="trans">#33000000</color>
+    <color name="trans35">#59000000</color>
+    <color name="pink">#FF00E6</color>
+    <color name="option_background">#828888</color>
+    <color name="option_title">#fffeff</color>
+
+    <color name="splash_color">#ffffff</color>
+    <color name="light_mustard_color">#D6C165</color>
+    <color name="text_color">#b57d7b</color>
+    <color name="hint_color">#bdaaad</color>
+    <color name="redd">#ff0000</color>
+    <color name="red">#ef5563</color>
+    <color name="package_background">#f7f3f7</color>
+    <color name="track">#0099FF</color>
+
+    <color name="primary">#7AA4D5</color>
+    <color name="primary_dark">#165E8B</color>
+    <color name="accent">#7AA4D5</color>
+    <color name="persian_green_primary">#0DAC8F</color>
+    <color name="persian_green_dark">#0A927A</color>
+    <color name="persian_green_accent">#0A927A</color>
+    <color name="pink_primary">#EB1E63</color>
+    <color name="pink_dark">#C0175C</color>
+    <color name="pink_accent">#C0175C</color>
+    <color name="royal_blue_primary">#4C63E2</color>
+    <color name="royal_blue_dark">#4055BF</color>
+    <color name="royal_blue_accent">#4055BF</color>
+    <color name="purple_primary">#9C28B1</color>
+    <color name="purple_dark">#7A1FA2</color>
+    <color name="purple_accent">#7A1FA2</color>
+    <color name="orange_accent">#F3A62E</color>
+
+    <color name="yellow">#F3A62E</color>
+    <color name="indigo">#3E50AE</color>
+    <color name="grey">#C2C2C2</color>
+    <color name="app_button_color">#2CA6CF</color>
+    <color name="light_white">#fcfcfc</color>
+
+    <color name="dialog_background">#c3f8da</color>
+    <color name="dialog_button">#1a7f31</color>
+    <color name="text_back">#000</color>
+    <color name="facebook">#3c66c4</color>
+    <color name="google">#cf4332</color>
+    <color name="light_black">#030303</color>
+    <color name="coral">#F95D4A</color>
+    <color name="red_pop">#990000</color>
+
+
+    <!-- custom jayne's hat dialog theme: -->
+    <color name="jayne_text_primary_light">#e8ffb300</color>
+    <color name="jayne_text_secondary_light">#e9b65b00</color>
+    <color name="jayne_divider_light">#1fff002b</color>
+    <color name="jayne_pressed_light">#c74e2c00</color>
+    <color name="jayne_accent">#f42e35</color>
+    <color name="wheel_text_color">#A7A7DB</color>
+    <color name="review1">#bee3f3</color>
+    <color name="review2">#565656</color>
+    <color name="review3">#2d2d2d</color>
+
+</resources>

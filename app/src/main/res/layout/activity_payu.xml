@@ -1,0 +1,545 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/action_bar"></include>
+    <include
+        layout="@layout/action_bar_toolbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dimen_5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/dimen_5dp">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/txt_payment_method"
+                    android:text="Choose your payment method"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:background="@drawable/border_circle"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50dp">
+
+                    <org.angmarch.views.NiceSpinner
+                        android:layout_margin="2dp"
+                        android:id="@+id/sp_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        ></org.angmarch.views.NiceSpinner>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginTop="30dp"
+                android:id="@+id/lin_payment"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:padding="@dimen/dimen_30dp"
+                    app:cardBackgroundColor="@color/light_white"
+                    app:cardCornerRadius="@dimen/dimen_3dp"
+                    app:cardElevation="@dimen/dimen_5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:contentPaddingBottom="@dimen/dimen_10dp"
+                    app:contentPaddingLeft="@dimen/dimen_15dp"
+                    app:contentPaddingRight="@dimen/dimen_15dp"
+                    app:contentPaddingTop="@dimen/dimen_10dp"
+                    card_view:cardElevation="@dimen/dimen_5dp">
+
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select Environment"
+                            android:textColor="@color/payumoney_black"
+                            android:textSize="@dimen/dimen_18sp" />
+
+                        <RadioGroup
+                            android:visibility="gone"
+                            android:id="@+id/radio_grp_env"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/dimen_5dp"
+                            android:paddingRight="@dimen/dimen_5dp">
+
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio_btn_sandbox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="@integer/int_1"
+                                android:text="Sandbox"
+                                android:textColor="@color/payumoney_black" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio_btn_production"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="@integer/int_1"
+                                android:checked="true"
+                                android:text="Production" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:padding="@dimen/dimen_10dp"
+                    app:cardBackgroundColor="@color/light_white"
+                    app:cardCornerRadius="@dimen/dimen_3dp"
+                    app:cardElevation="@dimen/dimen_5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:contentPaddingBottom="@dimen/dimen_5dp"
+                    app:contentPaddingLeft="@dimen/dimen_15dp"
+                    app:contentPaddingRight="@dimen/dimen_15dp"
+                    app:contentPaddingTop="@dimen/dimen_5dp"
+                    card_view:cardElevation="@dimen/dimen_5dp">
+
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Enter User details"
+                            android:textColor="@color/payumoney_black"
+                            android:textSize="@dimen/dimen_18sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="gone"
+                            android:id="@+id/email_til"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            app:errorEnabled="false">
+
+                            <EditText
+                                android:id="@+id/email_et"
+                                android:editable="false"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:hint="Enter email"
+                                android:imeOptions="actionNext"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:nextFocusDown="@+id/card_name_et"
+                                android:textColor="@color/payumoney_black"
+                                android:textSize="16sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="gone"
+                            android:id="@+id/mobile_til"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="false">
+                            <EditText
+                                android:id="@+id/mobile_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:hint="Enter mobile"
+                                android:imeOptions="actionDone"
+                                android:inputType="phone"
+                                android:maxLength="10"
+                                android:maxLines="1"
+                                android:nextFocusDown="@+id/card_name_et"
+                                android:textColor="@color/payumoney_black"
+                                android:textSize="16sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="gone"
+                            android:id="@+id/amount_til"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="false">
+
+                            <EditText
+                                android:id="@+id/amount_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:hint="Enter amount"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:textColor="@color/payumoney_black"
+                                android:textSize="16sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="gone"
+                            android:id="@+id/activity_title_til"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="false">
+
+                            <EditText
+                                android:id="@+id/activity_title_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:hint="Activity title"
+                                android:text="Online Payment"
+                                android:imeOptions="actionNext"
+                                android:maxLines="1"
+                                android:textColor="@color/payumoney_black"
+                                android:textSize="16sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="gone"
+                            android:id="@+id/status_page_til"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="false">
+
+                            <EditText
+                                android:id="@+id/status_page_et"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:hint="Status page text"
+                                android:text="Status"
+                                android:imeOptions="actionNext"
+                                android:maxLines="1"
+                                android:textColor="@color/payumoney_black"
+                                android:textSize="16sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:padding="@dimen/dimen_10dp"
+                    app:cardBackgroundColor="@color/light_white"
+                    app:cardCornerRadius="@dimen/dimen_3dp"
+                    app:cardElevation="@dimen/dimen_5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:contentPaddingBottom="@dimen/dimen_10dp"
+                    app:contentPaddingLeft="@dimen/dimen_5dp"
+                    app:contentPaddingRight="@dimen/dimen_5dp"
+                    app:contentPaddingTop="@dimen/dimen_10dp"
+                    card_view:cardElevation="@dimen/dimen_5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_5dp"
+                            android:text="Quick Pay Options"
+                            android:textColor="@color/payumoney_black"
+                            android:textSize="@dimen/dimen_18sp" />
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_5dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/switchTxt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Disable Wallet"
+                                    android:textColor="@color/payumoney_black" />
+
+                                <androidx.appcompat.widget.SwitchCompat
+                                    android:id="@+id/switch_disable_wallet"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Disable NetBanking"
+                                    android:textColor="@color/payumoney_black" />
+
+                                <androidx.appcompat.widget.SwitchCompat
+                                    android:id="@+id/switch_disable_netbanks"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/switchLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Disable Cards"
+                                    android:textColor="@color/payumoney_black" />
+
+                                <androidx.appcompat.widget.SwitchCompat
+                                    android:id="@+id/switch_disable_cards"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:padding="@dimen/dimen_10dp"
+                    app:cardBackgroundColor="@color/light_white"
+                    app:cardCornerRadius="@dimen/dimen_3dp"
+                    app:cardElevation="@dimen/dimen_5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:contentPaddingBottom="@dimen/dimen_10dp"
+                    app:contentPaddingLeft="@dimen/dimen_5dp"
+                    app:contentPaddingRight="@dimen/dimen_5dp"
+                    app:contentPaddingTop="@dimen/dimen_10dp"
+                    card_view:cardElevation="@dimen/dimen_5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_5dp"
+                            android:text="Select color theme"
+                            android:textColor="@color/payumoney_black"
+                            android:textSize="@dimen/dimen_18sp" />
+
+                        <RadioGroup
+                            android:id="@+id/radio_grp_color_theme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/dimen_5dp"
+                            android:paddingRight="@dimen/dimen_5dp">
+
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio_btn_theme_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="@integer/int_1"
+                                android:button="@null"
+                                android:checked="true"
+                                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                android:gravity="center_horizontal|bottom"
+                                android:text="Default"
+                                android:textColor="@color/orange_accent"
+                                android:textStyle="bold"
+                                android:theme="@style/ThemeRadioButton.Default" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio_btn_theme_pink"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="@integer/int_1"
+                                android:button="@null"
+                                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                android:gravity="center_horizontal|bottom"
+                                android:text="Pink"
+                                android:textColor="@color/pink_accent"
+                                android:textStyle="bold"
+                                android:theme="@style/ThemeRadioButton.Pink" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio_btn_theme_grey"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="@integer/int_1"
+                                android:button="@null"
+                                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                android:gravity="center_horizontal|bottom"
+                                android:text="Grey"
+                                android:textColor="@color/persian_grey_dark"
+                                android:textStyle="bold"
+                                android:theme="@style/ThemeRadioButton.Grey" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio_btn_theme_green"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="@integer/int_1"
+                                android:button="@null"
+                                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                android:gravity="center_horizontal|bottom"
+                                android:text="Green"
+                                android:textColor="@color/persian_green_accent"
+                                android:textStyle="bold"
+                                android:theme="@style/ThemeRadioButton.Green" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio_btn_theme_purple"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="@integer/int_1"
+                                android:button="@null"
+                                android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                                android:gravity="center_horizontal|bottom"
+                                android:text="Purple"
+                                android:textColor="@color/purple_accent"
+                                android:textStyle="bold"
+                                android:theme="@style/ThemeRadioButton.Purple" />
+
+                        </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_25dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingRight="@dimen/dimen_10dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_marginLeft="@dimen/dimen_30dp"
+                        android:layout_marginRight="@dimen/dimen_30dp"
+                        android:id="@+id/pay_now_button"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:text="@string/pickup_myorder"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:gravity="center"
+                    android:text="@string/can_reschedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent" />
+
+                <TextView
+                    android:id="@+id/logout_button"
+                    style="@style/ButtonStyle"
+                    android:background="@color/teal"
+                    android:layout_margin="@dimen/dimen_10dp"
+                    android:onClick="onClick"
+                    android:text="@string/log_out_user" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+

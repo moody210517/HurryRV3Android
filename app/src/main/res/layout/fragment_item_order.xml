@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include
+        android:visibility="gone"
+        layout="@layout/action_bar"></include>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:layout_gravity="right"
+            android:elevation="2dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_scrollFlags="enterAlways|snap"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <TextView
+        android:id="@+id/txt_header"
+        android:padding="20dp"
+        android:gravity="center"
+        android:text="Same The City"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="fill_parent">
+
+            <RelativeLayout
+                android:id="@+id/rl_city"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:background="@drawable/ic_triangle_left"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:paddingLeft="@dimen/dimen_20dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/same_city"
+                    android:textSize="@dimen/dimen_16dp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="25dp"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/rl_station"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:background="@drawable/ic_triangle_right"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:paddingLeft="@dimen/dimen_10dp"
+                        android:layout_centerVertical="true"
+                        android:text="@string/out_station"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen_16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/rl_international"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:background="@drawable/ic_triangle_right"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:paddingLeft="@dimen/dimen_10dp"
+                        android:textSize="@dimen/dimen_15dp"
+                        android:layout_centerVertical="true"
+                        android:text="@string/international_delivery"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ScrollView
+                android:id="@+id/scrollview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/lin_item"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+
+
+                    <TextView
+                        android:id="@+id/txt_add_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"
+                        android:text="@string/add_more"
+                        android:textColor="@color/dark_gray" />
+
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="220dp">
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginLeft="@dimen/dimen_30dp"
+            android:layout_marginRight="@dimen/dimen_30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/btn_continue"
+            style="@style/Widget.MaterialComponents.Button"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="@string/continu"/>
+
+
+
+
+
+</LinearLayout>

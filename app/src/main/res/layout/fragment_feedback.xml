@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="@string/we_love"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_user" />
+
+
+                    <EditText
+                        android:lines="1"
+                        android:id="@+id/edt_name"
+                        android:hint="First Name"
+                        android:textSize="14dp"
+                        android:padding="10dp"
+                        android:background="@color/white"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@+id/edt_email"
+                        />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_first_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/ic_email" />
+
+
+                    <EditText
+                        android:lines="1"
+                        android:id="@+id/edt_email"
+                        android:hint="Email"
+                        android:textSize="14dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@+id/edt_feedback"
+                        />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_email_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:background="@mipmap/feedback" />
+
+
+                    <EditText
+                        android:id="@+id/edt_feedback"
+                        android:hint="Feedback"
+                        android:lines="4"
+                        android:textSize="14dp"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@+id/btn_submit"
+                        />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt_feedback_hint"
+                        android:text="(required)"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:background="@color/hint_color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"></View>
+
+
+
+
+
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:text="Submit"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_login"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <ImageView
+        android:id="@+id/badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:layout_alignParentTop="true">
+    </ImageView>
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="8"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingBottom="7dp">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_dis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="1.4k"
+                        android:paddingLeft="3dp"
+                        android:textSize="14dp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:text="Event"
+                        android:singleLine="true"
+                        android:textColor="#ff000000"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:id="@+id/lin_column"
+                                android:layout_width="0dp"
+                                android:layout_weight="6"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/txt_item"
+                                        android:text="Item"
+                                        android:textColor="@color/dark_gray"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:id="@+id/txt_quantity"
+                                        android:text="Qty"
+                                        android:textColor="@color/dark_gray"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        android:id="@+id/txt_weight"
+                                        android:text="Weight"
+                                        android:textColor="@color/dark_gray"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_height="match_parent">
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:id="@+id/lin_item"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:layout_height="wrap_content">
+                            </LinearLayout>
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray"></LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/lin_details"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="vertical"
+                        android:gravity="center|top"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <TextView
+                            android:id="@+id/txt_deliver"
+                            android:textSize="14dp"
+                            android:padding="8dp"
+                            android:hint="Briefly explain what we are delivering for you"
+                            android:textColor="@color/dark_gray"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/txt_load_type"
+                            android:textSize="14dp"
+                            android:padding="8dp"
+                            android:hint="Load Type"
+                            android:textColor="@color/dark_gray"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

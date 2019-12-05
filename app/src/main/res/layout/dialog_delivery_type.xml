@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_marginLeft="@dimen/dimen_5dp"
+    android:layout_marginRight="@dimen/dimen_5dp"
+    android:background="@android:color/transparent"
+    android:layout_height="fill_parent">
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        card_view:cardMaxElevation="3dp"
+        card_view:cardElevation="3dp"
+        card_view:cardBackgroundColor="@color/gray_title"
+        card_view:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:gravity="right"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:padding="@dimen/dimen_10dp"
+                    android:id="@+id/img_close"
+                    android:src="@drawable/close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/lin_package"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_marginRight="@dimen/dimen_5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@drawable/btn_red_pop"
+                        android:paddingTop="@dimen/dimen_20dp"
+                        android:paddingBottom="@dimen/dimen_20dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginRight="@dimen/dimen_5dp"
+                            android:layout_marginLeft="@dimen/dimen_5dp"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:text="Enter the items you wish to send"
+                            android:textColor="@color/gray"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40dp" />
+
+                        <TextView
+                            android:textColor="@color/white"
+                            android:layout_marginTop="@dimen/dimen_20dp"
+                            android:text="enter the details \n of the item(s) and \n book a delivery"
+                            android:textAllCaps="true"
+                            android:layout_width="fill_parent"
+                            android:gravity="center"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_camera"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:layout_marginLeft="@dimen/dimen_5dp"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:paddingTop="@dimen/dimen_20dp"
+                        android:paddingBottom="@dimen/dimen_20dp"
+                        android:background="@drawable/btn_login"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:background="@mipmap/carmera"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp" />
+
+                        <TextView
+                            android:textColor="@color/white"
+                            android:layout_marginTop="@dimen/dimen_20dp"
+                            android:text="snap a photo of \n the item(s) and \n book a delivery"
+                            android:textAllCaps="true"
+                            android:gravity="center"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

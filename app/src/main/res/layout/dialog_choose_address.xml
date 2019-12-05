@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:padding="@dimen/dimen_10dp"
+    android:background="@android:color/transparent"
+    android:layout_height="fill_parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="3dp"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardBackgroundColor="@color/gray_title">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:gravity="right"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:padding="@dimen/dimen_10dp"
+                    android:id="@+id/img_close"
+                    android:src="@drawable/close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/dimen_30dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:id="@+id/btn_my_address"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_blue_circle"
+                    android:text="@string/my_address"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+                <Button
+
+                    android:layout_marginRight="@dimen/dimen_15dp"
+                    android:layout_marginLeft="@dimen/dimen_5dp"
+                    android:id="@+id/btn_new_address"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_green_circle"
+                    android:text="@string/select_new"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

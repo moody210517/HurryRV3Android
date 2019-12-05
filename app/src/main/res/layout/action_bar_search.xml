@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="2dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_scrollFlags="enterAlways|snap" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/teal">
+
+
+
+                <LinearLayout
+                    android:id="@+id/leku_search_touch_zone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/edt_search"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="@dimen/dimen_50dp"
+                        android:text="Search"
+                        android:textColor="@color/white"
+                        android:gravity="center|left"
+                        android:textSize="14dp" />
+
+                    <ImageView
+
+                        android:id="@+id/img_close"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/ic_clean"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+
+
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_back"
+                    android:background="@mipmap/blue_back"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp" />
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/img_search"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/ic_home_white_24dp"
+                    android:visibility="visible" />
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+    <!--<LinearLayout--><!--android:layout_width="fill_parent"--><!--android:layout_height="52dp"--><!--android:orientation="vertical">--><!--<RelativeLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="52dp"--><!--android:background="@color/teal">-->
+
+    <!--<TextView--><!--android:visibility="gone"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:textAppearance="?android:attr/textAppearanceLarge"--><!--android:text="Groups"--><!--android:id="@+id/txt_groups"--><!--android:layout_alignParentLeft="false"--><!--android:layout_centerVertical="true"--><!--android:layout_marginLeft="18dp"--><!--android:padding="5dp"--><!--android:textColor="@color/dark_gray" />-->
+
+    <!--<TextView--><!--android:layout_width="fill_parent"--><!--android:layout_height="fill_parent"--><!--android:gravity="center"--><!--android:textColor="@color/white"--><!--android:textAppearance="?android:attr/textAppearanceLarge"--><!--android:layout_centerVertical="true"--><!--android:layout_centerHorizontal="true"--><!--android:text="Message"--><!--android:id="@+id/txt_title" />-->
+
+    <!--<TextView--><!--android:visibility="gone"--><!--android:id="@+id/txt_edit"--><!--android:paddingRight="5dp"--><!--android:paddingLeft="10dp"--><!--android:layout_width="wrap_content"--><!--android:layout_height="fill_parent"--><!--android:gravity="center"--><!--android:textSize="16dp"--><!--android:textColor="@color/black"--><!--android:layout_alignParentRight="true"--><!--android:layout_centerVertical="true"--><!--android:layout_marginRight="20dp"--><!--android:text="Edit" />-->
+
+
+    <!--<ImageView--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:id="@+id/img_back"--><!--android:background="@mipmap/blue_back"--><!--android:layout_centerVertical="true"--><!--android:layout_alignParentStart="false"--><!--android:layout_alignParentLeft="true"--><!--android:layout_marginLeft="10dp" />-->
+
+    <!--<ImageView--><!--android:visibility="gone"--><!--android:layout_width="35dp"--><!--android:layout_height="35dp"--><!--android:id="@+id/img_home"--><!--android:background="@mipmap/ic_launcher"--><!--android:layout_centerVertical="true"--><!--android:layout_alignParentRight="true"--><!--android:layout_marginRight="15dp"--><!--android:layout_marginLeft="10dp" />-->
+
+
+    <!--</RelativeLayout>--><!--</LinearLayout>-->
+
+    <!--<LinearLayout--><!--android:layout_width="fill_parent"--><!--android:layout_height="1dp"--><!--android:orientation="vertical"--><!--android:background="@color/teal_back">-->
+
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
