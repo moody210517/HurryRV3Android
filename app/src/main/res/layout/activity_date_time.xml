@@ -12,125 +12,119 @@
 
 
     <include
+        android:visibility="gone"
         layout="@layout/action_bar_toolbar"></include>
 
 
-    <ScrollView
-        android:id="@+id/scrollview"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="fill_parent">
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
-
-
-
-
                 <RelativeLayout
+                    android:id="@+id/rl_map"
                     android:layout_width="fill_parent"
                     android:layout_height="300dp">
                     <fragment
                         android:id="@+id/mapFragment"
                         class="com.google.android.gms.maps.SupportMapFragment"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp" />
+                        android:layout_height="fill_parent" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/package_background"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:background="@color/white"
+                                android:id="@+id/lin_source"
+                                android:layout_marginTop="5dp"
+                                android:orientation="vertical"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center"
+                                    android:text="Source Location"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content" />
+                                <TextView
+                                    android:layout_marginLeft="10dp"
+                                    android:lines="1"
+                                    android:id="@+id/txt_source"
+                                    android:textSize="14dp"
+                                    android:textColor="@color/text_back"
+                                    android:text="Source location"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/package_background"
+                    android:layout_below="@+id/card1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp">
 
                     <LinearLayout
-                        android:background="@color/white"
-                        android:id="@+id/lin_source"
-                        android:layout_marginTop="10dp"
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_marginTop="10dp"
-                            android:gravity="center"
-                            android:text="Source Location"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:lines="1"
-                            android:id="@+id/txt_source"
-                            android:textSize="14dp"
-                            android:textColor="@color/text_back"
-                            android:text="Source location"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
+
+                            <LinearLayout
+                                android:background="@color/white"
+                                android:id="@+id/lin_destination"
+                                android:layout_marginBottom="5dp"
+                                android:orientation="vertical"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="Destination Location"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content" />
+                                <TextView
+                                    android:layout_marginLeft="10dp"
+                                    android:lines="1"
+                                    android:textSize="14dp"
+                                    android:textColor="@color/text_back"
+                                    android:id="@+id/txt_destination"
+                                    android:text="Destination"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
 
 
-                    <LinearLayout
-                        android:background="@color/white"
-                        android:id="@+id/lin_destination"
-                        android:layout_below="@+id/lin_source"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_marginTop="10dp"
-                            android:gravity="center"
-                            android:text="Destination Location"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:lines="1"
-                            android:textSize="14dp"
-                            android:textColor="@color/text_back"
-                            android:id="@+id/txt_destination"
-                            android:text="Destination"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
+                        </LinearLayout>
 
-
-
-                    <LinearLayout
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="60dp"
-                        android:paddingRight="20dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:src="@mipmap/box2"
-                            android:layout_width="@dimen/dimen_40dp"
-                            android:layout_height="@dimen/dimen_40dp" />
-
-                        <TextView
-                            android:id="@+id/txt_weight"
-                            android:textColor="@color/black"
-                            android:text="20kg(s)"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_below="@+id/lin_destination"
-                        android:layout_marginTop="40dp"
-                        android:id="@+id/txt_distance"
-                        android:textColor="@color/black"
-                        android:text="20km"
-                        android:layout_marginLeft="@dimen/dimen_30dp"
-                        android:textSize="20dp"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                    </androidx.cardview.widget.CardView>
 
                 </RelativeLayout>
 
@@ -140,15 +134,10 @@
                 android:gravity="center|top"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-
-
-
-
-
+                android:layout_height="fill_parent">
 
                 <LinearLayout
-                        android:layout_marginTop="@dimen/dimen_10dp"
+                        android:layout_marginTop="0dp"
                         android:orientation="vertical"
                         android:gravity="center|top"
                         android:layout_width="fill_parent"
@@ -156,38 +145,40 @@
 
 
 
-
                         <LinearLayout
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
 
                             <RelativeLayout
+                                android:gravity="top"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content">
 
-                                <ImageView
-                                    android:id="@+id/img_sender"
-                                    android:layout_marginLeft="@dimen/dimen_10dp"
+                                <LinearLayout
                                     android:layout_centerVertical="true"
-                                    android:clickable="true"
-                                    android:background="?attr/selectableItemBackgroundBorderless"
-                                    android:src="@drawable/ic_navigate_before_24px"
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp" />
-
-                                <TextView
-                                    android:visibility="gone"
-                                    android:clickable="true"
-                                    android:background="?attr/selectableItemBackgroundBorderless"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_toRightOf="@+id/img_sender"
-                                    android:id="@+id/txt_sender"
-                                    android:text="Prev"
+                                    android:layout_marginLeft="10dp"
+                                    android:orientation="vertical"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:id="@+id/img_sender"
+                                        android:layout_centerVertical="true"
+                                        android:clickable="true"
+                                        android:background="?attr/selectableItemBackgroundBorderless"
+                                        android:src="@mipmap/ic_left_arrow"
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp" />
+                                    <TextView
+                                        android:visibility="gone"
+                                        android:layout_marginTop="5dp"
+                                        android:id="@+id/txt_back"
+                                        android:text="BACK"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
 
                                 <TextView
                                     android:textColor="@color/white"
@@ -203,31 +194,36 @@
                                     android:layout_marginLeft="60dp"
                                     android:layout_height="wrap_content" />
 
-                                <!---->
-                                <ImageView
-                                    android:id="@+id/img_receiver"
-                                    android:layout_marginRight="@dimen/dimen_10dp"
+                                <LinearLayout
+                                    android:orientation="vertical"
                                     android:layout_centerVertical="true"
-                                    android:clickable="true"
                                     android:layout_alignParentRight="true"
-                                    android:background="?attr/selectableItemBackgroundBorderless"
-                                    android:src="@drawable/ic_navigate_next_24px"
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp" />
-
-                                <TextView
-                                    android:visibility="gone"
-                                    android:clickable="true"
-                                    android:background="?attr/selectableItemBackgroundBorderless"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-                                    android:id="@+id/txt_receiver"
+                                    android:layout_marginRight="10dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:layout_toStartOf="@+id/img_receiver"
-                                    android:layout_toLeftOf="@+id/img_receiver"
-                                    android:text="Next" />
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:id="@+id/img_receiver"
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:layout_centerVertical="true"
+                                        android:background="?attr/selectableItemBackgroundBorderless"
+                                        android:clickable="true"
+                                        android:src="@mipmap/ic_right_arrow" />
+
+
+                                    <TextView
+                                        android:visibility="gone"
+                                        android:layout_marginTop="5dp"
+                                        android:id="@+id/txt_next"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_toStartOf="@+id/img_receiver"
+                                        android:layout_toLeftOf="@+id/img_receiver"
+                                        android:text="NEXT" />
+
+                                </LinearLayout>
 
 
                             </RelativeLayout>
@@ -235,13 +231,12 @@
 
 
                         <LinearLayout
-                            android:layout_marginBottom="10dp"
                             android:gravity="center"
                             android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="5dp"
                             android:orientation="vertical"
                             android:layout_width="fill_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="fill_parent">
 
                             <LinearLayout
                                 android:visibility="gone"
@@ -266,25 +261,153 @@
                                     android:layout_height="wrap_content" />
                             </LinearLayout>
 
+
+
                             <LinearLayout
+                                android:id="@+id/lin_level_container"
                                 android:orientation="vertical"
-                                android:id="@+id/lin_service"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:id="@+id/lin_service"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                </LinearLayout>
+
+
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="total weight"
+                                        android:textAllCaps="true"
+                                        android:textSize="14dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <LinearLayout
+                                        android:layout_marginLeft="@dimen/dimen_20dp"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:src="@mipmap/box2"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp" />
+
+                                        <TextView
+                                            android:id="@+id/txt_weight"
+                                            android:textColor="@color/black"
+                                            android:text="20kg(s)"
+                                            android:textSize="16dp"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/lin_plan_container"
+                                    android:gravity="center"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:src="@mipmap/ic_aireplan"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/lin_distance_container"
+                                    android:orientation="vertical"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_marginTop="10dp"
+                                        android:textColor="@color/black"
+                                        android:text="TOTAL DISTANCE"
+                                        android:textAllCaps="true"
+                                        android:textSize="16dp"
+                                        android:gravity="center"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content" />
+
+                                    <LinearLayout
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_marginLeft="@dimen/dimen_20dp"
+                                            android:src="@mipmap/org_set"
+                                            android:layout_width="@dimen/dimen_40dp"
+                                            android:layout_height="@dimen/dimen_40dp" />
+
+                                        <LinearLayout
+                                            android:orientation="vertical"
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:layout_height="wrap_content">
+
+                                            <TextView
+                                                android:id="@+id/txt_distance"
+                                                android:textColor="@color/black"
+                                                android:text="20km"
+                                                android:textSize="20dp"
+                                                android:gravity="center"
+                                                android:layout_width="fill_parent"
+                                                android:layout_height="wrap_content" />
+
+                                            <ImageView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="5dp"
+                                                android:src="@drawable/dotted"
+                                                android:layerType="software" />
+
+
+                                        </LinearLayout>
+
+                                        <ImageView
+                                            android:layout_marginRight="@dimen/dimen_20dp"
+                                            android:src="@mipmap/dest_set"
+                                            android:layout_width="@dimen/dimen_40dp"
+                                            android:layout_height="@dimen/dimen_40dp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+
+
 
                             </LinearLayout>
 
 
 
 
+
                             <LinearLayout
                                 android:id="@+id/lin_date_time"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="0dp"
                                 android:gravity="center"
                                 android:orientation="vertical"
                                 android:layout_width="fill_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="fill_parent">
 
                                 <TextView
                                     android:visibility="gone"
@@ -298,18 +421,11 @@
                                     android:layout_height="wrap_content" />
 
 
-                                <LinearLayout
-                                    android:padding="@dimen/dimen_10dp"
-                                    android:gravity="center"
-                                    android:orientation="horizontal"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content">
 
 
-
-                                </LinearLayout>
 
                                 <LinearLayout
+
                                     android:orientation="horizontal"
                                     android:gravity="center|top"
                                     android:layout_gravity="center"
@@ -317,6 +433,7 @@
                                     android:layout_height="wrap_content">
 
                                     <LinearLayout
+                                        android:visibility="gone"
                                         android:orientation="vertical"
                                         android:gravity="center|top"
                                         android:layout_width="0dp"
@@ -332,10 +449,10 @@
                                             android:layout_height="wrap_content" />
 
                                         <com.aigestudio.wheelpicker.widgets.WheelDatePicker
+
                                             android:id="@+id/wheel_date_picker"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@color/white"
                                             aigestudio:wheel_atmospheric="true"
                                             aigestudio:wheel_curved="true"
                                             aigestudio:wheel_cyclic="true"
@@ -352,14 +469,58 @@
                                         android:layout_weight="1"
                                         android:layout_height="wrap_content">
 
-                                        <TextView
-                                            android:layout_marginBottom="5dp"
-                                            android:textColor="@color/text_back"
-                                            android:textSize="15dp"
-                                            android:gravity="center"
-                                            android:text="Time"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content" />
+                                        <LinearLayout
+                                            android:layout_marginLeft="50dp"
+                                            android:layout_marginRight="50dp"
+                                            android:layout_width="fill_parent"
+                                            android:layout_height="wrap_content">
+
+                                            <LinearLayout
+                                                android:gravity="center"
+                                                android:layout_weight="1"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content">
+
+                                                <LinearLayout
+                                                    android:layout_width="0dp"
+                                                    android:layout_weight="1"
+                                                    android:gravity="center"
+                                                    android:layout_height="wrap_content">
+                                                    <TextView
+                                                        android:layout_marginBottom="5dp"
+                                                        android:textColor="@color/text_back"
+                                                        android:textSize="16dp"
+                                                        android:gravity="center"
+                                                        android:text="Date"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="0dp"
+                                                    android:layout_weight="1"
+                                                    android:gravity="center"
+                                                    android:layout_height="wrap_content">
+                                                    <TextView
+                                                        android:layout_marginBottom="5dp"
+                                                        android:textColor="@color/text_back"
+                                                        android:textSize="16dp"
+                                                        android:gravity="center"
+                                                        android:text="Time"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content" />
+
+                                                </LinearLayout>
+
+
+
+
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+
 
 
                                         <LinearLayout
@@ -367,52 +528,57 @@
                                             android:orientation="horizontal"
                                             android:layout_width="fill_parent"
                                             android:layout_height="wrap_content">
+
                                             <com.aigestudio.wheelpicker.WheelPicker
                                                 android:layout_marginLeft="@dimen/dimen_10dp"
+                                                android:id="@+id/wheel_date"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                aigestudio:wheel_curved="true"
+                                                aigestudio:wheel_cyclic="true"
+                                                aigestudio:wheel_item_text_color="@color/gray"
+                                                aigestudio:wheel_item_text_size="24sp"
+                                                aigestudio:wheel_selected_item_text_color="@color/red_pop" />
+
+
+                                            <com.aigestudio.wheelpicker.WheelPicker
+                                                android:layout_marginLeft="20dp"
                                                 android:id="@+id/wheel_hour"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:background="@color/white"
                                                 aigestudio:wheel_curved="true"
                                                 aigestudio:wheel_cyclic="true"
-                                                aigestudio:wheel_item_text_color="#A7A7DB"
+                                                aigestudio:wheel_item_text_color="@color/gray"
                                                 aigestudio:wheel_item_text_size="24sp"
                                                 aigestudio:wheel_selected_item_text_color="@color/red_pop" />
 
                                             <com.aigestudio.wheelpicker.WheelPicker
-                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginLeft="20dp"
                                                 android:id="@+id/wheel_minute"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:background="@color/white"
                                                 aigestudio:wheel_atmospheric="true"
                                                 aigestudio:wheel_curved="true"
                                                 aigestudio:wheel_cyclic="true"
                                                 aigestudio:wheel_item_align="left"
-                                                aigestudio:wheel_item_text_color="#A7A7DB"
+                                                aigestudio:wheel_item_text_color="@color/gray"
                                                 aigestudio:wheel_item_text_size="24sp"
                                                 aigestudio:wheel_selected_item_text_color="@color/red_pop" />
 
                                             <com.aigestudio.wheelpicker.WheelPicker
-                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginLeft="20dp"
                                                 android:id="@+id/wheel_ap"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:background="@color/white"
                                                 aigestudio:wheel_atmospheric="true"
                                                 aigestudio:wheel_curved="true"
                                                 aigestudio:wheel_cyclic="true"
                                                 aigestudio:wheel_item_align="left"
-                                                aigestudio:wheel_item_text_color="#A7A7DB"
+                                                aigestudio:wheel_item_text_color="@color/gray"
                                                 aigestudio:wheel_item_text_size="24sp"
                                                 aigestudio:wheel_selected_item_text_color="@color/red_pop" />
                                         </LinearLayout>
                                     </LinearLayout>
-
-
-
-
-
 
                                 </LinearLayout>
 
@@ -526,8 +692,10 @@
                                 </LinearLayout>
 
                                 <LinearLayout
-                                    android:layout_marginTop="@dimen/dimen_10dp"
-                                    android:layout_marginBottom="@dimen/dimen_10dp"
+
+                                    android:id="@+id/lin_estimated_pickup"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
                                     android:gravity="center"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content">
@@ -665,7 +833,7 @@
 
 
         </LinearLayout>
-    </ScrollView>
+
 
 
 

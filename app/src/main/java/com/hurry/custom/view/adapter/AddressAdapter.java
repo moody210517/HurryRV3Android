@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hurry.custom.R;
 import com.hurry.custom.model.AddressHisModel;
 import com.hurry.custom.view.activity.AddressBookActivity;
+import com.hurry.custom.view.activity.HomeActivity;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,7 @@ public class AddressAdapter
         this.myView = view;
         viewHolders.clear();
 
+
     }
 
     @Override
@@ -64,12 +66,16 @@ public class AddressAdapter
             @Override
             public void onClick(View v) {
 
-
                 for(int k = 0; k < viewHolders.size(); k++){
                     viewHolders.get(k).checkBox.setChecked(false);
                 }
                 holder.checkBox.setChecked(true);
-                ((AddressBookActivity)context).setValue(contactListFiltered.get(position), true);
+                if(context instanceof  AddressBookActivity)
+                    ((AddressBookActivity)context).setValue(contactListFiltered.get(position), true);
+
+                if(context instanceof HomeActivity){
+                    ((HomeActivity)context).dismissAddressDialog(contactListFiltered.get(position));
+                }
 
             }
         });
@@ -81,7 +87,12 @@ public class AddressAdapter
                     viewHolders.get(k).checkBox.setChecked(false);
                 }
                 holder.checkBox.setChecked(true);
-                ((AddressBookActivity)context).setValue(contactListFiltered.get(position), true);
+                if(context instanceof AddressBookActivity)
+                    ((AddressBookActivity)context).setValue(contactListFiltered.get(position), true);
+
+                if(context instanceof HomeActivity){
+                    ((HomeActivity)context).dismissAddressDialog(contactListFiltered.get(position));
+                }
             }
         });
 
@@ -93,9 +104,6 @@ public class AddressAdapter
     public int getItemCount() {
         return contactListFiltered.size();
     }
-
-
-
 
     @Override
     public Filter getFilter() {

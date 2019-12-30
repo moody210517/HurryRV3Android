@@ -106,8 +106,8 @@ public class OTPDialog extends SimpleDialogFragment {
         txtResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
-                ((SignUpActivity)getActivity()).sendPhone(phone, "OTP has been resent");
+
+                ((SignUpActivity)getActivity()).sendPhone(phone, "OTP has been resent", true);
 
             }
         });

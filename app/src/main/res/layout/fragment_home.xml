@@ -6,16 +6,15 @@
 
 
 
-
-
     <TextView
+        android:visibility="gone"
         android:layout_marginTop="20dp"
         android:padding="20dp"
         android:gravity="center"
-        android:text="Please Choose what you want."
+        android:textSize="18dp"
+        android:text=""
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-
 
     <LinearLayout
         android:orientation="horizontal"
@@ -37,7 +36,7 @@
                 <ImageView
                     android:background="@drawable/ic_triangle_left"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="60dp" />
                 <TextView
                     android:paddingLeft="@dimen/dimen_20dp"
                     android:layout_centerVertical="true"
@@ -65,17 +64,24 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <RelativeLayout
 
-                    android:id="@+id/rl_station"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
+                <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:background="@drawable/ic_triangle_right"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content" />
+                    android:layout_height="fill_parent">
+                    <RelativeLayout
+                        android:id="@+id/rl_station"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/img_station"
+                            android:background="@drawable/ic_triangle_right"
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dp" />
+                    </RelativeLayout>
+
                     <TextView
                         android:paddingLeft="@dimen/dimen_10dp"
                         android:layout_centerVertical="true"
@@ -84,7 +90,15 @@
                         android:textSize="@dimen/dimen_16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+
+
+                    <View
+                        android:layout_below="@+id/rl_station"
+                        android:background="@color/gray"
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"></View>
                 </RelativeLayout>
+
             </LinearLayout>
 
 
@@ -97,15 +111,24 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
-                    android:id="@+id/rl_international"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:background="@drawable/ic_triangle_right"
+                    android:layout_height="fill_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_international"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:layout_centerInParent="true"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/img_international"
+                            android:background="@drawable/ic_triangle_right"
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dp" />
+                    </RelativeLayout>
+
+
                     <TextView
                         android:paddingLeft="@dimen/dimen_10dp"
                         android:textSize="@dimen/dimen_15dp"
@@ -114,6 +137,13 @@
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_above="@+id/rl_international"
+                        android:background="@color/gray"
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"></View>
+
                 </RelativeLayout>
             </LinearLayout>
 

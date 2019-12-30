@@ -47,6 +47,7 @@ public class LocationNameAdapter extends RecyclerView.Adapter<LocationNameAdapte
     private ContactsAdapterListener listener;
 
     private PlacesClient mGoogleApiClient;
+    private String pageType = "";
     private LatLngBounds mBounds = new LatLngBounds(new LatLng(38.46572222050097, -107.75668023304138),new LatLng(39.913037779499035, -105.88929176695862));
 
     RectangularBounds bounds = RectangularBounds.newInstance(
@@ -91,13 +92,14 @@ public class LocationNameAdapter extends RecyclerView.Adapter<LocationNameAdapte
         }
     }
 
-    public LocationNameAdapter(Context context, ArrayList<PlaceAutocomplete> contactList, ContactsAdapterListener listener, RecyclerView recyclerView, PlacesClient placesClient) {
+    public LocationNameAdapter(Context context, ArrayList<PlaceAutocomplete> contactList, ContactsAdapterListener listener, RecyclerView recyclerView, PlacesClient placesClient, String pageType) {
         this.context = context;
         this.listener = listener;
         this.contactList = contactList;
         this.contactListFiltered = contactList;
         this.recyclerView = recyclerView;
         this.mGoogleApiClient = placesClient;
+        this.pageType = pageType;
 
         try{
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
@@ -215,16 +217,33 @@ public class LocationNameAdapter extends RecyclerView.Adapter<LocationNameAdapte
                     new LatLng(leftLat, leftLng),
                     new LatLng(rightLat, rightLng));
 
-            FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
-                    // Call either setLocationBias() OR setLocationRestriction().
-                    .setLocationBias(bounds)
-                    //.setLocationRestriction(bounds)
-                    .setCountry("in")
-                    //.setTypeFilter(TypeFilter.REGIONS)
-                    .setSessionToken(token)
-                    .setQuery(constraint.toString())
-                    .build();
-
+            FindAutocompletePredictionsRequest request;
+            if(Constants.DELIVERY_STATUS == Constants.SAME_CITY || Constants.DELIVERY_STATUS == Constants.OUT_STATION || pageType.equals("sender") ){
+                request = FindAutocompletePredictionsRequest.builder()
+                        // Call either setLocationBias() OR setLocationRestriction().
+                        .setLocationBias(bounds)
+                        //.setLocationRestriction(bounds)
+                        .setCountry("in")
+                        //.setTypeFilter(TypeFilter.REGIONS)
+                        .setSessionToken(token)
+                        .setQuery(constraint.toString())
+                        .build();
+            }else{
+                request = FindAutocompletePredictionsRequest.builder()
+                        // Call either setLocationBias() OR setLocationRestriction().
+                        .setLocationBias(bounds)
+                        //.setLocationRestriction(bounds)
+                        .setCountry("us")
+                        .setCountry("gb")
+                        .setCountry("gb")
+                        .setCountry("au")
+                        .setCountry("ca")
+                        .setCountry("us|country:au|country:ca|country:gb")
+                        //.setTypeFilter(TypeFilter.REGIONS)
+                        .setSessionToken(token)
+                        .setQuery(constraint.toString())
+                        .build();
+            }
 
             mGoogleApiClient.findAutocompletePredictions(request).addOnSuccessListener((response) -> {
                 for (AutocompletePrediction prediction : response.getAutocompletePredictions()) {

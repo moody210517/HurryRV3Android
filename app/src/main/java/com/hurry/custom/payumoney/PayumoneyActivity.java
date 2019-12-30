@@ -38,9 +38,7 @@ import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.common.utils.DeviceUtil;
 import com.hurry.custom.controller.WebClient;
 
-import com.hurry.custom.view.BaseActivity;
 import com.hurry.custom.view.BaseBackActivity;
-import com.hurry.custom.view.activity.OrderConfirmActivity;
 import com.hurry.custom.view.activity.ReviewActivity;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -396,10 +394,7 @@ public class PayumoneyActivity extends BaseBackActivity implements View.OnClickL
                         String paymentId = jsonRes.getString("paymentId");
                         String merchantResponse = transactionResponse.getTransactionDetails();
 
-                        Intent intent = new Intent(PayumoneyActivity.this, OrderConfirmActivity.class);
-                        intent.putExtra("payment",mPayment);
-                        intent.putExtra("transaction_id", paymentId);
-                        startActivity(intent);
+                        // call order confirm
                         finish();
 
                     } catch (JSONException e) {
@@ -1001,8 +996,7 @@ public class PayumoneyActivity extends BaseBackActivity implements View.OnClickL
                                 String results = response.getString("result");
                                 if(results.equals("200")){
                                     PreferenceUtils.setOrderId(PayumoneyActivity.this, order_id);
-                                    Intent intent  = new Intent(PayumoneyActivity.this, OrderConfirmActivity.class);
-                                    startActivity(intent);
+                                    // call order confirm
                                     finish();
                                 }
                                 if(response.getString("result").equals("400")){
@@ -1063,8 +1057,7 @@ public class PayumoneyActivity extends BaseBackActivity implements View.OnClickL
                                 if(results.equals("200")){
 
                                     PreferenceUtils.setOrderId(PayumoneyActivity.this, order_id);
-                                    Intent intent  = new Intent(PayumoneyActivity.this, OrderConfirmActivity.class);
-                                    startActivity(intent);
+                                    // call order confirm
                                     finish();
 
                                 }
@@ -1238,8 +1231,7 @@ public class PayumoneyActivity extends BaseBackActivity implements View.OnClickL
                                     PreferenceUtils.setOrderId(PayumoneyActivity.this, order_id);
                                     PreferenceUtils.setTrackId(PayumoneyActivity.this, track_id);
 
-                                    Intent intent  = new Intent(PayumoneyActivity.this, OrderConfirmActivity.class);
-                                    startActivity(intent);
+                                   // call order confirm
                                     finish();
                                 }
                             }

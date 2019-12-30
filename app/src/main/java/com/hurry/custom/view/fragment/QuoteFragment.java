@@ -54,19 +54,18 @@ public class QuoteFragment extends Fragment implements View.OnClickListener{
     Context mContext;
     Button btnContinue;
     RecyclerView rv;
-
     LinearLayout linNoOrders;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = (View) inflater.inflate(
                 R.layout.fragment_quote, container, false);
         rv = (RecyclerView)view.findViewById(R.id.recyclerview);
         Constants.page_type = "quote";
         linNoOrders = (LinearLayout)view.findViewById(R.id.lin_no_order);
         mContext = getActivity();
-
 
         initView(view);
         if(Constants.quoteModels.size() > 0){
@@ -165,7 +164,6 @@ public class QuoteFragment extends Fragment implements View.OnClickListener{
                                     try{
                                         JSONObject object = jsonArray.getJSONObject(k);
 
-
                                         quoteModel.orderId = object.getString("id");
                                         quoteModel.trackId = object.getString("track");
                                         quoteModel.dateModel.date = object.getString("date");
@@ -174,9 +172,6 @@ public class QuoteFragment extends Fragment implements View.OnClickListener{
                                         quoteModel.serviceModel.price = object.getString("service_price");
                                         quoteModel.serviceModel.time_in = object.getString("service_timein");
                                         quoteModel.quote_id = object.getString("quote_id");
-
-
-
 
                                         JSONArray addressArray = object.getJSONArray("address");
 
@@ -330,9 +325,9 @@ public class QuoteFragment extends Fragment implements View.OnClickListener{
                                     Constants.priceType.express_price = serviceObj.getString("express_price");
                                     Constants.priceType.economy_price = serviceObj.getString("economy_price");
 
-                                    Constants.priceType.expedited_duration = serviceObj.getString("expedited_duration");
-                                    Constants.priceType.express_duration = serviceObj.getString("express_duration");
-                                    Constants.priceType.economy_duraiton = serviceObj.getString("economy_duration");
+//                                    Constants.priceType.expedited_duration = serviceObj.getString("expedited_duration");
+//                                    Constants.priceType.express_duration = serviceObj.getString("express_duration");
+//                                    Constants.priceType.economy_duraiton = serviceObj.getString("economy_duration");
 
                                     Intent dateIntent = new Intent(mContext, DateTimeActivity.class);
                                     PreferenceUtils.setQuote(mContext, true);

@@ -1,265 +1,350 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/package_background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
 
 
-
-    <LinearLayout
-        android:background="@color/white"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/dimen_5dp"></LinearLayout>
-
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Item" />
-
-
-            <AutoCompleteTextView
-                android:id="@+id/edt_item"
-                android:layout_width="fill_parent"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:hint="Enter the Item here"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:textSize="14dp"
-                android:imeOptions="actionNext"
-                android:background="@drawable/round_rect_grey_border"
-                android:nextFocusForward="@+id/edt_dimension1"/>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="2dp"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:text="Quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:padding="2dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                android:background="@drawable/round_rect_grey_border"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <org.angmarch.views.NiceSpinner
-                    android:id = "@+id/sp_quantity"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "36dp"
-                    android:minHeight="36dp"
-                    android:background="@color/package_background"
-                    android:backgroundTint="@color/package_background"
-                    android:gravity = "center"
-                    android:hint="Select Quantity">
-                </org.angmarch.views.NiceSpinner>
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp">
+        android:background="@color/package_background"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="2dp">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dimension_option" />
-
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/edt_dimension1"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:hint=" L(In) "
-                    android:maxLength="3"
-                    android:imeOptions="actionNext"
-                    android:nextFocusForward="@+id/edt_dimension2"
-                    android:numeric="decimal"
-                    android:singleLine="true"
-                    android:background="@drawable/round_rect_grey_border"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="  X  " />
-
-                <EditText
-                    android:id="@+id/edt_dimension2"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:hint=" W(In) "
-                    android:maxLength="3"
-                    android:imeOptions="actionNext"
-                    android:nextFocusForward="@+id/edt_dimension3"
-                    android:numeric="decimal"
-                    android:singleLine="true"
-                    android:background="@drawable/round_rect_grey_border"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="  X  " />
-
-                <EditText
-                    android:id="@+id/edt_dimension3"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:hint=" H(In) "
-                    android:maxLength="3"
-                    android:imeOptions="actionNext"
-                    android:nextFocusForward="@+id/sp_quantity"
-                    android:numeric="decimal"
-                    android:singleLine="true"
-                    android:background="@drawable/round_rect_grey_border"
-                    android:textSize="14dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Weight" />
-
-            <LinearLayout
-                android:padding="2dp"
-                android:layout_marginTop="@dimen/dimen_5dp"
-                android:background="@drawable/round_rect_grey_border"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <org.angmarch.views.NiceSpinner
-                    android:id="@+id/sp_weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:minHeight="36dp"
-                    android:gravity="center"
-                    android:background="@color/package_background"
-                    android:backgroundTint="@color/package_background"
-                    android:hint="Select Weight"></org.angmarch.views.NiceSpinner>
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:gravity="left"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <CheckBox
-            android:id="@+id/chk_package"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/gray"
-            android:text="@string/need_package"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/txt_remove"
-            android:text="Remove"
-            android:gravity="right"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-        <LinearLayout
-            android:gravity="right"
-            android:layout_marginRight="20dp"
+            android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
-                android:id="@+id/lin_remove"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dimen_5dp"></LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/com_facebook_close" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Item" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edt_item"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:hint="Enter the Item here"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textSize="14dp"
+                        android:imeOptions="actionNext"
+                        android:background="@drawable/round_rect_grey_border"
+                        android:nextFocusForward="@+id/edt_dimension1"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:text="Quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:padding="2dp"
+                        android:layout_marginTop="@dimen/dimen_5dp"
+                        android:background="@drawable/round_rect_grey_border"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <org.angmarch.views.NiceSpinner
+                            android:id = "@+id/sp_quantity"
+                            android:layout_width = "match_parent"
+                            android:layout_height = "36dp"
+                            android:minHeight="36dp"
+                            android:paddingLeft="5dp"
+                            android:background="@color/white"
+                            android:backgroundTint="@color/white"
+                            android:gravity = "right"
+                            android:layout_gravity="center"
+                            android:hint="Select Quantity">
+                        </org.angmarch.views.NiceSpinner>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:text="Weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:padding="2dp"
+                        android:layout_marginTop="@dimen/dimen_5dp"
+                        android:background="@drawable/round_rect_grey_border"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <org.angmarch.views.NiceSpinner
+                            android:id="@+id/sp_weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:minHeight="36dp"
+                            android:paddingLeft="5dp"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:background="@color/white"
+                            android:backgroundTint="@color/white"
+                            android:hint="Select Weight">
+
+                        </org.angmarch.views.NiceSpinner>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dimension_option" />
+
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:paddingLeft="@dimen/dimen_5dp"
+                            android:id="@+id/edt_dimension1"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:hint=" L(In) "
+                            android:maxLength="3"
+                            android:imeOptions="actionNext"
+                            android:nextFocusForward="@+id/edt_dimension2"
+                            android:numeric="decimal"
+                            android:singleLine="true"
+                            android:background="@drawable/round_rect_grey_border"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  X  " />
+
+                        <EditText
+                            android:paddingLeft="@dimen/dimen_5dp"
+                            android:id="@+id/edt_dimension2"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:hint=" W(In) "
+                            android:maxLength="3"
+                            android:imeOptions="actionNext"
+                            android:nextFocusForward="@+id/edt_dimension3"
+                            android:numeric="decimal"
+                            android:singleLine="true"
+                            android:background="@drawable/round_rect_grey_border"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="  X  " />
+
+                        <EditText
+                            android:paddingLeft="@dimen/dimen_5dp"
+                            android:id="@+id/edt_dimension3"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:hint=" H(In) "
+                            android:maxLength="3"
+                            android:imeOptions="actionNext"
+                            android:nextFocusForward="@+id/edt_cost"
+                            android:numeric="decimal"
+                            android:singleLine="true"
+                            android:background="@drawable/round_rect_grey_border"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="1.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Package cost(optional)" />
+
+                    <LinearLayout
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:padding="2dp"
+                        android:layout_marginTop="@dimen/dimen_5dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:paddingLeft="@dimen/dimen_5dp"
+                            android:id="@+id/edt_cost"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/button_height"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:hint="Package cost(Rs)"
+                            android:imeOptions="actionNext"
+                            android:nextFocusForward="@+id/chk_package"
+                            android:numeric="decimal"
+                            android:singleLine="true"
+                            android:background="@drawable/round_rect_grey_border"
+                            android:textSize="14dp" />
+
+                        <!--<org.angmarch.views.NiceSpinner-->
+                        <!--android:id="@+id/sp_weight"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="36dp"-->
+                        <!--android:minHeight="36dp"-->
+                        <!--android:gravity="center"-->
+                        <!--android:background="@color/package_background"-->
+                        <!--android:backgroundTint="@color/package_background"-->
+                        <!--android:hint="Select Weight"></org.angmarch.views.NiceSpinner>-->
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="left"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/chk_package"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/gray"
+                    android:text="@string/need_package"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/txt_remove"
+                    android:text="Remove"
+                    android:gravity="right"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/lin_remove"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/com_facebook_close" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:background="@color/light_gray"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"></View>
         </LinearLayout>
 
-
-    </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>

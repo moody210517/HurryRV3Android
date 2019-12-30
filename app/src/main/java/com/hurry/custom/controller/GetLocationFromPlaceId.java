@@ -3,7 +3,9 @@ package com.hurry.custom.controller;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.hurry.custom.R;
+import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.map.MyAutoCompleteActivity;
 import com.hurry.custom.view.activity.map.TouchMapActivity;
 
@@ -26,13 +28,15 @@ import java.util.List;
     String result;
     String place_id;
     String location;
+    LatLng latLng;
 
-    public GetLocationFromPlaceId(Context con, String place_id, String location)
+    public GetLocationFromPlaceId(Context con, String place_id, String location, LatLng latLng)
     {
         super();
         this.mContext = con;
         this.place_id = place_id;
         this.location = location;
+        this.latLng = latLng;
     }
 
     @Override
@@ -150,8 +154,9 @@ import java.util.List;
 //                            if(mContext instanceof PickupLocationActivity){
 //                                ((PickupLocationActivity)mContext).updateLocation(location, street ,area , city , state1 + " " + state2, postCode);
 //                            }
-                            if(mContext instanceof MyAutoCompleteActivity){
-                                ((MyAutoCompleteActivity)mContext).updateLocation(location, street ,area , city , state1 + " " + state2, postCode);
+
+                            if(mContext instanceof HomeActivity){
+                                ((HomeActivity)mContext).updateLocation(location, street ,area , city , state1 + " " + state2, postCode, latLng);
                             }
                             if(mContext instanceof TouchMapActivity){
                                 ((TouchMapActivity)mContext).updateLocation2(location, street ,area , city , state1 + " " + state2, postCode);

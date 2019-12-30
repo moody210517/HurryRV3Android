@@ -57,9 +57,6 @@ import butterknife.ButterKnife;
 
 public class SignUpActivity extends BaseBackActivity implements View.OnClickListener {
 
-
-
-
     TextView txtContact;
     EditText edtFirst;
     EditText edtLast;
@@ -140,6 +137,12 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
         initFirstVies();
         initView();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
 
@@ -247,7 +250,7 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
                             String phone = ccp + edtPhone.getText().toString();
                             if(ValidationHelper.isValidPhoneNumber(phone)){
                                 findViewById(R.id.lin_phone).setBackgroundColor(getResources().getColor(R.color.hint_color));
-                                sendPhone(phone, "");
+                                sendPhone(phone, "", false);
                             }else{
                                 findViewById(R.id.lin_phone).setBackgroundColor(getResources().getColor(R.color.red));
                                 Toast.makeText(SignUpActivity.this, getString(R.string.enter_valid_phone) , Toast.LENGTH_SHORT).show();
@@ -602,6 +605,7 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
 
 
         spSecurity = (NiceSpinner)findViewById(R.id.sp_security);
+        spSecurity.setPadding(20, 10,10,10);
         //spSecurity.type = 1;
         spSecurity.attachDataSource(Constants.securityLists);
         mSecurity = Constants.securityLists.get(0);
@@ -941,7 +945,7 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
     }
 
 
-    public void sendPhone(String phone, String message) {
+    public void sendPhone(String phone, String message, boolean isShowingDialog) {
 
         RequestParams params = new RequestParams();
         params.put("phone", phone);
@@ -974,12 +978,14 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
                         if (response != null) {
                             try{
                                 if(response.getString("result").equals("200")){
+                                    if(isShowingDialog){
 
-                                    OTPDialog otpDialog = new OTPDialog();
-                                    otpDialog.show(SignUpActivity.this, ccp +  edtPhone.getText().toString());
-                                    otpDialog.setCancelable(false);
-                                    otpDialog.getDialog().setCanceledOnTouchOutside(false);
-
+                                    }else{
+                                        OTPDialog otpDialog = new OTPDialog();
+                                        otpDialog.show(SignUpActivity.this, ccp +  edtPhone.getText().toString());
+                                        otpDialog.setCancelable(false);
+                                        otpDialog.getDialog().setCanceledOnTouchOutside(false);
+                                    }
                                     if(message.isEmpty()){
                                         Toast.makeText(SignUpActivity.this, "OTP sent", Toast.LENGTH_SHORT).show();
                                     }else{

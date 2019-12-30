@@ -33,7 +33,7 @@ public class WebClient {
 
 	public static void get(String url, RequestParams params,
 			AsyncHttpResponseHandler responseHandler) {
-		client.setTimeout(10000);
+		client.setTimeout(100000);
 		client.cancelAllRequests(true);
 		client.get(url, params, responseHandler);
 	}

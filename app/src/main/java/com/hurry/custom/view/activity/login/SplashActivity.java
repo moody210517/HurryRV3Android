@@ -26,6 +26,7 @@ import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.common.utils.DeviceUtil;
 import com.hurry.custom.controller.GetBasic;
+import com.hurry.custom.controller.GetCity;
 import com.hurry.custom.controller.GetPhone;
 import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.MainActivity;
@@ -51,6 +52,16 @@ public class SplashActivity extends Activity  implements  SurfaceHolder.Callback
         public void run() {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
+        }
+    };
+
+    Runnable runnable2 = new Runnable() {
+        @Override
+        public void run() {
+            PreferenceUtils.setFirstStart(SplashActivity.this, false);
+            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         }
     };
 
@@ -87,10 +98,21 @@ public class SplashActivity extends Activity  implements  SurfaceHolder.Callback
 
 
         if(PreferenceUtils.getLogin(SplashActivity.this)){
-            PreferenceUtils.setFirstStart(this, false);
-            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
+
+            if(PreferenceUtils.getCityId(SplashActivity.this) == -1){
+                PreferenceUtils.setFirstStart(SplashActivity.this, false);
+                Intent intent = new Intent(SplashActivity.this, LocationActivity.class);
+                startActivity(intent);
+                finish();
+            }else{
+
+                PreferenceUtils.setFirstStart(SplashActivity.this, false);
+                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+
         }else{
             this.runOnUiThread(new Runnable() {
                 @Override
@@ -102,6 +124,15 @@ public class SplashActivity extends Activity  implements  SurfaceHolder.Callback
             mHandler.postDelayed(runnable, 4000);
         }
     }
+
+    private void autoLogin() {
+        new GetBasic(this, "auto").execute();
+    }
+
+    public void getCities(){
+        new GetCity(this, "").execute();
+    }
+
 
 
     @TargetApi(Build.VERSION_CODES.N)
@@ -172,7 +203,6 @@ public class SplashActivity extends Activity  implements  SurfaceHolder.Callback
     public void surfaceDestroyed(SurfaceHolder holder) {
 
     }
-
 
     public void callNext(){
         try{

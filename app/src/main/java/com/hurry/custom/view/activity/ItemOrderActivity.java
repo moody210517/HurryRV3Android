@@ -2,6 +2,7 @@ package com.hurry.custom.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -58,7 +59,6 @@ public class ItemOrderActivity extends BaseBackActivity implements View.OnClickL
         setContentView(R.layout.fragment_item_order);
         ButterKnife.bind(this);
         itemOrderActivity = this;
-
         initBackButton(toolbar, getString(R.string.select_the_item));
 
         Constants.page_type = "item";
@@ -182,12 +182,13 @@ public class ItemOrderActivity extends BaseBackActivity implements View.OnClickL
             final NiceSpinner spQuantity = (NiceSpinner)v.findViewById(R.id.sp_quantity);
             //spQuantity.type = 1;
             spQuantity.setPadding(20, 10,10,10);
+
             //spQuantity.setBackgroundColor(getResources().getColor(R.color.light_mustard_color));
             final NiceSpinner spWeight = (NiceSpinner)v.findViewById(R.id.sp_weight);
             //spWeight.type = 1;
             spWeight.setPadding(20, 10,10,10);
-            //spWeight.setBackgroundColor(getResources().getColor(R.color.light_mustard_color));
 
+            //spWeight.setBackgroundColor(getResources().getColor(R.color.light_mustard_color));
 
             spQuantity.attachDataSource(Constants.quantity);
             spWeight.attachDataSource(Constants.weight);
@@ -197,7 +198,7 @@ public class ItemOrderActivity extends BaseBackActivity implements View.OnClickL
 
             if(itemModel.mPackage.equals("1")){
                 chkPackage.setChecked(true);
-            }
+        }
 
             final int finalK = k;
             spQuantity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

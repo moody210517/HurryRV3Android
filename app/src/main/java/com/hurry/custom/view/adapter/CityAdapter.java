@@ -1,6 +1,7 @@
 package com.hurry.custom.view.adapter;
 
 import android.content.Context;
+import android.location.Location;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,9 @@ import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.model.CityModel;
+import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.MainActivity;
+import com.hurry.custom.view.activity.login.LocationActivity;
 import com.hurry.custom.view.activity.login.LoginActivity;
 import java.util.ArrayList;
 
@@ -72,13 +75,17 @@ public class CityAdapter
                 Constants.cityBounds = Constants.getGeofences(mValues.get(position).geofence);
                 Constants.cityName = mValues.get(position).name;
                 PreferenceUtils.setCityId(context, position);
+                PreferenceUtils.setCityName(context, Constants.cityName);
 
-                if(context instanceof MainActivity)
-                    ((MainActivity)context).hideDialog();
+
+                if(context instanceof HomeActivity)
+                    ((HomeActivity)context).hideDialog();
+
+                if(context instanceof LocationActivity)
+                    ((LocationActivity)context).goToMain();
 
             }
         });
-
     }
 
     @Override
@@ -101,8 +108,5 @@ public class CityAdapter
             linMask = (LinearLayout)view.findViewById(R.id.lin_mask);
         }
     }
-
-
-
 
 }

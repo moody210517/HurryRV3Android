@@ -8,9 +8,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -92,6 +94,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @BindView(R.id.btn_google) MaterialButton btnGoogle;
     @BindView(R.id.underline_username) View underlineUsername;
     @BindView(R.id.underline_password) View underlinePassword;
+    @BindView(R.id.img_username_close) ImageView imgUserNameClose;
+    @BindView(R.id.img_password_close) ImageView imgPasswordClose;
+
 
     String mEmail;
     String mPassword;
@@ -333,7 +338,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 
         btnLogin.setOnClickListener(this);
-
         txtForgotUserName = (TextView)findViewById(R.id.txt_forgot_username);
         txtForgotPassword = (TextView)findViewById(R.id.txt_forgot_password);
         txtForgotPassword.setOnClickListener(this);
@@ -344,27 +348,50 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         btnGoogle.setOnClickListener(this);
         btnGoogle.setIconResource(R.mipmap.ic_google_36);
 
-        edtUserName.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode==KeyEvent.KEYCODE_ENTER)
-                {
-                    edtPassword.requestFocus();
-                    return true;
+        edtUserName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(edtUserName.getText().toString().length() > 0){
+                    imgUserNameClose.setVisibility(View.VISIBLE);
+                }else{
+                    imgUserNameClose.setVisibility(View.GONE);
                 }
-                // Handle all other keys in the default way
-                return onKeyDown(keyCode, event);
             }
         });
 
-        edtPassword.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == 66 || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    return true;
+
+        edtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(edtPassword.getText().toString().length() > 0){
+                    imgPasswordClose.setVisibility(View.VISIBLE);
+                    txtPasswordHint.setVisibility(View.GONE);
+                }else{
+                    imgPasswordClose.setVisibility(View.GONE);
+
                 }
-                return onKeyDown(keyCode, event);
             }
         });
-
 
         if(Constants.MODE == Constants.PERSONAL){
             if(!PreferenceUtils.getEmail(this).isEmpty()){
@@ -386,6 +413,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             edtUserName.setBackgroundDrawable(getResources().getDrawable(R.drawable.broder_noe));
             edtPassword.setBackgroundDrawable(getResources().getDrawable(R.drawable.broder_noe));
         }
+
+        imgUserNameClose.setOnClickListener(this);
+        imgPasswordClose.setOnClickListener(this);
     }
 
 
@@ -396,7 +426,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 txtUserHint.setVisibility(View.GONE);
+                imgUserNameClose.setVisibility(View.VISIBLE);
+
                 txtPasswordHint.setVisibility(View.VISIBLE);
+                imgPasswordClose.setVisibility(View.GONE);
                 return false;
             }
         });
@@ -405,7 +438,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 txtUserHint.setVisibility(View.VISIBLE);
+                imgUserNameClose.setVisibility(View.GONE);
+
                 txtPasswordHint.setVisibility(View.GONE);
+                imgPasswordClose.setVisibility(View.VISIBLE);
+
                 return false;
             }
         });
@@ -451,13 +488,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
                 break;
             case R.id.txt_forgot_password:
-                //goToForgot("phone");
-                //ForgotDialog.show(LoginActivity.this, "phone");
+
                 showForgot("phone");
                 break;
             case R.id.txt_forgot_username:
-                //goToForgot("username");
-                //ForgotDialog.show(LoginActivity.this, "username");
+
                 showForgot("username");
                 break;
             case R.id.img_back:
@@ -473,10 +508,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.btn_google:
                 googleSignIn();
                 break;
-
+            case R.id.img_username_close:
+                edtUserName.setText("");
+                break;
+            case R.id.img_password_close:
+                edtPassword.setText("");
+                break;
         }
     }
-
 
 
     private void loadBasicData() {
@@ -519,13 +558,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             }
                         }
                     };
+
                     public void onFinish() {
                         //hideProgressDialog();
-                    }
-                    ;
+                    };
+
                 });
     }
-
 
 
     private void login(String type) {
@@ -543,16 +582,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     public void onStart() {
 
                     }
+
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                         super.onFailure(statusCode, headers, responseString, throwable);
                        // Log.d("Error String", responseString);
                     }
+
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                         super.onFailure(statusCode, headers, throwable, errorResponse);
                        // Log.d("Error", errorResponse.toString());
                     }
+
                     public void onSuccess(int statusCode,
                                           Header[] headers,
                                           JSONObject response) {
@@ -578,9 +620,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                         }else{
                                             Toast.makeText(LoginActivity.this, "We don’t recognise the User Name and Password. Please try again.", Toast.LENGTH_SHORT).show();
                                         }
-
-
                                     }
+
 
                                 }catch (Exception e){
 
@@ -598,7 +639,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                     setResult(Activity.RESULT_OK,returnIntent);
                                     finish();
 
-                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, LocationActivity.class);
                                     startActivity(intent);
 
 
@@ -617,7 +658,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
 
     LinearLayout linQuestion;
     EditText editText1;
@@ -929,10 +969,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         String title = "", content = "";
         if(mType.equals("username")){
             title = getResources().getString(R.string.recovery_email);
-            content = getResources().getString(R.string.forgot_username_alert);
+            content = getResources().getString(R.string.forgot_password_alert);
         }else if(mType.equals("phone")){
             title = getResources().getString(R.string.text_message);
-            content = getResources().getString(R.string.forgot_password_alert);
+            content = getResources().getString(R.string.alert_forgot_username);
         }
         new AlertDialog.Builder(this)
                 .setTitle(title)
@@ -944,7 +984,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         dialogPlus.dismiss();
                     }}).show();
     }
-
 
     private void getQuestionFromEmailCustomer(String email, TextView txtTitle2, Button btnSubmit) {
 

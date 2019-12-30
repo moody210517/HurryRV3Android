@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.hurry.custom.view.fragment.AccountFragment;
 import com.hurry.custom.view.fragment.BaseFragment;
+import com.hurry.custom.view.fragment.FeedBackFragment;
 import com.hurry.custom.view.fragment.HomeFragment;
 import com.hurry.custom.view.fragment.OrderHisContainerFragment;
 import com.hurry.custom.view.fragment.SettingFragment;
@@ -24,7 +25,6 @@ public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
         switch (position){
             case 0:
                 return new AccountFragment();
-
             case 1:
 
                 return new OrderHisContainerFragment();
@@ -36,15 +36,18 @@ public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new SettingFragment();
 
             case 4:
+                return new HomeFragment();
+            case 5:
+                return new FeedBackFragment();
 
             default:
-                return new HomeFragment();
+                return new AccountFragment();
         }
 
     }
 
     @Override
-    public int getCount() {
+    public int getCount()     {
         return size;
     }
 

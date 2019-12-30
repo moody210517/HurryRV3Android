@@ -14,27 +14,29 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.hurry.custom.payumoney.AppEnvironment;
 
 import org.acra.ACRA;
-import org.acra.ReportingInteractionMode;
-import org.acra.annotation.ReportsCrashes;
+import org.acra.annotation.AcraCore;
+
 
 
 /**
  * Created by Hirak on 28-03-2015.
  */
 
-
 @TargetApi(Build.VERSION_CODES.DONUT)
-@ReportsCrashes(
-        mailTo = "kingstarboy@outlook.com", // my email here
-        mode = ReportingInteractionMode.TOAST,
-        resToastText = R.string.crash)
+//@ReportsCrashes(
+//        mailTo = "kingstarboy@outlook.com", // my email here
+//        mode = ReportingInteractionMode.TOAST,
+//        resToastText = R.string.crash)
+
+@AcraCore(buildConfigClass = BuildConfig.class)
 public class MyApplication extends Application {
     AppEnvironment appEnvironment;
     @Override
     public void onCreate() {
-        super.onCreate();
 
+        super.onCreate();
         ACRA.init(this);
+
         FirebaseApp.initializeApp(this);
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
         appEnvironment = AppEnvironment.PRODUCTION;
@@ -43,7 +45,6 @@ public class MyApplication extends Application {
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
         logAdImpressionEvent("banner");
-
 
         // google tag manager
         final FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -60,6 +61,7 @@ public class MyApplication extends Application {
     public void setAppEnvironment(AppEnvironment appEnvironment) {
         this.appEnvironment = appEnvironment;
     }
+
 
     /**
      * This function assumes logger is an instance of AppEventsLogger and has been

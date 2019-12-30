@@ -30,6 +30,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.hurry.custom.view.activity.HomeActivity;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;
@@ -49,6 +50,7 @@ public class AboutUsFragment extends Fragment {
         View view = (View) inflater.inflate(
                 R.layout.fragment_about_us, container, false);
         Constants.page_type = "aboutus";
+
         txtAboutUs = (TextView)view.findViewById(R.id.txt_aboutus);
 
         news_desc = (WebView) view.findViewById(R.id.desc);

@@ -57,7 +57,7 @@ public class PrivacyPolicyActivity extends BaseBackActivity implements View.OnCl
         setContentView(R.layout.fragment_policy);
         ButterKnife.bind(this);
 
-        initBackButton(toolbar, getString(R.string.about_us));
+        initBackButton(toolbar, getString(R.string.privacy_policy));
 
         privacy();
 

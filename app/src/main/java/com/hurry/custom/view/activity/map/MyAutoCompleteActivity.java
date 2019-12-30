@@ -108,14 +108,7 @@ public class MyAutoCompleteActivity extends FragmentBaseActivity implements
         imgBack.setOnClickListener(this);
 
         Places.initialize(getApplicationContext(), getString(R.string.gecode_api_key2));
-// Create a new Places client instance.
         mGoogleApiClient = Places.createClient(this);
-
-//        mGoogleApiClient = new GoogleApiClient.Builder(MyAutoCompleteActivity.this)
-//                .addApi(Places.GEO_DATA_API)
-//                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
-//                .addConnectionCallbacks(this)
-//                .build();
 
         initView();
         Button btnDone = (Button)findViewById(R.id.btn_done);
@@ -162,7 +155,7 @@ public class MyAutoCompleteActivity extends FragmentBaseActivity implements
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.street_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         contactsAdapter = new LocationNameAdapter(this,
-                contactList, this, recyclerView, mGoogleApiClient);
+                contactList, this, recyclerView, mGoogleApiClient, "");
         recyclerView.setAdapter(contactsAdapter);
     }
 
@@ -349,7 +342,7 @@ public class MyAutoCompleteActivity extends FragmentBaseActivity implements
                 if(GpsUtil.isPointInPolygon(latLng, Constants.cityBounds)){
                     mNameTextView.setText(getResources().getString(R.string.please_wait));
                     isCalling = true;
-                    new GetLocationFromPlaceId(MyAutoCompleteActivity.this, place.getId(), selectedAddress).execute();
+                    new GetLocationFromPlaceId(MyAutoCompleteActivity.this, place.getId(), selectedAddress, latLng).execute();
                     DeviceUtil.hideSoftKeyboard(MyAutoCompleteActivity.this);
 
                 }else{

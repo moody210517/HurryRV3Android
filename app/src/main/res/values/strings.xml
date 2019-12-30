@@ -95,7 +95,9 @@
   <!--<string name="forgot_username">Forgot User Name</string>-->
 
   <string name="forgot_username_alert">Thank you. A text message will be sent to the registered phone number.</string>
+
   <string name="forgot_password_alert">Thank You. An email will be sent to the registered email address.</string>
+
   <string name="google_map_key">AIzaSyCZn4_PcyuXv6FdKrDvm3CqmyvoFACBCNY</string>
   <string name="gecode_api_key">AIzaSyAV5o7ip5AaL2fUeOnYqZaEUBJgVZuX50U</string>
   <string name="gecode_api_key2">AIzaSyBRHZ24e9OnPUSM4J2pLfOzVGrXBkFia_g</string>
@@ -228,6 +230,8 @@
   <string name="order_confirmed">Order Confirmed</string>
   <string name="order_id">Order Id: </string>
   <string name="track_id">Track Id: </string>
-
-
+  <string name="date_time">Date &amp; Time</string>
+  <string name="home">Home</string>
+  <string name="apply">Apply</string>
+  <string name="invalid_coupon">Invalid  coupon code. Please enter a valid coupon code.</string>
 </resources>

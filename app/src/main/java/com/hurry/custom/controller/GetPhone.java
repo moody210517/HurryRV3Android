@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.db.PreferenceUtils;
+import com.hurry.custom.view.activity.HomeActivity;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -66,7 +68,14 @@ import java.util.List;
                  JSONObject object = jsonArray.getJSONObject(0);
                  String phone  = object.getString("PhoneNumber");
                  PreferenceUtils.setConfPhone(mContext, phone);
-                 new GetCity(mContext, "").execute();
+
+                 if(mContext instanceof HomeActivity){
+                     ((HomeActivity)mContext).callPhone();
+                 }else{
+                     new GetCity(mContext, "").execute();
+                 }
+
+
              }catch (Exception e){};
         }
     }

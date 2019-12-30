@@ -1,271 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include
+        android:visibility="gone"
         layout="@layout/action_bar_toolbar"></include>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <RelativeLayout
+            android:id="@+id/rl_map_container"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <fragment
-                    android:id="@+id/mapFragment"
-                    class="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:layout_alignParentBottom="true" />
-            </LinearLayout>
+            <fragment
+                android:id="@+id/mapFragment"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true" />
+
+            <ImageView
+                android:id="@+id/img_marker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/ic_icon_map_marker" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/package_background"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardCornerRadius="0dp"
+        card_view:cardElevation="10dp"
+        android:elevation="10dp"
+        android:layout_marginBottom="0dp">
 
             <LinearLayout
+                android:id="@+id/lin_container"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="fill_parent">
 
-                <LinearLayout
-                    android:layout_marginTop="@dimen/dimen_10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginLeft="10dp"
-                        android:background="@mipmap/dropoff_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/txt_address"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:lines="2"
-                        android:textSize="14dp"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/not_correct"
-                        android:textSize="12dp"
-                        android:textColor="@color/red_pop"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_marginRight="@dimen/dimen_10dp"
-                        android:id="@+id/btn_search_address"
-                        style="@style/Widget.MaterialComponents.Button"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/black"
-                        android:text="@string/search_address"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_marginTop="20dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-
-                    <RelativeLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/img_sender"
-                            android:layout_marginLeft="@dimen/dimen_10dp"
-                            android:layout_centerVertical="true"
-                            android:clickable="true"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:src="@drawable/ic_navigate_before_24px"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp" />
-
-                        <TextView
-                            android:visibility="gone"
-                            android:layout_centerVertical="true"
-                            android:layout_toRightOf="@+id/img_sender"
-                            android:id="@+id/txt_sender"
-                            android:text="Sender"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-
-                        <TextView
-                            android:textColor="@color/white"
-                            android:textAllCaps="true"
-                            android:layout_centerInParent="true"
-                            android:id="@+id/txt_header"
-                            android:text="@string/sender_details"
-                            android:layout_width="fill_parent"
-                            android:gravity="center"
-                            android:padding="@dimen/dimen_10dp"
-                            android:background="@drawable/btn_login"
-                            android:layout_marginRight="60dp"
-                            android:layout_marginLeft="60dp"
-                            android:layout_height="wrap_content" />
-
-
-
-                        <!---->
-                        <ImageView
-                            android:id="@+id/img_receiver"
-                            android:layout_marginRight="@dimen/dimen_10dp"
-                            android:layout_centerVertical="true"
-                            android:clickable="true"
-                            android:layout_alignParentRight="true"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:src="@drawable/ic_navigate_next_24px"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp" />
-
-                        <TextView
-                            android:visibility="gone"
-                            android:id="@+id/txt_receiver"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_toStartOf="@+id/img_receiver"
-                            android:layout_toLeftOf="@+id/img_receiver"
-                            android:text="Receiver" />
-
-
-                    </RelativeLayout>
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_weight="1"
+                        android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:background="@mipmap/dropoff_location"
+                            android:layout_width="20dp"
+                            android:layout_height="22dp" />
+                        <TextView
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="10dp"
+                            android:text="Address"
+                            android:textSize="14dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content" />
 
-                        <EditText
-                            android:background="@drawable/round_rect_grey_border"
-                            android:textSize="@dimen/edit_size"
-                            android:padding="10dp"
-                            android:id="@+id/edt_landmark"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
+                        <Button
+
+                            android:layout_marginRight="@dimen/dimen_10dp"
+                            android:id="@+id/btn_search_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:textSize="12dp"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:gravity="center"
+                            android:textColor="@color/black_54"
+                            android:background="@drawable/btn_gray"
+                            android:text="@string/search_address"/>
+
+
+                    </LinearLayout>
+                    <TextView
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:id="@+id/txt_address"
+                        android:lines="2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textSize="11dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
                             android:layout_marginTop="10dp"
-                            android:hint="@string/landmark"
-                            android:singleLine="true"
-                            android:imeOptions="actionNext"
-                            android:nextFocusForward="@+id/edt_instruction"/>
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/not_correct"
+                            android:textSize="12dp"
+                            android:textColor="@color/red_pop"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content" />
 
-                        <EditText
-                            android:background="@drawable/round_rect_grey_border"
-                            android:textSize="@dimen/edit_size"
-                            android:padding="10dp"
-                            android:id="@+id/edt_instruction"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:hint="@string/instruction"
-                            android:imeOptions="actionNext"
-                            android:nextFocusForward="@+id/edt_name"/>
+                    </LinearLayout>
 
 
-                        <EditText
-                            android:id="@+id/edt_name"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/round_rect_grey_border"
-                            android:hint="@string/sender_name"
-                            android:imeOptions="actionNext"
-                            android:nextFocusForward="@+id/edt_phone"
-                            android:padding="10dp"
-                            android:singleLine="true"
-                            android:textSize="@dimen/edit_size" />
-
+                    <LinearLayout
+                        android:layout_marginTop="0dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
 
                         <RelativeLayout
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/round_rect_grey_border"
-                            android:layout_width="wrap_content"
+                            android:gravity="top"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content">
 
-
-                            <com.rilixtech.widget.countrycodepicker.CountryCodePicker
-                                android:id="@+id/ccp"
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
                                 android:layout_marginLeft="10dp"
-                                app:ccp_defaultNameCode="IN"
-                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:orientation="vertical"
                                 android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:id="@+id/img_sender"
+                                    android:layout_centerVertical="true"
+                                    android:clickable="true"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:src="@mipmap/ic_left_arrow"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp" />
+                                <TextView
+
+                                    android:visibility="gone"
+                                    android:layout_marginTop="0dp"
+                                    android:id="@+id/txt_back"
+                                    android:text="BACK"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+
+
+                            <TextView
+                                android:textColor="@color/white"
+                                android:textAllCaps="true"
+                                android:layout_centerInParent="true"
+                                android:id="@+id/txt_header"
+                                android:text="@string/sender_details"
+                                android:layout_width="fill_parent"
+                                android:layout_marginLeft="60dp"
+                                android:layout_marginRight="60dp"
+                                android:gravity="center"
+                                android:padding="@dimen/dimen_10dp"
+                                android:background="@drawable/btn_login"
                                 android:layout_height="wrap_content" />
 
+
+                            <!---->
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/img_receiver"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_centerVertical="true"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:clickable="true"
+                                    android:src="@mipmap/ic_right_arrow" />
+
+                                <TextView
+                                    android:visibility="gone"
+                                    android:layout_marginTop="0dp"
+                                    android:id="@+id/txt_next"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toStartOf="@+id/img_receiver"
+                                    android:layout_toLeftOf="@+id/img_receiver"
+                                    android:text="NEXT" />
+
+                            </LinearLayout>
+
+
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_marginBottom="15dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
                             <EditText
-                                android:layout_marginLeft="5dp"
-                                android:inputType="phone"
-                                android:layout_centerVertical="true"
-                                android:lines="1"
+                                android:background="@drawable/round_rect_grey_border"
                                 android:textSize="@dimen/edit_size"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:hint="@string/sender_phone"
-                                android:id="@+id/edt_phone"
-                                android:layout_toRightOf="@+id/ccp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:id="@+id/edt_landmark"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/landmark"
                                 android:singleLine="true"
-                                android:maxLength="10"
-                                android:background="@null"
                                 android:imeOptions="actionNext"
-                                android:nextFocusForward="@+id/btn_search_address"/>
-                        </RelativeLayout>
+                                android:nextFocusForward="@+id/edt_instruction"/>
+
+                            <EditText
+                                android:background="@drawable/round_rect_grey_border"
+                                android:textSize="@dimen/edit_size"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:id="@+id/edt_instruction"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:hint="@string/instruction"
+                                android:imeOptions="actionNext"
+                                android:nextFocusForward="@+id/edt_name"/>
 
 
-                        <AutoCompleteTextView
-                            android:visibility="gone"
-                            android:id="@+id/edt_pincode"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentStart="true"
-                            android:editable="false"
-                            android:hint="Pin Code"
-                            android:imeOptions="actionNext"
-                            android:lines="1"
-                            android:nextFocusForward="@+id/edt_phone"
-                            android:numeric="integer"
-                            android:padding="10dp"
-                            android:singleLine="true"
-                            android:textSize="@dimen/edit_size" />
+                            <EditText
+                                android:id="@+id/edt_name"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/round_rect_grey_border"
+                                android:hint="@string/sender_name"
+                                android:imeOptions="actionNext"
+                                android:nextFocusForward="@+id/edt_phone"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/edit_size" />
+
+
+                            <RelativeLayout
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/round_rect_grey_border"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+
+                                <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                                    android:id="@+id/ccp"
+                                    android:layout_marginLeft="10dp"
+                                    app:ccp_defaultNameCode="IN"
+                                    android:layout_centerVertical="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <EditText
+                                    android:layout_marginLeft="5dp"
+                                    android:inputType="phone"
+                                    android:layout_centerVertical="true"
+                                    android:lines="1"
+                                    android:textSize="@dimen/edit_size"
+                                    android:hint="@string/sender_phone"
+                                    android:id="@+id/edt_phone"
+                                    android:layout_toRightOf="@+id/ccp"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="38dp"
+                                    android:singleLine="true"
+                                    android:maxLength="10"
+                                    android:background="@null"
+                                    android:imeOptions="actionNext"
+                                    android:nextFocusForward="@+id/btn_search_address"/>
+                            </RelativeLayout>
+
+
+                            <AutoCompleteTextView
+                                android:visibility="gone"
+                                android:id="@+id/edt_pincode"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentStart="true"
+                                android:editable="false"
+                                android:hint="Pin Code"
+                                android:imeOptions="actionNext"
+                                android:lines="1"
+                                android:nextFocusForward="@+id/edt_phone"
+                                android:numeric="integer"
+                                android:padding="10dp"
+                                android:singleLine="true"
+                                android:textSize="@dimen/edit_size" />
 
 
 
@@ -273,48 +345,49 @@
 
 
 
+
+
+
+                        </LinearLayout>
 
 
 
                     </LinearLayout>
 
 
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/dimen_20dp"
+                    android:id="@+id/lin_continue"
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.button.MaterialButton
+
+                        android:layout_marginLeft="@dimen/dimen_30dp"
+                        android:layout_marginRight="@dimen/dimen_30dp"
+                        android:id="@+id/btn_continue"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:text="@string/continu"/>
+
+
 
                 </LinearLayout>
 
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_marginBottom="@dimen/dimen_20dp"
-                android:id="@+id/lin_continue"
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.button.MaterialButton
-
-                    android:layout_marginLeft="@dimen/dimen_30dp"
-                    android:layout_marginRight="@dimen/dimen_30dp"
-                    android:id="@+id/btn_continue"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/black"
-                    android:text="@string/continu"/>
-
-
 
             </LinearLayout>
-
-
-
-        </LinearLayout>
-    </ScrollView>
-
-
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -53,14 +53,13 @@
             android:value="false" />
 
 
-
         <activity android:name="com.hurry.custom.view.activity.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
             android:screenOrientation="portrait">
         </activity>
 
         <activity android:name="com.hurry.custom.view.activity.HomeActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait">
         </activity>
 
@@ -112,18 +111,15 @@
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"
             ></activity>
-        <activity android:name="com.hurry.custom.view.activity.login.PhoneNumberActivity"
+
+        <activity android:name="com.hurry.custom.view.activity.login.LocationActivity"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"
             ></activity>
 
-        <activity android:name="com.hurry.custom.view.activity.login.ForgotActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:screenOrientation="portrait"
-            ></activity>
 
-        <activity android:name="com.hurry.custom.view.activity.AddressDetailsActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
+        <activity android:name="com.hurry.custom.view.activity.login.PhoneNumberActivity"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"
             ></activity>
 
@@ -143,10 +139,6 @@
             android:screenOrientation="portrait"
             ></activity>
 
-
-        <activity android:name="com.hurry.custom.view.activity.OrderConfirmActivity"
-            android:screenOrientation="portrait"
-            ></activity>
 
         <activity android:name="com.hurry.custom.view.activity.AddressBookActivity"
             android:screenOrientation="portrait"
@@ -174,17 +166,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_picker" />
 
-        <activity android:name="com.hurry.custom.view.activity.map.LocationMapActivity"
+        <activity android:name="com.hurry.custom.view.activity.map.LocationTrackMapActivity"
             android:screenOrientation="portrait">
         </activity>
 
 
         <activity android:name="com.hurry.custom.view.activity.ItemOrderActivity"
             android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"></activity>
-
-        <activity android:name="com.hurry.custom.view.activity.PackageOrderActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait"></activity>
 
 

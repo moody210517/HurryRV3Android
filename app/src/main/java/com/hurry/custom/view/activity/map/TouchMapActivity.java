@@ -215,7 +215,7 @@ public class TouchMapActivity extends FragmentBaseActivity implements View.OnCli
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.street_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         contactsAdapter = new LocationNameAdapter(this,
-                contactList, this, recyclerView, mGoogleApiClient);
+                contactList, this, recyclerView, mGoogleApiClient,"");
         recyclerView.setAdapter(contactsAdapter);
 
     }
@@ -301,7 +301,6 @@ public class TouchMapActivity extends FragmentBaseActivity implements View.OnCli
         }
         setUpMap(userPosition);
     }
-
 
     private Location getLastKnownLocation() {
         locationManager = (LocationManager)getApplicationContext().getSystemService(LOCATION_SERVICE);
@@ -647,7 +646,7 @@ public class TouchMapActivity extends FragmentBaseActivity implements View.OnCli
                 if(GpsUtil.isPointInPolygon(latLng, Constants.cityBounds)){
                    // mNameTextView.setText(getResources().getString(R.string.please_wait));
                     isCalling = true;
-                    new GetLocationFromPlaceId(TouchMapActivity.this, place.getId(), selectedAddress).execute();
+                    new GetLocationFromPlaceId(TouchMapActivity.this, place.getId(), selectedAddress, latLng).execute();
                     DeviceUtil.hideSoftKeyboard(TouchMapActivity.this);
                     CameraUpdate update = CameraUpdateFactory.newLatLngZoom(choosedLatLng, CAMERA_UPDATE);
                     map.moveCamera(update);
@@ -659,8 +658,6 @@ public class TouchMapActivity extends FragmentBaseActivity implements View.OnCli
                 new GetLocationFromLatLng(TouchMapActivity.this, place.getLatLng()).execute();
                 DeviceUtil.hideSoftKeyboard(TouchMapActivity.this);
             }
-
-
 
         }).addOnFailureListener((exception) -> {
             if (exception instanceof ApiException) {

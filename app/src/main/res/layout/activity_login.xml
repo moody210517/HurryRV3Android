@@ -118,6 +118,14 @@
                                     android:layout_weight="1"
                                     android:hint=" Username" />
 
+                                <ImageView
+                                    android:visibility="gone"
+                                    android:id="@+id/img_username_close"
+                                    android:background="@mipmap/cancel"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp" />
+
+
                                 <TextView
                                     android:textSize="12dp"
                                     android:id="@+id/txt_user_hint"
@@ -172,6 +180,13 @@
                                     android:textCursorDrawable="@drawable/cursor_color"
                                     android:textColorHint="@color/hint_color"
                                     android:layout_weight="1" />
+
+                                <ImageView
+                                    android:visibility="gone"
+                                    android:id="@+id/img_password_close"
+                                    android:background="@mipmap/cancel"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp" />
 
                                 <TextView
                                     android:textSize="12dp"

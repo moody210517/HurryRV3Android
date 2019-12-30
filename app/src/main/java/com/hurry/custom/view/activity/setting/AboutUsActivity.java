@@ -33,6 +33,7 @@ import com.hurry.custom.common.Constants;
 import com.hurry.custom.controller.WebClient;
 import com.hurry.custom.view.BaseActivity;
 import com.hurry.custom.view.BaseBackActivity;
+import com.hurry.custom.view.activity.HomeActivity;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;

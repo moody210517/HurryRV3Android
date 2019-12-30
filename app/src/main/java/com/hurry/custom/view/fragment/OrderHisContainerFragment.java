@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2015 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package com.hurry.custom.view.fragment;
 
@@ -38,7 +23,6 @@ import com.hurry.custom.model.ItemModel;
 import com.hurry.custom.model.OrderHisModel;
 import com.hurry.custom.model.OrderModel;
 import com.hurry.custom.view.activity.HomeActivity;
-import com.hurry.custom.view.activity.MainActivity;
 import com.hurry.custom.view.custom.IconTextTabLayout;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -64,19 +48,15 @@ public class OrderHisContainerFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-         view = (View) inflater.inflate(
+        view = (View) inflater.inflate(
                 R.layout.fragment_order_his_container, container, false);
         ButterKnife.bind(this, view);
         mContext = getActivity();
-
-
         position = 1;
-
-
         if(Constants.orderHisModels.size() == 0){
             orderHistory(0);
         }else{
-            setUpPersonalOrderHis(viewPager, 0);
+            setUpPersonalOrderHis( 0);
         }
         return view;
     }
@@ -102,10 +82,7 @@ public class OrderHisContainerFragment extends BaseFragment {
 
     }
 
-
-
-
-    private void orderHistory(final int index) {
+    public void orderHistory(final int index) {
         RequestParams params = new RequestParams();
         params.put("user_id", PreferenceUtils.getUserId(mContext));
         WebClient.post(Constants.BASE_URL_ORDER + "get_orders_his", params,
@@ -132,7 +109,7 @@ public class OrderHisContainerFragment extends BaseFragment {
 
                                 String result = response.getString("result");
                                 if(result.equals("400")){
-                                    setUpPersonalOrderHis(viewPager, index);
+                                    setUpPersonalOrderHis(index);
                                     return;
                                 }
 
@@ -248,7 +225,9 @@ public class OrderHisContainerFragment extends BaseFragment {
                                     }
                                     Constants.orderHisModels.add(orderHisModel);
                                 }
-                                setUpPersonalOrderHis(viewPager, index);
+
+                                setUpPersonalOrderHis( index);
+
 
                             }else if(response.getString("result").equals("400")){
                                 Toast.makeText(mContext , getResources().getString(R.string.failed), Toast.LENGTH_SHORT).show();
@@ -268,7 +247,7 @@ public class OrderHisContainerFragment extends BaseFragment {
     OrderHistoryFragment orderHistoryFragment1;
     OrderHistoryFragment orderHistoryFragment2;
     OrderHistoryFragment orderHistoryFragment3;
-    private void setUpPersonalOrderHis(ViewPager viewPager, int index) {
+    public void setUpPersonalOrderHis(int index) {
 
 
         viewPager.removeAllViews();

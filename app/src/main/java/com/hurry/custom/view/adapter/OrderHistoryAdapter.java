@@ -41,7 +41,7 @@ import com.hurry.custom.model.OrderModel;
 import com.hurry.custom.model.ServiceModel;
 import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.MainActivity;
-import com.hurry.custom.view.activity.map.LocationMapActivity;
+import com.hurry.custom.view.activity.map.LocationTrackMapActivity;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -54,8 +54,7 @@ import org.json.JSONObject;
  * Adapter holds indexes of unfolded elements for correct work with default reusable views behavior
  */
 
-public class OrderHistoryAdapter
-        extends RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder> {
+public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder> {
 
     private final TypedValue mTypedValue = new TypedValue();
     private int mBackground;
@@ -543,9 +542,15 @@ public class OrderHistoryAdapter
                                     Constants.orderTrackModel.picture = orderObj.getString("picture");
                                     Constants.orderTrackModel.type = results;
 
-                                    Intent intent = new Intent(context, LocationMapActivity.class);
-                                    intent.putExtra("status", status);
-                                    context.startActivity(intent);
+
+
+
+//                                    Intent intent = new Intent(context, LocationTrackMapActivity.class);
+//                                    intent.putExtra("status", status);
+//                                    context.startActivity(intent);
+
+
+                                    ((HomeActivity)context).updateFragment(HomeActivity.TRACK, "");
 
                                 }else if(results.equals("300")){
                                     return;
@@ -587,7 +592,7 @@ public class OrderHistoryAdapter
         WebClient.post(Constants.BASE_URL_ORDER + "cancel_order", params,
                 new JsonHttpResponseHandler() {
                     public void onStart() {
-                        ((MainActivity)context).showProgressDialog();
+                        ((HomeActivity)context).showProgressDialog();
                     }
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -612,8 +617,7 @@ public class OrderHistoryAdapter
 
                                 }else if(response.getString("result").equals("200")){
                                     if(type == 0){
-
-                                        ((MainActivity)context).updateFragment(MainActivity.ORDER_HIS);
+                                        //((HomeActivity)context).updateOrderHis();
                                         Handler mHandler = new Handler();
                                         mHandler.postDelayed(new Runnable() {
                                             @Override
@@ -623,7 +627,7 @@ public class OrderHistoryAdapter
                                         },500);
                                     }else{
 
-                                        ((MainActivity)context).updateFragment(MainActivity.ORDER_HIS);
+                                        //((HomeActivity)context).updateOrderHis();
                                         Handler mHandler = new Handler();
                                         mHandler.postDelayed(new Runnable() {
                                             @Override
@@ -635,11 +639,12 @@ public class OrderHistoryAdapter
                                 }
                             }catch (Exception e){
 
+                                String err = e.toString();
                             }
                         }
                     };
                     public void onFinish() {
-                        ((MainActivity)context).hideProgressDialog();
+                        ((HomeActivity)context).hideProgressDialog();
                     }
                     ;
                 });
@@ -655,7 +660,7 @@ public class OrderHistoryAdapter
         WebClient.post(Constants.BASE_URL_ORDER + "reschedule", params,
                 new JsonHttpResponseHandler() {
                     public void onStart() {
-                        ((MainActivity)context).showProgressDialog();
+                        ((HomeActivity)context).showProgressDialog();
                     }
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -688,7 +693,7 @@ public class OrderHistoryAdapter
                     };
 
                     public void onFinish() {
-                        ((MainActivity)context).hideProgressDialog();
+                        ((HomeActivity)context).hideProgressDialog();
                     }
                     ;
                 });

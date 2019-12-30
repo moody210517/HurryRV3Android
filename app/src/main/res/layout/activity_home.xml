@@ -6,7 +6,13 @@
     android:background="#EEE"
     android:orientation="vertical">
 
+
+    <include
+        layout="@layout/action_bar_rate_share"></include>
+
+
     <com.google.android.material.appbar.AppBarLayout
+        android:visibility="gone"
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +41,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <LinearLayout
-                    android:id="@+id/lin_share"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:layout_marginRight="@dimen/dimen_10dp"
@@ -51,7 +56,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/lin_rate"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:layout_marginRight="@dimen/dimen_20dp"
@@ -80,7 +84,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/fragment"
+            android:layout_marginBottom="56dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        </FrameLayout>
+
+
         <com.hurry.custom.view.adapter.NoTouchViewPager
+            android:visibility="visible"
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"

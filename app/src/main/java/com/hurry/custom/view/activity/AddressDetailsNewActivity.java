@@ -432,7 +432,7 @@ public class AddressDetailsNewActivity extends BaseBackActivity implements View.
                 }
                 break;
 
-            case R.id.txt_sender:
+            case R.id.txt_back:
             case R.id.img_sender:
                 if(pageType.equals("receiver")){
                     addressModel.desName = edtName.getText().toString();
@@ -444,7 +444,7 @@ public class AddressDetailsNewActivity extends BaseBackActivity implements View.
                 pageType = "sender";
                 showAddressDetails("");
                 break;
-            case R.id.txt_receiver:
+            case R.id.txt_next:
             case R.id.img_receiver:
 
                 if(pageType.equals("sender")){
@@ -499,36 +499,7 @@ public class AddressDetailsNewActivity extends BaseBackActivity implements View.
         }
     }
 
-    public void goToMapSource(){
-        if(Constants.cityBounds.size() > 0){
-            Intent source = new Intent(this, TouchMapActivity.class);
-            source.putExtra("type", "source");
-            startActivityForResult(source, 300);
-        }else{
-            new GetCity(this, "source").execute();
-        }
-    }
 
-    public void goToMapDestination(){
-        if(Constants.cityBounds.size() > 0){
-            Intent destination = new Intent(this, TouchMapActivity.class);
-            destination.putExtra("type", "destination");
-            startActivityForResult(destination, 400);
-        }else{
-            new GetCity(this, "destination").execute();
-        }
-    }
-
-    public void goToProfileSource(){
-        Intent intent = new Intent(this, AddressBookActivity.class);
-        intent.putExtra("type", "source");
-        startActivityForResult(intent, 300);
-    }
-    public void goToProfileDestination(){
-        Intent intent2 = new Intent(this, AddressBookActivity.class);
-        intent2.putExtra("type", "des");
-        startActivityForResult(intent2, 400);
-    }
 
     private void getOrderHistory(final String type) {
         RequestParams params = new RequestParams();

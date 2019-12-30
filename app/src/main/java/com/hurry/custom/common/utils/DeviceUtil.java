@@ -235,6 +235,22 @@ public class DeviceUtil {
     }
 
 
+    public static void showSoftKeyboard(Activity activity) {
+
+        if(activity.getCurrentFocus() != null){
+            InputMethodManager inputMethodManager =
+                    (InputMethodManager) activity.getSystemService(
+                            Activity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(
+                    activity.getCurrentFocus().getWindowToken(), 0);
+
+            activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+
+        }
+
+    }
+
+
 
     public static  void setupUICloseKeyBoardOnClick(final Activity activity, View view) {
         // Set up touch listener for non-text box views to hide keyboard.
@@ -266,6 +282,10 @@ public class DeviceUtil {
         textView.setTypeface(typeface);
     }
 
+    public static void setOpenSanBold(Context context, TextView textView){
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/OpenSansBold.ttf");
+        textView.setTypeface(typeface);
+    }
 
     public static float dipToPixels(Context context, float dipValue) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();

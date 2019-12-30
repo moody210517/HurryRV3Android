@@ -34,10 +34,10 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_height="match_parent">
 
             <org.angmarch.views.NiceSpinner
@@ -52,10 +52,10 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_height="match_parent">
 
             <org.angmarch.views.NiceSpinner
@@ -68,9 +68,67 @@
             </org.angmarch.views.NiceSpinner>
 
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_height="match_parent">
+            <EditText
+                android:paddingLeft="@dimen/dimen_5dp"
+                android:id="@+id/edt_cost"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="Package cost(Rs)"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@+id/chk_package"
+                android:numeric="decimal"
+                android:singleLine="true"
+                android:background="@drawable/round_rect_grey_border"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
 
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Package cost(optional)" />
+
+            <LinearLayout
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:padding="2dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 
     <LinearLayout

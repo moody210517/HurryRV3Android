@@ -1,1 +1,1 @@
-include ':app', ':nice-spinner-master', ':Tedpicker', ':camera', ':countrycodepicker'
+include ':app', ':nice-spinner-master', ':Tedpicker', ':camera', ':countrycodepicker', ':pager-bottom-tab-strip'

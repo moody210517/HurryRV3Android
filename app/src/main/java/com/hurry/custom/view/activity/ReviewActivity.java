@@ -220,11 +220,13 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
                         btnPlaceOrder.setText("Pickup my order");
                         Constants.paymentType = "Cash On Pick up";
                         mPayment = "Cash On Pick up";
+
                     }else if(position == 1 ){
                         //linPayment.setVisibility(View.GONE);
                         btnPlaceOrder.setText("Pay now");
                         Constants.paymentType = "Pay using Card";
                         mPayment = "Pay using Card";
+
                     }else if(position == 2){
                         btnPlaceOrder.setText("Pay now");
                         Constants.paymentType = "Pay using Bank";
@@ -429,8 +431,9 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
             case R.id.txt_net_banking:
                 checked(4);
                 break;
+
             case R.id.btn_place_order:
-                if(paymentType != 0){
+                if(paymentType != -1){
                     Constants.paymentType = mPayment;
 
                     if(PreferenceUtils.getQuote(ReviewActivity.this)){
@@ -447,7 +450,6 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
                 }else{
                     Toast.makeText(ReviewActivity.this, getString(R.string.choose_payment), Toast.LENGTH_SHORT).show();
                 }
-
                 break;
 
         }
@@ -497,7 +499,6 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
         dateIntent.putExtra("type","edit");
         startActivity(dateIntent);
     }
-
 
     private  void showOrdreConfirm(boolean flag){
         if(PreferenceUtils.getQuote(this)){
@@ -639,8 +640,7 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
                                 String results = response.getString("result");
                                 if(results.equals("200")){
                                     PreferenceUtils.setOrderId(ReviewActivity.this, order_id);
-                                    Intent intent  = new Intent(ReviewActivity.this, OrderConfirmActivity.class);
-                                    startActivity(intent);
+                                    // call order confirm
                                     finish();
                                 }
                                 if(response.getString("result").equals("400")){
@@ -700,9 +700,7 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
                                 String results = response.getString("result");
                                 if(results.equals("200")){
 
-                                    PreferenceUtils.setOrderId(ReviewActivity.this, order_id);
-                                    Intent intent  = new Intent(ReviewActivity.this, OrderConfirmActivity.class);
-                                    startActivity(intent);
+                                    // call order confirm activity
                                     finish();
 
                                 }
@@ -1066,10 +1064,7 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
                         String paymentId = jsonRes.getString("paymentId");
                         String merchantResponse = transactionResponse.getTransactionDetails();
 
-                        Intent intent = new Intent(ReviewActivity.this, OrderConfirmActivity.class);
-                        intent.putExtra("payment",mPayment);
-                        intent.putExtra("transaction_id", paymentId);
-                        startActivity(intent);
+                        // call order confirm
                         finish();
 
                     } catch (JSONException e) {
@@ -1077,12 +1072,10 @@ public class ReviewActivity extends BaseBackActivity implements View.OnClickList
                     }
                     // Response from SURl and FURL
 
-
                 } else {
                     //Failure Transaction
                     Toast.makeText(this, "failed",Toast.LENGTH_SHORT).show();
                 }
-
 
             } else if (resultModel != null && resultModel.getError() != null) {
                 Log.d("", "Error response : " + resultModel.getError().getTransactionResponse());

@@ -330,11 +330,18 @@ public class PreferenceUtils {
 		getSharedPreferences(context).edit().putInt("city_id", city_id).commit();
 	}
 	public static int  getCityId(Context context) {
-		int  price = getSharedPreferences(context).getInt("city_id", 0);
+		int  price = getSharedPreferences(context).getInt("city_id", -1);
 		return price;
 	}
 
 
+	public static void setCityName(Context context, String city_name){
+		getSharedPreferences(context).edit().putString("city_name", city_name).commit();
+	}
+	public static String  getCityName(Context context) {
+		String  price = getSharedPreferences(context).getString("city_name", "");
+		return price;
+	}
 
 	public static void setFirstStart(Context context, boolean first_start){
 		getSharedPreferences(context).edit().putBoolean("first_start", first_start).commit();

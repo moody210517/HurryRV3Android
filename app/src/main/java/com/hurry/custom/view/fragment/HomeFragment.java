@@ -17,21 +17,27 @@
 package com.hurry.custom.view.fragment;
 import android.Manifest;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
+import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.view.activity.CameraOrderActivity;
 import com.hurry.custom.view.dialog.ChooseTypeDialog;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,18 +52,15 @@ public class HomeFragment extends BaseFragment implements  View.OnClickListener{
     @BindView(R.id.rl_city) RelativeLayout rlCity;
     @BindView(R.id.rl_international) RelativeLayout rlInternational;
 
-    private static final String[] INITIAL_PERMS={
-            Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-    };
-    private static final int INITIAL_REQUEST=1337;
 
+
+    private static final int INITIAL_REQUEST=1337;
+    View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = (View) inflater.inflate(
+         view = (View) inflater.inflate(
                 R.layout.fragment_home, container, false);
         position = 2;
         mContext = getActivity();
@@ -100,12 +103,13 @@ public class HomeFragment extends BaseFragment implements  View.OnClickListener{
         }
     }
 
-
     private void initView(){
         rlStation.setOnClickListener(this);
         rlCity.setOnClickListener(this);
         rlInternational.setOnClickListener(this);
+
     }
+
 
 
 
@@ -113,14 +117,27 @@ public class HomeFragment extends BaseFragment implements  View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.rl_station:
-                ChooseTypeDialog.show(getActivity(), "station");
+                if(PreferenceUtils.getCityId(mContext) != -1){
+                    Constants.DELIVERY_STATUS = Constants.OUT_STATION;
+                    ChooseTypeDialog.show(getActivity(), "station");
+                }
+
                 break;
             case R.id.rl_city:
-                ChooseTypeDialog.show(getActivity(), "city");
+                if(PreferenceUtils.getCityId(mContext) != -1){
+                    Constants.DELIVERY_STATUS = Constants.SAME_CITY;
+                    ChooseTypeDialog.show(getActivity(), "city");
+                }
+
                 break;
             case R.id.rl_international:
-                ChooseTypeDialog.show(getActivity(), "international");
+                if(PreferenceUtils.getCityId(mContext) != -1){
+                    Constants.DELIVERY_STATUS = Constants.INTERNATIONAL;
+                    ChooseTypeDialog.show(getActivity(), "international");
+                }
+
                 break;
+
 
         }
     }

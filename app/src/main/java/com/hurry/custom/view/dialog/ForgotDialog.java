@@ -1,9 +1,7 @@
 package com.hurry.custom.view.dialog;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -13,7 +11,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,9 +27,7 @@ import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.controller.WebClient;
-import com.hurry.custom.view.activity.login.ForgotActivity;
 import com.hurry.custom.view.activity.login.LoginActivity;
-import com.hurry.custom.view.activity.login.SignUpActivity;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.rilixtech.widget.countrycodepicker.Country;
@@ -543,7 +538,7 @@ public class ForgotDialog extends SimpleDialogFragment implements View.OnClickLi
         String title = "", content = "";
         if(mType.equals("username")){
             title = getResources().getString(R.string.recovery_email);
-            content = getResources().getString(R.string.forgot_username_alert);
+            content = getResources().getString(R.string.alert_forgot_username);
         }else if(mType.equals("phone")){
             title = getResources().getString(R.string.text_message);
             content = getResources().getString(R.string.forgot_password_alert);

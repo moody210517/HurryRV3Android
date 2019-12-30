@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hurry.custom.R;
-import com.hurry.custom.view.activity.AddressDetailsActivity;
-import com.hurry.custom.view.activity.AddressDetailsNewActivity;
+import com.hurry.custom.view.activity.HomeActivity;
 
 
 public class CommonDialog {
@@ -32,17 +31,15 @@ public class CommonDialog {
                     Toast.makeText(context, "No saved addresses available", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 if(type.equals("source")){
-                    if(context instanceof  AddressDetailsActivity){
-                        ((AddressDetailsActivity)context).goToProfileSource();
-                    }else if(context instanceof AddressDetailsNewActivity){
-                        ((AddressDetailsNewActivity)context).goToProfileSource();
+
+                    if(context instanceof HomeActivity){
+                        ((HomeActivity)context).goToProfileSource();
                     }
                 }else{
-                    if(context instanceof  AddressDetailsActivity){
-                        ((AddressDetailsActivity)context).goToProfileDestination();
-                    }else if(context instanceof  AddressDetailsNewActivity){
-                        ((AddressDetailsNewActivity)context).goToProfileDestination();
+                    if(context instanceof  HomeActivity){
+                        ((HomeActivity)context).goToProfileDestination();
                     }
                 }
                 dialog.dismiss();
@@ -59,16 +56,12 @@ public class CommonDialog {
             public void onClick(View v) {
 
                 if(type.equals("source")){
-                    if(context instanceof  AddressDetailsActivity){
-                        ((AddressDetailsActivity)context).goToMapSource();
-                    }else if(context instanceof  AddressDetailsNewActivity){
-                        ((AddressDetailsNewActivity)context).goToMapSource();
+                    if(context instanceof  HomeActivity){
+                        ((HomeActivity)context).goToMapSource();
                     }
                 }else{
-                    if(context instanceof  AddressDetailsActivity){
-                        ((AddressDetailsActivity)context).goToMapDestination();
-                    }else if(context instanceof  AddressDetailsNewActivity){
-                        ((AddressDetailsNewActivity)context).goToMapDestination();
+                    if(context instanceof  HomeActivity){
+                        ((HomeActivity)context).goToMapDestination();
                     }
                 }
                 dialog.dismiss();

@@ -269,9 +269,6 @@ public class MainActivity extends AppCompatActivity {
         if(ItemOrderActivity.itemOrderActivity != null){
             ItemOrderActivity.itemOrderActivity.finish();
         }
-        if(PackageOrderActivity.packageOrderActivity != null){
-            PackageOrderActivity.packageOrderActivity.finish();
-        }
 
     }
 
@@ -542,13 +539,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(itemOrder);
 
                     break;
-                case PACKAGE_OPTION:
-                    //ab.setTitle("Predefined Package");
-                    //fragment = new PackageOrderFragment();
-                    Intent packageOrder = new Intent(this, PackageOrderActivity.class);
-                    packageOrder.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(packageOrder);
-                    break;
+
             }
         }
         currentFragment = fragment;
@@ -1275,7 +1266,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void autoLogin() {
         showProgressDialog(getString(R.string.wait_your_profile));
-        new GetBasic(this).execute();
+        new GetBasic(this, "").execute();
     }
     public void getCities(){
         new GetCity(this, "").execute();

@@ -13,19 +13,19 @@ public class AddressModel implements  Cloneable{
 
     public String senderName;
     public String sourceAddress;
-    public String sourceArea;
-    public String sourceCity;
-    public String sourceState;
-    public String sourcePinCode;
+    public String sourceArea = "";
+    public String sourceCity = "";
+    public String sourceState = "";
+    public String sourcePinCode = "";
     public String sourcePhonoe;
     public String sourceLandMark;
     public String sourceInstruction;
 
     public String desAddress;
-    public String desArea;
-    public String desCity;
-    public String desState;
-    public String desPinCode;
+    public String desArea = "";
+    public String desCity = "";
+    public String desState = "";
+    public String desPinCode = "";
     public String desLandMark;
     public String desInstruction;
     public String desPhone;

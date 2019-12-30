@@ -30,3 +30,20 @@ allprojects {
 
     }
 }
+
+ext{
+    // 编译版本
+    compileSdkVersion = 28
+    minSdkVersion = 14
+    targetSdkVersion = 28
+
+    // 版本号
+    versionCode = 16
+    versionName = "2.3.0X"
+
+    // 依赖库版本
+    supportLibraryVersion = '1.0.0'
+
+    // Navigation
+    nav_version = "1.0.0-alpha06"
+}

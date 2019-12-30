@@ -31,6 +31,7 @@
     <color name="bgBackSideColor">#f4f0ff</color>
     <color name="bgContentTop">#594691</color>
 
+    <color name="white_background">#eee</color>
     <color name="gray_title">#eeeeee</color>
     <color name="splash_back">#f9f9f9</color>
     <color name="trans_black35">#99000000</color>
@@ -89,7 +90,7 @@
     <color name="jayne_divider_light">#1fff002b</color>
     <color name="jayne_pressed_light">#c74e2c00</color>
     <color name="jayne_accent">#f42e35</color>
-    <color name="wheel_text_color">#A7A7DB</color>
+    <color name="wheel_text_color">#808080</color>
     <color name="review1">#bee3f3</color>
     <color name="review2">#565656</color>
     <color name="review3">#2d2d2d</color>

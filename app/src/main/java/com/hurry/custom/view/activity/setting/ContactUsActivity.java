@@ -56,7 +56,7 @@ public class ContactUsActivity extends BaseBackActivity implements View.OnClickL
         super.onCreate(bundle);
         setContentView(R.layout.fragment_contact_us);
         ButterKnife.bind(this);
-        initBackButton(toolbar, getString(R.string.about_us));
+        initBackButton(toolbar, getString(R.string.contact_us));
         contact();
 
     }

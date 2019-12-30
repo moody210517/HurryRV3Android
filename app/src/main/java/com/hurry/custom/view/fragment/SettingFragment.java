@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -48,7 +49,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @BindView(R.id.txt_contact_us) TextView txtContactUs;
     @BindView(R.id.txt_privacy_policy) TextView txtPrivacyPolicy;
     @BindView(R.id.txt_sign_out) TextView txtSignOut;
-
+    @BindView(R.id.img_sign_out) ImageView imgSignOut;
 
     Context mContext;
     @Nullable
@@ -70,6 +71,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         txtContactUs.setOnClickListener(this);
         txtPrivacyPolicy.setOnClickListener(this);
         txtSignOut.setOnClickListener(this);
+        imgSignOut.setOnClickListener(this);
     }
 
     @Override
@@ -80,19 +82,22 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
             case R.id.txt_about_us:
                     Intent about = new Intent(mContext, AboutUsActivity.class);
                     startActivity(about);
+                    ((HomeActivity)mContext).setIndex(3); // setting page
                 break;
 
             case R.id.txt_contact_us:
                 Intent contact = new Intent(mContext, ContactUsActivity.class);
                 startActivity(contact);
+                ((HomeActivity)mContext).setIndex(3); // setting page
                 break;
 
             case R.id.txt_privacy_policy:
                 Intent privacy = new Intent(mContext, PrivacyPolicyActivity.class);
                 startActivity(privacy);
+                ((HomeActivity)mContext).setIndex(3); // setting page
                 break;
 
-
+            case R.id.img_sign_out:
             case R.id.txt_sign_out:
 
                 new AlertDialog.Builder(mContext)
@@ -111,6 +116,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
                                 }
                                 Constants.MODE = Constants.PERSONAL;
                                 PreferenceUtils.setMode(mContext, Constants.PERSONAL);
+                                PreferenceUtils.setCityId(mContext, -1);
 
                                 Intent login = new Intent(mContext, LoginActivity.class);
                                 login.putExtra("type", "close");
@@ -123,7 +129,6 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
 
                             }
                         }).show();
-
 
                 break;
         }

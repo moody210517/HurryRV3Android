@@ -7,8 +7,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.hurry.custom.R;
 import com.hurry.custom.view.activity.AddressDetailsNewActivity;
 import com.hurry.custom.view.activity.DateTimeActivity;
+import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.map.MyAutoCompleteActivity;
 import com.hurry.custom.view.activity.map.TouchMapActivity;
+import com.hurry.custom.view.fragment.DateTimeFragment;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -28,14 +30,16 @@ import java.util.List;
     Context  mContext;
     String result;
     LatLng source, destination;
+    DateTimeFragment dateTimeFragment;
 
 
-    public GetRoute(Context con, LatLng source, LatLng destination)
+    public GetRoute(Context con, DateTimeFragment dateTimeFragment,  LatLng source, LatLng destination)
     {
         super();
         this.mContext = con;
         this.source = source;
         this.destination = destination;
+        this.dateTimeFragment = dateTimeFragment;
     }
 
     @Override
@@ -69,9 +73,10 @@ import java.util.List;
                 try {
                     JSONObject jsonObject = new JSONObject(result);
 
-                    if(mContext instanceof DateTimeActivity){
-                        ((DateTimeActivity)mContext).drawRoute(jsonObject);
+                    if(mContext instanceof HomeActivity && dateTimeFragment instanceof  DateTimeFragment){
+                        dateTimeFragment.drawRoute(jsonObject);
                     }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

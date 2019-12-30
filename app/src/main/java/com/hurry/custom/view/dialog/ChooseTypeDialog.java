@@ -19,8 +19,10 @@ import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.utils.DeviceUtil;
 import com.hurry.custom.view.activity.CameraOrderActivity;
-import com.hurry.custom.view.activity.ItemOrderActivity;
+import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.MainActivity;
+
+import static com.hurry.custom.view.activity.HomeActivity.ITEM_ORDER;
 
 /**
  * Sample implementation of custom dialog by extending {@link SimpleDialogFragment}.
@@ -50,7 +52,7 @@ public class ChooseTypeDialog extends SimpleDialogFragment {
 
     @Override
     public BaseDialogFragment.Builder build(BaseDialogFragment.Builder builder) {
-        builder.setTitle("Choose Service");
+        //builder.setTitle("Select an option to book a delivery");
         //builder.setMessage("A man walks down the street in that hat, people know he's not afraid of anything.");
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_delivery_type, null);
         builder.setView(view);
@@ -94,10 +96,14 @@ public class ChooseTypeDialog extends SimpleDialogFragment {
             @Override
             public void onClick(View v) {
                 Constants.ORDER_TYPE = Constants.ITEM_OPTION;
-                Intent itemOrder = new Intent(getActivity(), ItemOrderActivity.class);
-                itemOrder.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                itemOrder.putExtra("type", type);
-                startActivity(itemOrder);
+
+                ((HomeActivity)getActivity()).updateFragment(ITEM_ORDER, type);
+
+//                Intent itemOrder = new Intent(getActivity(), ItemOrderActivity.class);
+//                itemOrder.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                itemOrder.putExtra("type", type);
+//                startActivity(itemOrder);
+
                 dismiss();
             }
         });

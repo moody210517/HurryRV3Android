@@ -30,20 +30,24 @@ public class BaseActivity extends AppCompatActivity {
     ProgressDialog mProgressDialog;
     public void showProgressDialog() {
 
-        mProgressDialog = null;
-        mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setMessage(getString(R.string.loading));
-        mProgressDialog.setIndeterminate(true);
-        mProgressDialog.setCanceledOnTouchOutside(false);
+        if(mProgressDialog != null && mProgressDialog.isShowing()){
 
-        mProgressDialog.show();
-        mProgressDialog.setCanceledOnTouchOutside(false);
-        mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                showProgressDialog();
-            }
-        });
+        }else{
+            mProgressDialog = null;
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setMessage(getString(R.string.loading));
+            mProgressDialog.setIndeterminate(true);
+            mProgressDialog.setCanceledOnTouchOutside(false);
+
+            mProgressDialog.show();
+            mProgressDialog.setCanceledOnTouchOutside(false);
+            mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    showProgressDialog();
+                }
+            });
+        }
 
     }
 
@@ -64,7 +68,6 @@ public class BaseActivity extends AppCompatActivity {
         });
         mProgressDialog.setCanceledOnTouchOutside(false);
     }
-
 
     @Override
     public void onBackPressed() {

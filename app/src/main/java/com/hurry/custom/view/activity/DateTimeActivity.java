@@ -95,7 +95,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
 
     EditText edtDate;
     EditText edtTime;
-    Button btnReview;
+
     LinearLayout linEmail;
     TextView txtEstimated, txtWeight, txtDistance;
     EditText edtEmail;
@@ -117,6 +117,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
     @BindView(R.id.wheel_minute) WheelPicker wheelMinute;
     @BindView(R.id.wheel_ap) WheelPicker wheelAp;
     @BindView(R.id.scrollview) ScrollView scrollView;
+    @BindView(R.id.lin_level_container) LinearLayout linLevelContainer;
 
     int selectedYear, selectedMonth, selectedDay;
     int selectedHour, selectedMinute;
@@ -150,10 +151,10 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
         }else{
             if(PreferenceUtils.getQuote(this)){
                 addService();
-                btnReview.setText("Continue");
+
                 Constants.page_type = "quote";
             }else{
-                btnReview.setText("Send Email");
+
             }
         }
 
@@ -222,7 +223,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
                     //Toast.makeText(DateTimeActivity.this, "Pickup date should not be past date", Toast.LENGTH_SHORT).show();
                     Toast.makeText(DateTimeActivity.this, "Pickup time should not be in the past", Toast.LENGTH_SHORT).show();
                     chooseDate = false;
-                    btnReview.setVisibility(View.GONE);
+                    imgReceiver.setVisibility(View.GONE);
                 }
             }
         });
@@ -312,7 +313,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
         txtSource.setText(Constants.addressModel.sourceAddress);
         txtDestination.setText(Constants.addressModel.desAddress);
 
-        linService.setVisibility(View.VISIBLE);
+        linLevelContainer.setVisibility(View.VISIBLE);
         linDateTime.setVisibility(View.GONE);
 
         imgReceiver.setVisibility(View.GONE);
@@ -335,8 +336,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
         txtWeight.setText(String.valueOf(Constants.getTotalWeight()) + "kg(s)");
         //edtTime.setOnClickListener(this);
 
-        btnReview = (Button)findViewById(R.id.btn_review);
-        btnReview.setOnClickListener(this);
+
 
         Calendar calendar = Calendar.getInstance();
         month = calendar.get(Calendar.MONTH);
@@ -448,9 +448,9 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
             //boundLatLang();
             HashMap<String, String> map = new HashMap<String, String>();
 
-            //params.add(new BasicNameValuePair("key", mContext.getResources().getString(R.string.gecode_api_key2)));
+
             //getPath("https://maps.googleapis.com/maps/api/directions/json", source, destination);
-            new GetRoute(this, source, destination).execute();
+            //new GetRoute(this, source, destination).execute();
         }else{
             LatLngBounds.Builder bld = new LatLngBounds.Builder();
             if(sourceMarker.getPosition().latitude  != 0){
@@ -514,7 +514,6 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
                 LatLngBounds latLngBounds = bld.build();
                 map.moveCamera(CameraUpdateFactory.newLatLngBounds(
                         latLngBounds, 20));
-
 
             }catch (Exception e){
 
@@ -682,27 +681,6 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
     public void onClick(View v) {
 
         switch (v.getId()){
-            case R.id.btn_review:
-                if(Constants.MODE != Constants.CORPERATION || PreferenceUtils.getQuote(this)){
-                    if(chooseService){
-                        if(Constants.MODE == Constants.GUEST){
-                            String email = edtEmail.getText().toString();
-                            Constants.guestEmail = email;
-                            if(!ValidationHelper.isValidEmail(email)){
-                                Toast.makeText(DateTimeActivity.this, "Check Email",Toast.LENGTH_SHORT).show();
-                                return ;
-                            }
-                        }
-                        Intent review = new Intent(DateTimeActivity.this, ReviewActivity.class);
-                        startActivity(review);
-
-                    }else{
-                        Toast.makeText(DateTimeActivity.this, getString(R.string.choose_service), Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    order_corporate();
-                }
-                break;
             case R.id.img_back:
 
                 if(!PreferenceUtils.getQuote(DateTimeActivity.this)){
@@ -728,10 +706,10 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
                 break;
 
             case R.id.img_sender:
-            case R.id.txt_sender:
+            case R.id.txt_back:
                 pageType = "level";
                 txtHeader.setText(getString(R.string.select_service_level));
-                linService.setVisibility(View.VISIBLE);
+                linLevelContainer.setVisibility(View.VISIBLE);
                 linDateTime.setVisibility(View.GONE);
 
                 imgReceiver.setVisibility(View.VISIBLE);
@@ -740,7 +718,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
 
                 break;
             case R.id.img_receiver:
-            case R.id.txt_receiver:
+            case R.id.txt_next:
                 if(chooseService){
                     if(pageType.equals("date")){
                         if(Constants.MODE != Constants.CORPERATION || PreferenceUtils.getQuote(this)){
@@ -765,7 +743,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
                     }else{
                         pageType = "date";
                         txtHeader.setText(getString(R.string.select_pickup_date_time));
-                        linService.setVisibility(View.GONE);
+                        linLevelContainer.setVisibility(View.GONE);
                         linDateTime.setVisibility(View.VISIBLE);
                         imgReceiver.setVisibility(View.GONE);
                         imgSender.setVisibility(View.VISIBLE);
@@ -786,7 +764,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void showTimePicker(){
         showFlag = true;
-        btnReview.setVisibility(View.VISIBLE);
+
      //   Calendar calendar = Calendar.getInstance();
         Date dt = new Date();
         final int hour = dt.getHours(); //calendar.get(Calendar.HOUR_OF_DAY);
@@ -835,19 +813,15 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
     }
 
 
-
     LinearLayout linExpedited;
     LinearLayout linExpress;
     LinearLayout linEconomy;
-
     TextView txtExpedited;
     TextView txtExpeditedPrice;
     TextView txtExpeditedDuration;
-
     TextView txtExpress;
     TextView txtExpressPrice;
     TextView txtExpressDuration;
-
     TextView txtEconomy;
     TextView txtEconomyPrice;
     TextView txtEconomyDuration;
@@ -867,21 +841,21 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
                 txtExpeditedDuration = (TextView)view.findViewById(R.id.txt_expedited_duration);
 
                 txtExpeditedPrice.setText(getResources().getString(R.string.rupee) +  String.format("%.2f", Float.valueOf(Constants.priceType.expeditied_price)));
-                txtExpeditedDuration.setText(Constants.priceType.expedited_duration);
+                txtExpeditedDuration.setText(Constants.priceType.getDuration(1, Constants.DELIVERY_STATUS));
 
                 txtExpress = (TextView)view.findViewById(R.id.txt_express);
                 txtExpressPrice = (TextView)view.findViewById(R.id.txt_express_price);
                 txtExpressDuration = (TextView)view.findViewById(R.id.txt_express_duration);
 
                 txtExpressPrice.setText(getResources().getString(R.string.rupee) + String.format("%.2f", Float.valueOf(Constants.priceType.express_price)) );
-                txtExpressDuration.setText(Constants.priceType.express_duration);
+                txtExpressDuration.setText(Constants.priceType.getDuration(2,Constants.DELIVERY_STATUS));
 
                 txtEconomy = (TextView)view.findViewById(R.id.txt_economy);
                 txtEconomyPrice = (TextView)view.findViewById(R.id.txt_economy_price);
                 txtEconomyDuration = (TextView)view.findViewById(R.id.txt_economy_duration);
 
                 txtEconomyPrice.setText(getResources().getString(R.string.rupee) +  String.format("%.2f", Float.valueOf(Constants.priceType.economy_price)));
-                txtEconomyDuration.setText(Constants.priceType.economy_duraiton);
+                txtEconomyDuration.setText(Constants.priceType.getDuration(3, Constants.DELIVERY_STATUS));
 
                 linExpedited.setOnClickListener(this);
                 linExpress.setOnClickListener(this);
@@ -931,14 +905,14 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
 
                 Constants.serviceModel.name = Constants.priceType.expedited_name;
                 Constants.serviceModel.price = Constants.priceType.expeditied_price;
-                Constants.serviceModel.time_in = Constants.priceType.expedited_duration;
+                Constants.serviceModel.time_in = Constants.priceType.getDuration(1,Constants.DELIVERY_STATUS);
                 break;
 
             case 2:
                 linExpress.setBackgroundDrawable(getResources().getDrawable(R.drawable.service_level_back));
                 Constants.serviceModel.name = Constants.priceType.express_name;
                 Constants.serviceModel.price = Constants.priceType.express_price;
-                Constants.serviceModel.time_in = Constants.priceType.express_duration;
+                Constants.serviceModel.time_in = Constants.priceType.getDuration(2,Constants.DELIVERY_STATUS);
                 break;
 
             case 3:
@@ -946,7 +920,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
 
                 Constants.serviceModel.name = Constants.priceType.economy_name;
                 Constants.serviceModel.price = Constants.priceType.economy_price;
-                Constants.serviceModel.time_in = Constants.priceType.economy_duraiton;
+                Constants.serviceModel.time_in = Constants.priceType.getDuration(3,Constants.DELIVERY_STATUS);
                 break;
         }
     }
@@ -1156,7 +1130,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
             if(DateTimeActivity.this.hour > selectedHour || (DateTimeActivity.this.hour == selectedHour && DateTimeActivity.this.minute > selectedMinute)){
                 //Toast.makeText(DateTimeActivity.this, "Pickup date should not be past date", Toast.LENGTH_SHORT).show();
                 Toast.makeText(DateTimeActivity.this, "Pickup time should not be in the past", Toast.LENGTH_SHORT).show();
-                btnReview.setVisibility(View.GONE);
+                imgReceiver.setVisibility(View.GONE);
                 return;
             }
         }

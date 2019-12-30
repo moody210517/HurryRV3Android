@@ -45,6 +45,7 @@
 
 
     <LinearLayout
+
         android:layout_width="0dp"
         android:layout_weight="2"
         android:gravity="center"
@@ -58,6 +59,14 @@
             android:textColor="@color/dark_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/img_bottom"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/down" />
+
     </LinearLayout>
 
 </LinearLayout>

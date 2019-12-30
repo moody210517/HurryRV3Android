@@ -7,10 +7,8 @@
 
 
     <include
+        android:visibility="gone"
         layout="@layout/action_bar_toolbar"></include>
-
-
-
 
     <LinearLayout
         android:gravity="center"
@@ -72,6 +70,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="110dp"
                         android:textSize="13dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
                         android:paddingTop="@dimen/dimen_15dp"
                         android:drawableTop="@mipmap/ic_cancel_white_48dp"
                         android:backgroundTint="@color/red"
@@ -93,6 +93,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="110dp"
                         android:textSize="13dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
                         android:backgroundTint="@color/red_pop"
                         android:text="@string/reschedule"/>
                 </LinearLayout>
@@ -112,6 +114,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="110dp"
                         android:textSize="13dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
                         android:backgroundTint="@color/gray"
                         android:text="@string/call_support"/>
                 </LinearLayout>

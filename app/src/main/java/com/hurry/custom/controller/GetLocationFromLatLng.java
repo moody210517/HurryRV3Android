@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import com.google.android.gms.maps.model.LatLng;
 import com.hurry.custom.R;
 import com.hurry.custom.view.activity.AddressDetailsNewActivity;
+import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.map.MyAutoCompleteActivity;
 import com.hurry.custom.view.activity.map.TouchMapActivity;
+import com.hurry.custom.view.fragment.AddressDetailsNewFragment;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -28,13 +30,12 @@ import java.util.List;
     String result;
     LatLng latLng;
 
-
     public GetLocationFromLatLng(Context con, LatLng latLng)
     {
         super();
         this.mContext = con;
         this.latLng = latLng;
-        TouchMapActivity.isCalling = true;
+        AddressDetailsNewFragment.isCalling = true;
     }
 
     @Override
@@ -52,6 +53,8 @@ import java.util.List;
         params.add(new BasicNameValuePair("key", mContext.getResources().getString(R.string.gecode_api_key2)));
         //params.add(new BasicNameValuePair("language", String.valueOf(latLng.longitude)));
         ServiceHandler sh = new ServiceHandler();
+        if (isCancelled())
+            return null;
         result = sh.makeServiceCall(GOOGLE_MAP_URL  , ServiceHandler.GET, params);
         return null;
     }
@@ -152,6 +155,11 @@ import java.util.List;
                             if(mContext instanceof TouchMapActivity){
                                 ((TouchMapActivity)mContext).updateLocation(location, street ,area , city , state1 + " " + state2, postCode, latLng);
                             }
+
+                            if(mContext instanceof HomeActivity){
+                                ((HomeActivity)mContext).updateLocation(location, street ,area , city , state1 + " " + state2, postCode, latLng);
+                            }
+
                             if(mContext instanceof AddressDetailsNewActivity){
                                 ((AddressDetailsNewActivity)mContext).updateLocation(location, street ,area , city , state1 + " " + state2, postCode, latLng);
                             }

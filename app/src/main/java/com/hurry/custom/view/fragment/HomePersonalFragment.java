@@ -52,7 +52,7 @@ import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.common.utils.DeviceUtil;
 import com.hurry.custom.view.activity.CameraOrderActivity;
 import com.hurry.custom.view.activity.MainActivity;
-import com.hurry.custom.view.activity.PackageOrderActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -230,16 +230,6 @@ public class HomePersonalFragment extends Fragment implements  SurfaceHolder.Cal
                 ((MainActivity)mContext).updateFragment(MainActivity.ITEM_OPTION);
                 break;
 
-            case R.id.btn_package:
-                if(!edtCake.getText().toString().trim().isEmpty()){
-                    Constants.ORDER_TYPE = Constants.PACKAGE_OPTION;
-                    Intent packageOrder = new Intent(mContext, PackageOrderActivity.class);
-                    packageOrder.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    packageOrder.putExtra("data", edtCake.getText().toString());
-                    startActivity(packageOrder);
-                }
-                //((MainActivity)mContext).updateFragment(MainActivity.PACKAGE_OPTION);
-                break;
             case R.id.rl_camera:
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {

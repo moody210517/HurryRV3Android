@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.utils.JsonHelper;
+import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.MainActivity;
 import com.hurry.custom.view.activity.login.SplashActivity;
 
@@ -23,10 +24,12 @@ import java.util.List;
  public class GetBasic extends AsyncTask<Void, Void, Void> {
     Context  mContext;
     String result;
-    public GetBasic(Context con)
+    String type = "";
+    public GetBasic(Context con, String  type)
     {
         super();
         this.mContext = con;
+        this.type = type;
     }
 
     @Override
@@ -52,9 +55,18 @@ import java.util.List;
                  JSONObject response = new JSONObject(result);
                  if(response.getString("result").equals("200")){
                      JsonHelper.parseBasicData(response);
-                     if(mContext instanceof MainActivity){
-                         ((MainActivity)mContext).getCities();
+
+                     if(type.equals("auto")){
+                         if(mContext instanceof SplashActivity){
+                             ((SplashActivity)mContext).getCities();
+                         }
                      }
+
+                     if(type.isEmpty() && mContext instanceof  HomeActivity){
+                         ((HomeActivity)mContext).getCities();
+                     }
+
+
                      if(mContext instanceof SplashActivity){
                          ((SplashActivity)mContext).callNext();
                      }
