@@ -234,4 +234,6 @@
   <string name="home">Home</string>
   <string name="apply">Apply</string>
   <string name="invalid_coupon">Invalid  coupon code. Please enter a valid coupon code.</string>
+  <string name="photo_upload">Photo Upload</string>
+
 </resources>

@@ -124,7 +124,6 @@ public class TermActivity extends BaseBackActivity implements View.OnClickListen
                     });
 
         }
-
     }
 
 

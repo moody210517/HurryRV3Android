@@ -767,7 +767,7 @@ public class AddressDetailsNewActivity extends BaseBackActivity implements View.
                                     Constants.priceType.express_price = response.getString("express");
                                     Constants.priceType.economy_price = response.getString("economy");
                                     try{
-                                        Constants.priceType.distance = String.valueOf(Double.valueOf(response.getString("distance")) / 1000);
+                                        Constants.priceType.distance = Double.valueOf(response.getString("distance")) / 1000;
                                     }catch (Exception e){};
                                 }
 

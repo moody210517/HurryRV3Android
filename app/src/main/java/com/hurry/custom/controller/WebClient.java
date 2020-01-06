@@ -40,8 +40,8 @@ public class WebClient {
 
 	public static void post(String url, RequestParams params,
 			AsyncHttpResponseHandler responseHandler) {
-        client.setTimeout(10000);
-		client.setConnectTimeout(10000);
+        client.setTimeout(50000);
+		client.setConnectTimeout(50000);
 		client.cancelAllRequests(true);
 		client.post(url, params, responseHandler);
 	}

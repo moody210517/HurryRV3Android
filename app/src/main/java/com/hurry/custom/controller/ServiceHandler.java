@@ -38,6 +38,7 @@ public class ServiceHandler {
     public final static int PUT_BODY = 4;
     public final static int DELETE = 5;
     public final static int GET_SSL = 6;
+    public final static int POST_NOJSON = 7;
     /**
      * Making service call
      * @url - url to make request
@@ -147,6 +148,23 @@ public class ServiceHandler {
 
                 Response res = client.newCall(request).execute();
                 return res.body().string();
+            }else if(method == POST_NOJSON){
+
+                HttpPost httpPost = new HttpPost(url);
+                // adding post params
+                if (params != null) {
+                    if (params != null) {
+                        String paramString = URLEncodedUtils
+                                .format(params, "utf-8");
+                        url += "?" + paramString;
+                    }
+                    httpPost = new HttpPost(url);
+                    //httpPost.setHeader("Accept", "application/json");
+                    //httpPost.setHeader("Content-type", "application/json");
+                    httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+                }
+                httpResponse = httpClient.execute(httpPost);
+
             }
 
             httpEntity = httpResponse.getEntity();

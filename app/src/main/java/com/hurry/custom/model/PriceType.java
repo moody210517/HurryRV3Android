@@ -23,7 +23,7 @@ public class PriceType {
     private String economy_duraiton = "In 16 hours";
     public  int economy = 16;
 
-    public String distance = "";
+    public double distance = 0;
 
 
     public String getDuration(int type , int delivery_type){

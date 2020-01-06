@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.view.activity.HomeActivity;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -46,13 +45,13 @@ import java.util.List;
         ServiceHandler sh = new ServiceHandler();
         //String currentTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
         if(Constants.MODE == Constants.PERSONAL){
-            params.add(new BasicNameValuePair("employer_id", PreferenceUtils.getUserId(mContext)));
+            params.add(new BasicNameValuePair("employer_id", "0")); //PreferenceUtils.getUserId(mContext)
         }else{
-            params.add(new BasicNameValuePair("employer_id", PreferenceUtils.getCorporateUserId(mContext)));
+            params.add(new BasicNameValuePair("employer_id", "0")); //PreferenceUtils.getCorporateUserId(mContext)
         }
 
         //params.add(new BasicNameValuePair("apps",  mPackage));
-        result = sh.makeServiceCall( Constants.URL + "/basic/get_Contact_Details", ServiceHandler.POST, params); //
+        result = sh.makeServiceCall( Constants.URL + "/basic/get_Contact_Details", ServiceHandler.POST_NOJSON, params); //
         return null;
     }
 

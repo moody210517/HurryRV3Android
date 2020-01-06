@@ -326,9 +326,7 @@ public class ReviewFragment extends Fragment implements View.OnClickListener{
             }else{
                 imgBottom.setImageResource(R.mipmap.down);
             }
-
             linColumn.addView(viewCol);
-
             if(orderModel != null){
                 for(int k = 0;  k < orderModel.itemModels.size(); k++){
 
@@ -906,13 +904,16 @@ public class ReviewFragment extends Fragment implements View.OnClickListener{
 
                                 }
                             }
+                            ((HomeActivity)mContext).hideProgressDialog();
+
                         } catch (JSONException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
+                            ((HomeActivity)mContext).hideProgressDialog();
                         }
                     };
                     public void onFinish() {
-                        ((HomeActivity)mContext).hideProgressDialog();
+
                     }
                     ;
                 });

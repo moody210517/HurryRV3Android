@@ -112,10 +112,12 @@ import id.zelory.compressor.Compressor;
         if(mContext instanceof MainActivity){
             ((MainActivity)mContext).hideProgressDialog();
             ((MainActivity)mContext).updateFragment(11);
+
         }else if(mContext instanceof HomeActivity) {
+
             ((HomeActivity)mContext).hideProgressDialog();
-            Intent cameraOrder = new Intent(mContext, CameraOrderActivity.class);
-            ((HomeActivity)mContext).startActivity(cameraOrder);
+            //Intent cameraOrder = new Intent(mContext, CameraOrderActivity.class);
+            ((HomeActivity)mContext).goToCameraPage("");
         }else{
             ((CameraOrderActivity)mContext).hideProgressDialog();
             ((CameraOrderActivity)mContext).initView();

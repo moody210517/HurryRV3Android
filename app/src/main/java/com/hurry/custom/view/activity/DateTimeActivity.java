@@ -327,7 +327,7 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
         txtDistance = (TextView)findViewById(R.id.txt_distance);
         txtWeight = (TextView)findViewById(R.id.txt_weight);
 
-        if(Constants.priceType.distance == null || Constants.priceType.distance.isEmpty()){
+        if(Constants.priceType.distance == 0 ){
             txtDistance.setText( String.format("%.2f", distance(Constants.addressModel.sourceLat, Constants.addressModel.desLat, Constants.addressModel.sourceLng, Constants.addressModel.desLng,0,0)/1000 + 8) + "Km(s)");
         }else{
             txtDistance.setText( Constants.priceType.distance + "Km(s)");
@@ -335,8 +335,6 @@ public class DateTimeActivity extends BaseBackActivity implements View.OnClickLi
 
         txtWeight.setText(String.valueOf(Constants.getTotalWeight()) + "kg(s)");
         //edtTime.setOnClickListener(this);
-
-
 
         Calendar calendar = Calendar.getInstance();
         month = calendar.get(Calendar.MONTH);

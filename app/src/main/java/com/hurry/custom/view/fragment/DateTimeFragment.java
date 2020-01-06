@@ -507,7 +507,7 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
         hideNext();
 
         edtDate.setHint("Input Date");
-        if(Constants.priceType.distance == null || Constants.priceType.distance.isEmpty()){
+        if(Constants.priceType.distance == 0 ){
             txtDistance.setText( String.format("%.2f", distance(Constants.addressModel.sourceLat, Constants.addressModel.desLat,
                     Constants.addressModel.sourceLng, Constants.addressModel.desLng,0,0)/1000 + 8) + "Km(s)");
         }else{
@@ -658,54 +658,116 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
             try{
                 //final JSONObject json = new JSONObject(response);
                 JSONArray routeArray = response.getJSONArray("routes");
-                JSONObject routes = routeArray.getJSONObject(0);
+                if(routeArray.length() > 0){
+                    JSONObject routes = routeArray.getJSONObject(0);
 
-                JSONArray legsArray = routes.getJSONArray("legs");
-                JSONObject distanceObject = legsArray.getJSONObject(0);
-                JSONObject distanceObj = distanceObject.getJSONObject("distance");
+                    JSONArray legsArray = routes.getJSONArray("legs");
+                    JSONObject distanceObject = legsArray.getJSONObject(0);
+                    JSONObject distanceObj = distanceObject.getJSONObject("distance");
 
-                String endAddress = distanceObject.getString("end_address");
-                String startAddress = distanceObject.getString("start_address");
+                    String endAddress = distanceObject.getString("end_address");
+                    String startAddress = distanceObject.getString("start_address");
 
 
-                Route route = new Route();
-                parseRoute(response, route);
-                final ArrayList<Step> step = route.getListStep();
-                System.out.println("step size=====> " + step.size());
-                points = new ArrayList<LatLng>();
-                lineOptions = new PolylineOptions();
+                    Route route = new Route();
+                    parseRoute(response, route);
+                    final ArrayList<Step> step = route.getListStep();
+                    System.out.println("step size=====> " + step.size());
+                    points = new ArrayList<LatLng>();
+                    lineOptions = new PolylineOptions();
 
-                for (int i = 0; i < step.size(); i++) {
-                    List<LatLng> path = step.get(i).getListPoints();
-                    System.out.println("step =====> " + i + " and "
-                            + path.size());
-                    points.addAll(path);
+                    for (int i = 0; i < step.size(); i++) {
+                        List<LatLng> path = step.get(i).getListPoints();
+                        System.out.println("step =====> " + i + " and "
+                                + path.size());
+                        points.addAll(path);
+                    }
+                    if (polyLine != null){
+                        polyLine.remove();
+                        polyLine = null;
+                    }
+
+                    lineOptions.addAll(points);
+                    lineOptions.width(10);
+                    lineOptions.color(Color.rgb( 5 ,177, 251)); // #00008B rgb(0,0,139)
+
+                    if ( lineOptions != null && map != null) { //
+                        polyLine = map.addPolyline(lineOptions);
+                    }
+
+                    LatLngBounds.Builder bld = new LatLngBounds.Builder();
+                    bld.include(sourceMarker.getPosition());
+                    bld.include(destinationMarker.getPosition());
+                    //bld.include(userPosition);
+                    LatLngBounds latLngBounds = bld.build();
+                    map.moveCamera(CameraUpdateFactory.newLatLngBounds(
+                            latLngBounds, 20));
+                }else{
+                    drawDotLine(sourcePosition, destinationPosition);
                 }
-                if (polyLine != null){
-                    polyLine.remove();
-                    polyLine = null;
-                }
-
-                lineOptions.addAll(points);
-                lineOptions.width(10);
-                lineOptions.color(Color.rgb( 5 ,177, 251)); // #00008B rgb(0,0,139)
-
-                if ( lineOptions != null && map != null) { //
-                    polyLine = map.addPolyline(lineOptions);
-                }
-
-                LatLngBounds.Builder bld = new LatLngBounds.Builder();
-                bld.include(sourceMarker.getPosition());
-                bld.include(destinationMarker.getPosition());
-                //bld.include(userPosition);
-                LatLngBounds latLngBounds = bld.build();
-                map.moveCamera(CameraUpdateFactory.newLatLngBounds(
-                        latLngBounds, 20));
 
             }catch (Exception e){
 
             }
         }
+    }
+
+
+    public void drawDotLine(LatLng sourcePosition, LatLng destinationPosition){
+        points = new ArrayList<LatLng>();
+        lineOptions = new PolylineOptions();
+//        for (int i = 0; i < step.size(); i++) {
+//
+//            System.out.println("step =====> " + i + " and "
+//                    + path.size());
+//            points.addAll(path);
+//        }
+        List<LatLng> path = new ArrayList<>();
+
+        double difLat = destinationPosition.latitude - sourcePosition.latitude;
+        double difLng = destinationPosition.longitude - sourcePosition.longitude;
+
+        double zoom = map.getCameraPosition().zoom;
+
+        double divLat = difLat / (zoom * 5);
+        double divLng = difLng / (zoom * 5);
+
+        LatLng tmpLatOri = sourcePosition;
+        for(int i = 0; i < (zoom * 5); i++){
+            LatLng loopLatLng = tmpLatOri;
+            if(i > 0){
+                loopLatLng = new LatLng(tmpLatOri.latitude + (divLat * 0.25f), tmpLatOri.longitude + (divLng * 0.25f));
+            }
+
+//            Polyline polyline = map.addPolyline(new PolylineOptions()
+//                    .add(loopLatLng)
+//                    .add(new LatLng(tmpLatOri.latitude + divLat, tmpLatOri.longitude + divLng))
+//                    .color(color)
+//                    .width(5f));
+
+            points.clear();
+            points.add(loopLatLng);
+            points.add(new LatLng(tmpLatOri.latitude + divLat, tmpLatOri.longitude + divLng));
+
+            PolylineOptions options = new PolylineOptions();
+            options.addAll(points);
+            options.width(10);
+            options.color(Color.rgb( 5 ,177, 251)); // #00008B rgb(0,0,139)
+            if ( options != null && map != null) { //
+                polyLine = map.addPolyline(options);
+            }
+
+            tmpLatOri = new LatLng(tmpLatOri.latitude + divLat, tmpLatOri.longitude + divLng);
+        }
+
+
+        LatLngBounds.Builder bld = new LatLngBounds.Builder();
+        bld.include(sourceMarker.getPosition());
+        bld.include(destinationMarker.getPosition());
+        //bld.include(userPosition);
+        LatLngBounds latLngBounds = bld.build();
+        map.moveCamera(CameraUpdateFactory.newLatLngBounds(
+                latLngBounds, 20));
     }
 
 

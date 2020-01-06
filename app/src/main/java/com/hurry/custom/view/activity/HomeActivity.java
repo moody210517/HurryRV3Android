@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.gms.maps.model.LatLng;
+import com.gun0912.tedpicker.Config;
 import com.gun0912.tedpicker.ImagePickerActivity;
 import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
@@ -32,6 +33,7 @@ import com.hurry.custom.view.adapter.CityAdapter;
 import com.hurry.custom.view.adapter.MyViewPagerAdapter;
 import com.hurry.custom.view.adapter.NoTouchViewPager;
 import com.hurry.custom.view.fragment.AddressDetailsNewFragment;
+import com.hurry.custom.view.fragment.CameraOrderFragment;
 import com.hurry.custom.view.fragment.DateTimeFragment;
 import com.hurry.custom.view.fragment.ItemOrderFragment;
 import com.hurry.custom.view.fragment.LocationTrackFragment;
@@ -74,6 +76,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     public static final int REVIEW = 4;
     public static final int ORDER_CONFIRM = 5;
     public static final int TRACK = 6;
+    public static final int CAMERA_ORDER = 7;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.txt_title) TextView txtTitle;
@@ -228,7 +231,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     showViewPager(-1);
                                     if(index == 2){
+                                        mNavigationController.setSelect(0);
+                                        mNavigationController.setSelect(index);
                                         linContainer.setVisibility(View.VISIBLE);
+
                                     }
                                     clearData();
                                 }})
@@ -262,7 +268,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
             public void onPageSelected(int position) {
 
 
-                if(frameLayout.getVisibility() == View.VISIBLE && !Constants.page_type.equals("confirm") && !Constants.page_type.equals("track") && position != 4){
+                if(frameLayout.getVisibility() == View.VISIBLE && !Constants.page_type.equals("confirm") && !Constants.page_type.equals("track") && position != 4 && !Constants.page_type.equals("camera")){
 
                     new AlertDialog.Builder(HomeActivity.this)
                             .setMessage("Do you wish to discard the changes?")
@@ -273,6 +279,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                                     if(position == 2){
                                         linContainer.setVisibility(View.VISIBLE);
                                     }
+                                    setIndex(position);
                                     clearData();
 
                                 }})
@@ -295,10 +302,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
                         case 1:
 
-                            currentViewPaterFragment = pagerAdapter.getItem(1);
-                            setTitle(getResources().getString(R.string.order_his));
-                            linContainer.setVisibility(View.GONE);
-                            setIndex(1);
+                            if(Constants.page_type.equals("confirm")){
+                                Constants.orderHisModels.clear();
+                                updateOrderHis(1);
+                                linContainer.setVisibility(View.GONE);
+                            }else{
+                                currentViewPaterFragment = pagerAdapter.getItem(1);
+                                setTitle(getResources().getString(R.string.order_his));
+                                linContainer.setVisibility(View.GONE);
+                                setIndex(1);
+                            }
                             break;
 
                         case 2:
@@ -344,24 +357,47 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         // 添加导航项
     }
 
+
+    public static int MAX = 5;
+    public void goToCameraPage(String type){
+        Constants.initWeight();
+        if(type.equals("from_page")){
+            Config config = new Config();
+            config.setSelectionLimit(MAX - Constants.cameraOrderModel.itemModels.size());
+            //ImagePickerActivity.setConfig(config);
+            Intent intent = new Intent(HomeActivity.this, ImagePickerActivity.class);
+            intent.putExtra("limit", CameraOrderActivity.MAX - Constants.cameraOrderModel.itemModels.size());
+            startActivityForResult(intent, MainActivity.INTENT_REQUEST_GET_IMAGES);
+        }else{
+            if(Constants.cameraOrderModel.itemModels.size() == 0){
+                Intent intent = new Intent(this, ImagePickerActivity.class);
+                intent.putExtra("limit", CameraOrderActivity.MAX - Constants.cameraOrderModel.itemModels.size());
+                startActivityForResult(intent, MainActivity.INTENT_REQUEST_GET_IMAGES);
+            }else{
+                updateFragment(CAMERA_ORDER, type);
+            }
+        }
+
+
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == Activity.RESULT_OK){
-            if (requestCode == INTENT_REQUEST_GET_IMAGES ) {
-
-                for(int k = 0; k < Constants.cameraOrderModel.itemModels.size() ; k++){
-                    String image = Constants.cameraOrderModel.itemModels.get(k).image;
-                    if(image == null){
-                        ItemModel itemModel = Constants.cameraOrderModel.itemModels.get(k);
-                        Constants.cameraOrderModel.itemModels.remove(itemModel);
-                    }
-                }
-                final ArrayList<Uri> image_uris = data.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
-                new CompressProcess(HomeActivity.this, image_uris).execute();
-
-            }
+//            if (requestCode == INTENT_REQUEST_GET_IMAGES ) {
+//
+//                for(int k = 0; k < Constants.cameraOrderModel.itemModels.size() ; k++){
+//                    String image = Constants.cameraOrderModel.itemModels.get(k).image;
+//                    if(image == null){
+//                        ItemModel itemModel = Constants.cameraOrderModel.itemModels.get(k);
+//                        Constants.cameraOrderModel.itemModels.remove(itemModel);
+//                    }
+//                }
+//                final ArrayList<Uri> image_uris = data.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
+//                new CompressProcess(HomeActivity.this, image_uris).execute();
+//            }
 
             if (requestCode == 100 ) {
 
@@ -480,6 +516,32 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                     // Toast.makeText(this, "Both objects are null!",Toast.LENGTH_SHORT).show();
                 }
             }
+
+            if (requestCode == MainActivity.INTENT_REQUEST_GET_IMAGES ) {
+
+                for(int k = 0; k < Constants.cameraOrderModel.itemModels.size() ; k++){
+                    String image = Constants.cameraOrderModel.itemModels.get(k).image;
+                    if(image == null){
+                        ItemModel itemModel = Constants.cameraOrderModel.itemModels.get(k);
+                        Constants.cameraOrderModel.itemModels.remove(itemModel);
+                    }
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        ArrayList<Uri> image_uris;
+                        image_uris = data.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
+
+                        new CompressProcess(HomeActivity.this, image_uris).execute();
+
+                    }
+                });
+
+
+            }
+
         }
     }
 
@@ -556,6 +618,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
             setTitle(getString(R.string.select_the_item));
             fragment = new ItemOrderFragment(type);
         }
+        if(index == CAMERA_ORDER){
+            setTitle(getString(R.string.photo_upload));
+            fragment = new CameraOrderFragment(type);
+        }
+
         if(index == ADDRESS_DETAILS){
             setTitle(getString(R.string.address_detail));
             fragment = new AddressDetailsNewFragment(type);
@@ -572,7 +639,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
         if(index == ORDER_CONFIRM){
             setTitle(getString(R.string.order_confirmed));
-            fragment = new OrderConfirmFragment(((ReviewFragment)currentFragment).getPaymentType(), type);
+            if(currentFragment instanceof ReviewFragment){
+                fragment = new OrderConfirmFragment(((ReviewFragment)currentFragment).getPaymentType(), type);
+            }
         }
 
         if(index == TRACK){

@@ -102,7 +102,6 @@ import java.util.List;
                          }
                      }
 
-
                      if(type.isEmpty()){
                          if(mContext instanceof LocationActivity){
                              ((LocationActivity)mContext).setupRecyclerView();
@@ -110,10 +109,16 @@ import java.util.List;
                      }
 
                      if(mContext instanceof SplashActivity){
-                         PreferenceUtils.setFirstStart(mContext, false);
-                         Intent intent = new Intent(mContext, HomeActivity.class);
-                         ((SplashActivity)mContext).startActivity(intent);
-                         ((SplashActivity)mContext).finish();
+
+                         if(PreferenceUtils.getFirstStart(mContext)){
+
+                         }else{
+                             PreferenceUtils.setFirstStart(mContext, false);
+                             Intent intent = new Intent(mContext, HomeActivity.class);
+                             ((SplashActivity)mContext).startActivity(intent);
+                             ((SplashActivity)mContext).finish();
+                         }
+
                      }
 
                  }else{

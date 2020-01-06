@@ -44,6 +44,7 @@ public class OrderHisContainerFragment extends BaseFragment {
     @BindView(R.id.viewpager) ViewPager viewPager;
     Context mContext;
     View view;
+    FragmentManager fragmentManager;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class OrderHisContainerFragment extends BaseFragment {
         ButterKnife.bind(this, view);
         mContext = getActivity();
         position = 1;
+        fragmentManager = getChildFragmentManager();
         if(Constants.orderHisModels.size() == 0){
             orderHistory(0);
         }else{
@@ -253,7 +255,7 @@ public class OrderHisContainerFragment extends BaseFragment {
         viewPager.removeAllViews();
         tabLayout.setupWithViewPager(viewPager);
 
-        Adapter adapter = new Adapter(getChildFragmentManager());
+        Adapter adapter = new Adapter(fragmentManager);
 
         orderHistoryFragment1 = new OrderHistoryFragment("1");
         orderHistoryFragment2 = new OrderHistoryFragment("2");
@@ -272,7 +274,13 @@ public class OrderHisContainerFragment extends BaseFragment {
         tabLayout.setTabsFromPagerAdapter(adapter);
         //tabLayout.setTabsFromPagerAdapter(adapter);
         //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        viewPager.setCurrentItem(0);
+        if( Constants.page_type.equals("confirm")){
+            viewPager.setCurrentItem(1);
+        }else{
+            viewPager.setCurrentItem(0);
+        }
+
+        Constants.page_type = "history";
     }
 
     private void repop(ViewPager viewPager, int index) {

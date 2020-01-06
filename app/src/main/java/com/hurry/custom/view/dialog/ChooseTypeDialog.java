@@ -22,6 +22,7 @@ import com.hurry.custom.view.activity.CameraOrderActivity;
 import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.MainActivity;
 
+import static com.hurry.custom.view.activity.HomeActivity.CAMERA_ORDER;
 import static com.hurry.custom.view.activity.HomeActivity.ITEM_ORDER;
 
 /**
@@ -81,9 +82,13 @@ public class ChooseTypeDialog extends SimpleDialogFragment {
                             == PackageManager.PERMISSION_GRANTED ) {
                         Constants.ORDER_TYPE = Constants.CAMERA_OPTION;
 
-                        Intent intent = new Intent(getActivity(), CameraOrderActivity.class);
-                        intent.putExtra("type", type);
-                        startActivity(intent);
+
+                        ((HomeActivity)getActivity()).goToCameraPage(type);
+
+//                        Intent intent = new Intent(getActivity(), CameraOrderActivity.class);
+//                        intent.putExtra("type", type);
+//                        startActivity(intent);
+
                     } else {
                         requestPermissions(INITIAL_PERMS, INITIAL_REQUEST);
                     }

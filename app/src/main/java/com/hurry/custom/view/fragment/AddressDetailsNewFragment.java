@@ -15,7 +15,6 @@
  */
 
 package com.hurry.custom.view.fragment;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -27,6 +26,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -69,6 +69,7 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.PlusCode;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.material.snackbar.Snackbar;
 import com.hurry.custom.R;
 import com.hurry.custom.common.CommonDialog;
 import com.hurry.custom.common.Constants;
@@ -248,6 +249,19 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                 pickup_auto_complete = true;
                 isCorrectLocation = true;
                 updateMarker(pickupLocation);
+
+                if(addressModel.sourceAddress != null && !addressModel.sourceAddress.isEmpty()){
+                    if( Constants.DELIVERY_STATUS == Constants.SAME_CITY && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
+                            || Constants.DELIVERY_STATUS == Constants.OUT_STATION && pageType.equals("sender") && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
+                            || Constants.DELIVERY_STATUS == Constants.OUT_STATION && pageType.equals("receiver") && !GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds) && addressModel.sourceAddress.contains("India")
+                            || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("sender") && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
+                            || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("receiver") && !addressModel.sourceAddress.contains("India")){
+
+                    }else{
+                        isCorrectLocation = false;
+                        showToast();
+                    }
+                }
             }
 
             if(addressModel.senderName != null  && !addressModel.senderName.isEmpty()){
@@ -292,7 +306,20 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                 isCorrectLocation = true;
                 updateMarker(pickupLocation);
 
+                if(addressModel.desAddress != null && !addressModel.desAddress.isEmpty()){
+                    if( Constants.DELIVERY_STATUS == Constants.SAME_CITY && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
+                            || Constants.DELIVERY_STATUS == Constants.OUT_STATION && pageType.equals("sender") && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
+                            || Constants.DELIVERY_STATUS == Constants.OUT_STATION && pageType.equals("receiver") && !GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds) && addressModel.desAddress.contains("India")
+                            || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("sender") && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
+                            || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("receiver") && !addressModel.desAddress.contains("India")){
+                    }else{
+                        isCorrectLocation = false;
+                        showToast();
+                    }
+                }
+
             }
+
             if(addressModel.desName != null  && !addressModel.desName.isEmpty()){
                 edtName.setText(addressModel.desName);
             }else{
@@ -341,10 +368,7 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
         if(mapView!=null){
             mapView.onResume();
         }
-
         txtAddress.setText("Locating...");
-
-
         if(!pageType.equals("receiver")){
 
             if(addressModel.sourceLat != 0 && addressModel.sourceLng != 0 && addressModel.sourceAddress != null) {
@@ -592,6 +616,10 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                 }else{
                     ((HomeActivity)mContext).updateFragment(HomeActivity.ITEM_ORDER, "");
                 }
+
+                if(snackbar != null && snackbar.isShown())
+                    snackbar.dismiss();
+
                 break;
 
             case R.id.txt_next:
@@ -649,8 +677,12 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                             }else if(Constants.DELIVERY_STATUS == Constants.INTERNATIONAL){
 
                                 boolean isFood = true;
-                                if(Constants.itemOrderModel.itemModels.get(0).title.contains("Food")){
-                                    isFood = true;
+                                if(Constants.ORDER_TYPE == Constants.ITEM_OPTION){
+                                    if(Constants.itemOrderModel.itemModels.get(0).title.contains("Food")){
+                                        isFood = true;
+                                    }
+                                }else{
+                                    isFood = false;
                                 }
 
                                 int price = 0;
@@ -695,10 +727,11 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                                 }else if(Constants.getTotalWeight() <= 70){
                                     price += 1999;
                                 }
+
                                 Constants.priceType.expeditied_price = String.valueOf(price);
                                 Constants.priceType.express_price = "";
                                 Constants.priceType.economy_price = "";
-                                Constants.priceType.distance = "";
+                                Constants.priceType.distance = 0;
                                 Constants.MAP_HEIGHT = rlMapContainer.getHeight();
                                 ((HomeActivity)mContext).updateFragment(HomeActivity.DATE_TIME, "");
 
@@ -1006,6 +1039,27 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
         return false;
     }
 
+    public static double distance(double lat1, double lat2, double lon1,
+                                  double lon2, double el1, double el2) {
+
+        final int R = 6371; // Radius of the earth
+
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = R * c * 1000; // convert to meters
+
+        double height = el1 - el2;
+
+        distance = Math.pow(distance, 2) + Math.pow(height, 2);
+
+        return Math.sqrt(distance);
+    }
+
+
     private void getDistanceWebService() {
         Constants.MAP_HEIGHT = rlMapContainer.getHeight();
         RequestParams params = new RequestParams();
@@ -1026,7 +1080,7 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                         Constants.priceType.expeditied_price = "354";
                         Constants.priceType.express_price = "567";
                         Constants.priceType.economy_price = "780";
-                        Constants.priceType.distance = "45345";
+                        Constants.priceType.distance = 0;
 
                         Constants.MAP_HEIGHT = rlMapContainer.getHeight();
                         ((HomeActivity)mContext).updateFragment(HomeActivity.DATE_TIME, "");
@@ -1036,7 +1090,6 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                         super.onFailure(statusCode, headers, throwable, errorResponse);
-                        //Toast.makeText(mContext, "Try again. ", Toast.LENGTH_SHORT).show();
                         getDistanceWebService();
                     }
 
@@ -1051,8 +1104,14 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                                     Constants.priceType.express_price = response.getString("express");
                                     Constants.priceType.economy_price = response.getString("economy");
                                     try{
-                                        Constants.priceType.distance = String.valueOf(Double.valueOf(response.getString("distance")) / 1000);
-                                    }catch (Exception e){};
+                                        Constants.priceType.distance = Double.valueOf(response.getString("distance")) / 1000;
+                                    }catch (Exception e){
+
+                                    };
+
+                                    if(Constants.priceType.distance  == 0){
+                                        Constants.priceType.distance = distance(addressModel.sourceLat, addressModel.desLat, addressModel.sourceLng, addressModel.desLng, 0,0) / 1000;
+                                    }
 
                                 }
 
@@ -1087,6 +1146,8 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                 || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("receiver") && !model.address.contains("India")){
 
             isCorrectLocation = true;
+            if(snackbar != null)
+                snackbar.dismiss();
 
             edtPhone.setText(model.phone.substring(model.phone.length() - 10));
             if(model.phone.replace(edtPhone.getText().toString(), "").trim().isEmpty()){
@@ -1112,11 +1173,10 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
             updateMarker(pickupLocation);
             addressDialog.dismiss();
 
-
         }else{
             isCorrectLocation = false;
-            Toast.makeText(mContext, "Sorry we do not operate in the location you selected.",Toast.LENGTH_SHORT).show();
-
+            showToast();
+            addressDialog.dismiss();
         }
 
         checkValidate();
@@ -1177,7 +1237,11 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
 
     }
 
+
     public void showAddressBook(String type){
+        if(snackbar != null && snackbar.isShown()){
+            snackbar.dismiss();
+        }
 
         AutoCompleteTextView mAutocompleteTextView;
         RecyclerView recyclerView;
@@ -1340,11 +1404,13 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                     new GetLocationFromPlaceId(mContext, place.getId(), selectedAddress, pickupLocation).execute();
                     DeviceUtil.hideSoftKeyboard(getActivity());
                     isCorrectLocation = true;
+                    if(snackbar != null)
+                        snackbar.dismiss();
 
                 }else{
                     hideReceiver();
-                    Toast.makeText(mContext, "Sorry we do not operate in the location you selected.",Toast.LENGTH_SHORT).show();
                     isCorrectLocation = false;
+                    showToast();
 
                 }
 
@@ -1383,7 +1449,6 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
             }
         }
 
-
         if( Constants.DELIVERY_STATUS == Constants.SAME_CITY && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
                 || Constants.DELIVERY_STATUS == Constants.OUT_STATION && pageType.equals("sender") && GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds)
                 || Constants.DELIVERY_STATUS == Constants.OUT_STATION && pageType.equals("receiver") && !GpsUtil.isPointInPolygon(pickupLocation, Constants.cityBounds) && location.contains("India")
@@ -1391,9 +1456,10 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                 || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("receiver") && !location.contains("India")){
 
             isCorrectLocation = true;
-
+            if(snackbar != null)
+                snackbar.dismiss();
         }else{
-            Toast.makeText(mContext, "Sorry we do not operate in the location you selected.",Toast.LENGTH_SHORT).show();
+            showToast();
             isCorrectLocation = false;
         }
 
@@ -1401,7 +1467,7 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
 
         if(location.isEmpty() || area.isEmpty() || city.isEmpty() || state.isEmpty() ){
             //mNameTextView.setText("Choose Correct Location, Can not get location info");
-            //Toast.makeText(mContext, "Choose Correct Location, Can not get location info",Toast.LENGTH_SHORT).show();
+
         }else{
             try{
 //                this.location = location;
@@ -1412,5 +1478,86 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
 //                this.area = area;
             }catch (Exception e){};
         }
+    }
+
+
+    private Toast mToastToShow;
+    Snackbar snackbar;
+    private boolean isValidAddress = false;
+    public void showToast() {
+        // Set the toast and duration
+        int toastDurationInMilliSeconds = 1000000;
+        // Set the countdown to display the toast
+        CountDownTimer toastCountDown;
+        toastCountDown = new CountDownTimer(toastDurationInMilliSeconds, 500 /*Tick duration*/) {
+            public void onTick(long millisUntilFinished) {
+
+                if(Constants.DELIVERY_STATUS == Constants.INTERNATIONAL){
+                    mToastToShow = Toast.makeText(mContext, "Please enter a valid international delivery address.",Toast.LENGTH_LONG);
+                }else if(Constants.DELIVERY_STATUS == Constants.OUT_STATION){
+                    mToastToShow = Toast.makeText(mContext, "Please enter a valid outstation delivery address.",Toast.LENGTH_LONG);
+                }else{
+                    mToastToShow = Toast.makeText(mContext, "Sorry we do not operate in the location you selected.",Toast.LENGTH_LONG);
+                }
+
+                if(!isCorrectLocation){
+                    mToastToShow.show();
+                }else{
+                    mToastToShow.cancel();
+                }
+            }
+            public void onFinish() {
+                mToastToShow.cancel();
+            }
+        };
+        // Show the toast and starts the countdown
+        //mToastToShow.show();
+        //toastCountDown.start();
+
+
+        String message = "";
+        if(pageType.equals("sender")){
+            message = "Pickup location should be in the City you have selected.";
+
+        }else{
+            if(Constants.DELIVERY_STATUS == Constants.INTERNATIONAL){
+                message = "Please enter a valid international delivery address.";
+            }else if(Constants.DELIVERY_STATUS == Constants.OUT_STATION){
+                message = "Please enter a valid outstation delivery address.";
+            }else{
+                message = "Sorry we do not operate in the location you selected.";
+            }
+        }
+        snackbar = Snackbar
+                .make(linContainer, message , Snackbar.LENGTH_LONG);
+        addMargins(snackbar);
+        snackbar.setDuration(1999999999);
+        snackbar.show();
+    }
+
+
+    private void showToastOneTime(){
+        String message = "";
+        if(pageType.equals("sender")){
+            message = "Pickup location should be in the City you have selected.";
+
+        }else{
+            if(Constants.DELIVERY_STATUS == Constants.INTERNATIONAL){
+                message = "Please enter a valid international delivery address.";
+            }else if(Constants.DELIVERY_STATUS == Constants.OUT_STATION){
+                message = "Please enter a valid outstation delivery address.";
+            }else{
+                message = "Sorry we do not operate in the location you selected.";
+            }
+        }
+        snackbar = Snackbar
+                .make(linContainer, message , Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
+
+    private void addMargins(Snackbar snack) {
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) snack.getView().getLayoutParams();
+        params.setMargins(0, 0, 0, (int)DeviceUtil.dipToPixels(mContext, 53));
+        snack.getView().setLayoutParams(params);
     }
 }

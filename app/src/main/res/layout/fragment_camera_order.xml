@@ -10,7 +10,9 @@
         android:visibility="gone"
         layout="@layout/action_bar"></include>
 
+
     <com.google.android.material.appbar.AppBarLayout
+        android:visibility="gone"
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
