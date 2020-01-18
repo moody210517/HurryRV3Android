@@ -173,6 +173,7 @@ public class Constants {
         selectedMonth = -1 ;
         selectedDate = -1;
         selectedServiceLevel = 0;
+        ORDER_TYPE = 0;
 
     }
 

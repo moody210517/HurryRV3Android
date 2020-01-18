@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,6 +68,8 @@ public class CityAdapter
         }else{
             holder.linMask.setVisibility(View.GONE);
         }
+
+
         Constants.cityBounds = Constants.getGeofences(mValues.get(position).geofence);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +80,7 @@ public class CityAdapter
                 PreferenceUtils.setCityId(context, position);
                 PreferenceUtils.setCityName(context, Constants.cityName);
 
-
+                Toast.makeText(context, "We are launching soon in the selected city", Toast.LENGTH_SHORT).show();
                 if(context instanceof HomeActivity)
                     ((HomeActivity)context).hideDialog();
 

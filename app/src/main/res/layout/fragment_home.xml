@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
 
 
     <TextView
@@ -21,68 +20,115 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
+
         <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:gravity="center"
-            android:layout_height="fill_parent">
-
-            <RelativeLayout
-                android:id="@+id/rl_city"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:background="@drawable/ic_triangle_left"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp" />
-                <TextView
-                    android:paddingLeft="@dimen/dimen_20dp"
-                    android:layout_centerVertical="true"
-                    android:text="@string/same_city"
-                    android:textSize="@dimen/dimen_16dp"
-                    android:textColor="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
             android:orientation="vertical"
             android:layout_height="fill_parent">
 
-            <LinearLayout
-                android:paddingTop="@dimen/dimen_30dp"
-                android:gravity="center"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
 
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp">
 
                 <RelativeLayout
+                    android:id="@+id/rl_city"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_height="wrap_content">
+
+                    <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+                    <!--android:clickable="true"-->
+
+                    <ImageView
+
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/img_local"
+                        android:scaleType="fitXY"
+                        android:background="@mipmap/capture"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+
+
+                    <TextView
+                        android:id="@+id/txt_location_name"
+                        android:paddingLeft="@dimen/dimen_20dp"
+                        android:layout_centerVertical="true"
+                        android:text="@string/same_city"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/ic_cover"
+                        android:layout_width="40dp"
+                        android:scaleType="fitCenter"
+                        android:visibility="visible"
+                        android:layout_height="fill_parent" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_station"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
                     <RelativeLayout
-                        android:id="@+id/rl_station"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="true"
                         android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
                             android:id="@+id/img_station"
                             android:background="@drawable/ic_triangle_right"
                             android:layout_width="fill_parent"
-                            android:layout_height="60dp" />
+                            android:layout_height="fill_parent" />
                     </RelativeLayout>
 
+
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/india_trans"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/ic_cover"
+                        android:layout_width="40dp"
+                        android:scaleType="fitCenter"
+                        android:layout_height="fill_parent" />
+
                     <TextView
+                        android:visibility="gone"
                         android:paddingLeft="@dimen/dimen_10dp"
                         android:layout_centerVertical="true"
                         android:text="@string/out_station"
@@ -91,33 +137,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-
-                    <View
-                        android:layout_below="@+id/rl_station"
-                        android:background="@color/gray"
-                        android:layout_width="1dp"
-                        android:layout_height="fill_parent"></View>
                 </RelativeLayout>
-
             </LinearLayout>
 
 
 
             <LinearLayout
-                android:paddingBottom="30dp"
                 android:gravity="center"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/rl_international"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:gravity="center"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
                     <RelativeLayout
-                        android:id="@+id/rl_international"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="true"
+                        android:visibility="gone"
                         android:layout_centerInParent="true"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
@@ -125,12 +165,32 @@
                             android:id="@+id/img_international"
                             android:background="@drawable/ic_triangle_right"
                             android:layout_width="fill_parent"
-                            android:layout_height="60dp" />
+                            android:layout_height="100dp" />
                     </RelativeLayout>
 
 
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/world"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@mipmap/ic_cover"
+                        android:layout_width="40dp"
+                        android:scaleType="fitCenter"
+                        android:layout_height="fill_parent" />
+
                     <TextView
-                        android:paddingLeft="@dimen/dimen_10dp"
+                        android:visibility="gone"
+                        android:paddingLeft="5dp"
                         android:textSize="@dimen/dimen_15dp"
                         android:layout_centerVertical="true"
                         android:text="@string/international_delivery"
@@ -138,14 +198,79 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <View
-                        android:layout_above="@+id/rl_international"
-                        android:background="@color/gray"
-                        android:layout_width="1dp"
-                        android:layout_height="fill_parent"></View>
+
 
                 </RelativeLayout>
             </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="fill_parent">
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:text="Local \nDelivery "
+                    android:textSize="@dimen/dimen_16dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:text="Out \nStation \nDelivery"
+                    android:textSize="@dimen/dimen_16dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:paddingLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:text="International \nDelivery"
+                    android:textSize="@dimen/dimen_16dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
 
         </LinearLayout>
 

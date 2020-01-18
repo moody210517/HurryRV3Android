@@ -20,6 +20,8 @@
         </shape>
     </item>
 
+
+
     <item android:state_focused="true" >
         <shape>
             <gradient
@@ -39,17 +41,18 @@
         </shape>
     </item>
 
+
     <item>
         <shape>
 
             <gradient
-                android:startColor="@color/light_gray"
-                android:endColor="@color/light_gray"
+                android:startColor="@color/teal"
+                android:endColor="@color/teal"
                 android:angle="270" />
 
             <stroke
                 android:width="1px"
-                android:color="@color/light_gray" />
+                android:color="@color/teal" />
 
             <corners
                 android:radius="5dp" />

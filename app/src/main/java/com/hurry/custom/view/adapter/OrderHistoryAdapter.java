@@ -255,7 +255,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             public void onClick(View v) {
                 String number = edtTrackNum.getText().toString();
                 if(!number.isEmpty()){
-                    reschedule(mValues.get(position).orderId, mValues.get(position).new_date, mValues.get(position).new_time);
+                    reschedule(mValues.get(position).orderId, mValues.get(position).new_date, mValues.get(position).new_time, position);
                 }
                 dialog.hide();
             }
@@ -651,7 +651,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     }
 
 
-    private void reschedule(String order_id, String date, String time) {
+    private void reschedule(String order_id, String date, String time, int position) {
         RequestParams params = new RequestParams();
         params.put("id", order_id);
         params.put("date", date);
@@ -682,8 +682,18 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
                                 if(response.getString("result").equals("400")){
                                     Toast.makeText(context, context.getResources().getString(R.string.failed), Toast.LENGTH_SHORT).show();
                                 }else if(response.getString("result").equals("200")){
+
                                     Toast.makeText(context, context.getResources().getString(R.string.success), Toast.LENGTH_SHORT).show();
-                                    ((MainActivity)context).updateFragment(MainActivity.ORDER_HIS);
+                                    //mValues.get(position).new_date =  date;
+                                    //mValues.get(position).new_time = time;
+
+                                    OrderHisModel model = new OrderHisModel();
+                                    model = mValues.get(position);
+                                    model.dateModel.date = date;
+                                    model.dateModel.time = time;
+                                    mValues.set(position, model);
+                                    notifyItemChanged(position);
+                                    //notifyDataSetChanged();
 
                                 }
                             }catch (Exception e){

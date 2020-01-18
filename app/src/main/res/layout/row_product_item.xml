@@ -266,6 +266,7 @@
                             android:imeOptions="actionNext"
                             android:nextFocusForward="@+id/chk_package"
                             android:numeric="decimal"
+                            android:maxLength="5"
                             android:singleLine="true"
                             android:background="@drawable/round_rect_grey_border"
                             android:textSize="14dp" />

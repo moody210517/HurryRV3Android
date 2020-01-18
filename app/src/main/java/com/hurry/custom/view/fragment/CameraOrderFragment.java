@@ -20,12 +20,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -62,7 +65,6 @@ public class CameraOrderFragment extends Fragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = (View) inflater.inflate(
                 R.layout.fragment_camera_order, container, false);
         mContext = getActivity();
@@ -91,8 +93,28 @@ public class CameraOrderFragment extends Fragment implements View.OnClickListene
 
                 }
             });
+            EditText edtPackageCost = (EditText)v.findViewById(R.id.edt_cost);
+            edtPackageCost.setText(itemModel.package_cost);
+            edtPackageCost.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    Constants.cameraOrderModel.itemModels.get(finalK1).package_cost = edtPackageCost.getText().toString();
+                }
+            });
+
             TextView txtRemove = (TextView)v.findViewById(R.id.txt_remove);
-            txtRemove.setOnClickListener(new View.OnClickListener() {
+            LinearLayout linRemove = (LinearLayout)v.findViewById(R.id.lin_remove);
+            linRemove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(Constants.cameraOrderModel.itemModels.size() > finalK1 ){

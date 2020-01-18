@@ -172,7 +172,7 @@
 
 
                             <TextView
-                                android:textColor="@color/white"
+                                android:textColor="@color/black"
                                 android:textAllCaps="true"
                                 android:layout_centerInParent="true"
                                 android:id="@+id/txt_header"
@@ -182,7 +182,7 @@
                                 android:layout_marginRight="60dp"
                                 android:gravity="center"
                                 android:padding="@dimen/dimen_10dp"
-                                android:background="@drawable/btn_login"
+                                android:background="@drawable/dotted_border"
                                 android:layout_height="wrap_content" />
 
 

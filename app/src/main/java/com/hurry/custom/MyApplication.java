@@ -5,6 +5,8 @@ import android.app.Application;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsConstants;
 import com.facebook.appevents.AppEventsLogger;
@@ -36,6 +38,9 @@ public class MyApplication extends Application {
 
         super.onCreate();
         ACRA.init(this);
+
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
 
         FirebaseApp.initializeApp(this);
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);

@@ -255,13 +255,9 @@
         <item name="android:textColorPrimary">@color/payumoney_text_color</item>
     </style>
 
-
     <color name="persian_grey_primary">#616161</color>
     <color name="persian_grey_dark">#424242</color>
     <color name="persian_grey_accent">#9e9e9e</color>
-
-
-
 
     <!--progress bar-->
     <style name="CustomProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
@@ -269,9 +265,13 @@
         <item name="android:maxHeight">30dp</item>
     </style>
 
-
     <style name="MyEditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <style name="DialogAnimation_2">
+        <item name="android:windowEnterAnimation">@anim/ani_left</item>
+        <item name="android:windowExitAnimation">@anim/ani_right</item>
     </style>
 
 </resources>

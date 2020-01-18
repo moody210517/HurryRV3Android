@@ -10,6 +10,7 @@ public class ItemModel {
     public String image;
     public String quantity;
     public String weight;
+    public String package_cost;
 
     public String dimension1;
     public String dimension2;

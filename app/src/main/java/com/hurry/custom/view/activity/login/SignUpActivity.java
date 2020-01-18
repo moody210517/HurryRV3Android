@@ -928,8 +928,10 @@ public class SignUpActivity extends BaseBackActivity implements View.OnClickList
                                     setResult(Activity.RESULT_OK,returnIntent);
                                     finish();
 
-                                    Intent main = new Intent(SignUpActivity.this, HomeActivity.class);
-                                    startActivity(main);
+                                    Intent intent = new Intent(SignUpActivity.this, LocationActivity.class);
+                                    startActivity(intent);
+//                                    Intent main = new Intent(SignUpActivity.this, HomeActivity.class);
+//                                    startActivity(main);
                                 }
                             }
                         } catch (JSONException e) {

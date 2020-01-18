@@ -78,9 +78,12 @@ public class OrderHisContainerFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
 
-        ((HomeActivity)mContext).getSupportFragmentManager().beginTransaction().remove(orderHistoryFragment1).commit();
-        ((HomeActivity)mContext).getSupportFragmentManager().beginTransaction().remove(orderHistoryFragment2).commit();
-        ((HomeActivity)mContext).getSupportFragmentManager().beginTransaction().remove(orderHistoryFragment3).commit();
+        try{
+            ((HomeActivity)mContext).getSupportFragmentManager().beginTransaction().remove(orderHistoryFragment1).commit();
+            ((HomeActivity)mContext).getSupportFragmentManager().beginTransaction().remove(orderHistoryFragment2).commit();
+            ((HomeActivity)mContext).getSupportFragmentManager().beginTransaction().remove(orderHistoryFragment3).commit();
+        }catch (Exception e){};
+
 
     }
 
@@ -291,7 +294,7 @@ public class OrderHisContainerFragment extends BaseFragment {
         Adapter adapter = new Adapter(((HomeActivity)mContext).getSupportFragmentManager());
 
         OrderHistoryFragment orderHistoryFragment1 = new OrderHistoryFragment("1");
-        OrderHistoryFragmentSecond orderHistoryFragment2 = new OrderHistoryFragmentSecond("2");
+        OrderHistoryFragment orderHistoryFragment2 = new OrderHistoryFragment("2"); //OrderHistoryFragmentSecond
         OrderHistoryFragment orderHistoryFragment3 = new OrderHistoryFragment("3");
 
         adapter.addFragment(orderHistoryFragment1, "First");

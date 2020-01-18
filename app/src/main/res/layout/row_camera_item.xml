@@ -87,6 +87,7 @@
                 android:imeOptions="actionNext"
                 android:nextFocusForward="@+id/chk_package"
                 android:numeric="decimal"
+                android:maxLength="5"
                 android:singleLine="true"
                 android:background="@drawable/round_rect_grey_border"
                 android:textSize="14dp" />
@@ -144,6 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:visibility="gone"
             android:id="@+id/txt_remove"
             android:text="Remove"
             android:gravity="right"
@@ -153,8 +155,27 @@
             android:layout_marginRight="20dp"
             android:layout_width="0dp"
             android:layout_weight="1"
-
             android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:gravity="right"
+            android:layout_marginRight="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/lin_remove"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/com_facebook_close" />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 

@@ -97,6 +97,7 @@ public class OrderConfirmFragment extends Fragment implements View.OnClickListen
                 ((HomeActivity)mContext).updateOrderHis(1);
                 break;
             case R.id.btn_call:
+                Constants.page_type = "confirm";
                 Constants.makePhoneCall(mContext, PreferenceUtils.getConfPhone(mContext));
                 break;
         }

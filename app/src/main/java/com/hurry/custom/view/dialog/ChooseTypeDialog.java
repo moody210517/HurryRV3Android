@@ -42,13 +42,44 @@ public class ChooseTypeDialog extends SimpleDialogFragment {
     private static final int INITIAL_REQUEST=1337;
     public static String type;
     public static void show(FragmentActivity activity, String type) {
-        new ChooseTypeDialog().show(activity.getSupportFragmentManager(), TAG);
+
+        ChooseTypeDialog dialog = new ChooseTypeDialog();
+
+        try{
+            dialog.getDialog().getWindow().setWindowAnimations(R.style.DialogAnimation_2);
+        }catch (Exception e){
+
+        }
+
+
+        dialog.show(activity.getSupportFragmentManager(), TAG);
+
+        try{
+
+            dialog.getActivity().getWindow().setWindowAnimations(R.style.DialogAnimation_2);
+            dialog.getActivity().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation_2;
+
+        }catch (Exception e){
+
+        }
+
+
         ChooseTypeDialog.type = type;
     }
 
     @Override
     public int getTheme() {
         return R.style.JayneHatDialogTheme;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(getDialog() == null){
+            return;
+        }
+        getDialog().getWindow().setWindowAnimations(
+                R.style.DialogAnimation_2);
     }
 
     @Override
@@ -81,8 +112,6 @@ public class ChooseTypeDialog extends SimpleDialogFragment {
                             == PackageManager.PERMISSION_GRANTED  && ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                             == PackageManager.PERMISSION_GRANTED ) {
                         Constants.ORDER_TYPE = Constants.CAMERA_OPTION;
-
-
                         ((HomeActivity)getActivity()).goToCameraPage(type);
 
 //                        Intent intent = new Intent(getActivity(), CameraOrderActivity.class);
@@ -101,7 +130,6 @@ public class ChooseTypeDialog extends SimpleDialogFragment {
             @Override
             public void onClick(View v) {
                 Constants.ORDER_TYPE = Constants.ITEM_OPTION;
-
                 ((HomeActivity)getActivity()).updateFragment(ITEM_ORDER, type);
 
 //                Intent itemOrder = new Intent(getActivity(), ItemOrderActivity.class);
@@ -112,7 +140,6 @@ public class ChooseTypeDialog extends SimpleDialogFragment {
                 dismiss();
             }
         });
-
         return builder;
     }
 

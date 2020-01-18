@@ -138,6 +138,7 @@ public class OrderHistoryFragment extends BaseFragment implements View.OnClickLi
         super.onDestroy();
     }
 
+    OrderHistoryAdapter adapter;
     private void setupRecyclerView(RecyclerView recyclerView) {
 
 //        if(Constants.orderHisModels.size() == 0){
@@ -151,12 +152,18 @@ public class OrderHistoryFragment extends BaseFragment implements View.OnClickLi
             linNoOrders.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-            recyclerView.setAdapter(new OrderHistoryAdapter(getActivity(),
-                    hisModels, recyclerView));
+            adapter = new OrderHistoryAdapter(getActivity(),
+                    hisModels, recyclerView);
+            recyclerView.setAdapter(adapter);
 //            recyclerView.setNestedScrollingEnabled(false);
         }else{
             linNoOrders.setVisibility(View.VISIBLE);
         }
+    }
+
+
+    public void updateData(){
+        adapter.notifyDataSetChanged();
     }
 
     @Override

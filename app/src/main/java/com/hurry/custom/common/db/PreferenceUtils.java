@@ -94,7 +94,7 @@ public class PreferenceUtils {
 
 
 	public static String getUserId(Context context) {
-		String  user_id = getSharedPreferences(context).getString("USER_ID", "0");
+		String  user_id = getSharedPreferences(context).getString("USER_ID", "-1");
 		return user_id;
 	}
 

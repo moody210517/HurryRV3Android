@@ -17,9 +17,11 @@
 package com.hurry.custom.view.fragment;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +35,7 @@ import androidx.fragment.app.Fragment;
 import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.db.PreferenceUtils;
+import com.hurry.custom.controller.GetCity;
 import com.hurry.custom.view.activity.HomeActivity;
 import com.hurry.custom.view.activity.MainActivity;
 import com.hurry.custom.view.activity.login.LoginActivity;
@@ -48,6 +51,10 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     @BindView(R.id.txt_about_us) TextView txtAboutUs;
     @BindView(R.id.txt_contact_us) TextView txtContactUs;
     @BindView(R.id.txt_privacy_policy) TextView txtPrivacyPolicy;
+    @BindView(R.id.txt_rate) TextView txtRate;
+    @BindView(R.id.txt_share) TextView txtShare;
+    @BindView(R.id.text_location) TextView txtLocation;
+
     @BindView(R.id.txt_sign_out) TextView txtSignOut;
     @BindView(R.id.img_sign_out) ImageView imgSignOut;
 
@@ -72,12 +79,48 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         txtPrivacyPolicy.setOnClickListener(this);
         txtSignOut.setOnClickListener(this);
         imgSignOut.setOnClickListener(this);
+        txtRate.setOnClickListener(this);
+        txtShare.setOnClickListener(this);
+        txtLocation.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
         switch (v.getId()){
+
+            case R.id.text_location:
+                if(Constants.cityModels.size() == 0){
+                    new GetCity(mContext,"show").execute();
+                }else{
+                    ((HomeActivity)mContext).showConfirmDialog();
+                }
+                break;
+
+
+            case R.id.txt_share:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+
+                String shareBody = "http://play.google.com/store/apps/details?id=" + mContext.getPackageName();
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                break;
+            case R.id.txt_rate:
+                Uri uri = Uri.parse("market://details?id=" + mContext.getPackageName());
+                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                try {
+                    startActivity(goToMarket);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + mContext.getPackageName())));
+                }
+
+                break;
 
             case R.id.txt_about_us:
                     Intent about = new Intent(mContext, AboutUsActivity.class);

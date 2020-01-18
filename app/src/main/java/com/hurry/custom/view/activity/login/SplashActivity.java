@@ -110,7 +110,6 @@ public class SplashActivity extends Activity  implements  SurfaceHolder.Callback
                 Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
-
             }
 
         }else{

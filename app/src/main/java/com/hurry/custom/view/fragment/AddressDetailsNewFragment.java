@@ -34,6 +34,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -566,6 +569,7 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
         drawable.draw(canvas);
         return bitmap;
     }
+
     private Location getLastKnownLocation() {
         LocationManager locationManager = (LocationManager) mContext.getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         List<String> providers = locationManager.getProviders(true);
@@ -583,6 +587,10 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
         return bestLocation;
     }
 
+    public void hideNotification(){
+        if(snackbar != null && snackbar.isShown())
+            snackbar.dismiss();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -612,13 +620,14 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                     initInput();
                     pageType = "sender";
                     showAddressDetails("");
-
                 }else{
-                    ((HomeActivity)mContext).updateFragment(HomeActivity.ITEM_ORDER, "");
+                    if(Constants.ORDER_TYPE == Constants.CAMERA_OPTION){
+                        ((HomeActivity)mContext).updateFragment(HomeActivity.CAMERA_ORDER, "");
+                    }else{
+                        ((HomeActivity)mContext).updateFragment(HomeActivity.ITEM_ORDER, "");
+                    }
                 }
-
-                if(snackbar != null && snackbar.isShown())
-                    snackbar.dismiss();
+                hideNotification();
 
                 break;
 
@@ -997,6 +1006,7 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
         imgReceiver.setImageResource(R.mipmap.ic_right_arrow_disabled);
         txtNext.setVisibility(View.GONE);
         enable = false;
+        imgReceiver.clearAnimation();
     }
 
     boolean enable = false;
@@ -1008,8 +1018,16 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
             imgReceiver.setImageResource(R.mipmap.ic_right_arrow);
             txtNext.setVisibility(View.GONE);
             enable = true;
+
+            Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+            animation.setDuration(1000); //1 second duration for each animation cycle
+            animation.setInterpolator(new LinearInterpolator());
+            animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+            animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+            imgReceiver.startAnimation(animation); //to start animation
         }else{
             hideReceiver();
+
         }
 
 
@@ -1146,8 +1164,8 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                 || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("receiver") && !model.address.contains("India")){
 
             isCorrectLocation = true;
-            if(snackbar != null)
-                snackbar.dismiss();
+            hideNotification();
+
 
             edtPhone.setText(model.phone.substring(model.phone.length() - 10));
             if(model.phone.replace(edtPhone.getText().toString(), "").trim().isEmpty()){
@@ -1239,9 +1257,7 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
 
 
     public void showAddressBook(String type){
-        if(snackbar != null && snackbar.isShown()){
-            snackbar.dismiss();
-        }
+        hideNotification();
 
         AutoCompleteTextView mAutocompleteTextView;
         RecyclerView recyclerView;
@@ -1262,36 +1278,46 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
         allHis.clear();
         for(int k = 0 ; k <  Constants.orderHisModels.size(); k++){
             OrderHisModel model = Constants.orderHisModels.get(k);
-            if(!containsSource(model)){
-                AddressHisModel addressHisModel = new AddressHisModel();
-                addressHisModel.address = model.addressModel.sourceAddress;
-                addressHisModel.area = model.addressModel.sourceArea;
-                addressHisModel.city = model.addressModel.sourceCity;
-                addressHisModel.landmark = model.addressModel.sourceLandMark;
-                addressHisModel.pincode = model.addressModel.sourcePinCode;
-                addressHisModel.phone = model.addressModel.sourcePhonoe;
-                addressHisModel.lat = model.addressModel.sourceLat;
-                addressHisModel.lng = model.addressModel.sourceLng;
-                addressHisModel.state = model.addressModel.sourceState;
-                addressHisModel.name = model.addressModel.senderName;
-                addressHisModel.instruction = model.addressModel.sourceInstruction;
-                allHis.add(addressHisModel);
+            if(!containsSource(model) ){
+
+                if(!pageType.equals("sender") && addressModel.senderName.equals(model.addressModel.senderName)  || !pageType.equals("sender") && addressModel.sourceAddress.equals(model.addressModel.sourceAddress)  ||  !pageType.equals("sender") && addressModel.sourceLat == model.addressModel.sourceLat && addressModel.sourceLng == model.addressModel.sourceLng ){
+
+                }else{
+                    AddressHisModel addressHisModel = new AddressHisModel();
+                    addressHisModel.address = model.addressModel.sourceAddress;
+                    addressHisModel.area = model.addressModel.sourceArea;
+                    addressHisModel.city = model.addressModel.sourceCity;
+                    addressHisModel.landmark = model.addressModel.sourceLandMark;
+                    addressHisModel.pincode = model.addressModel.sourcePinCode;
+                    addressHisModel.phone = model.addressModel.sourcePhonoe;
+                    addressHisModel.lat = model.addressModel.sourceLat;
+                    addressHisModel.lng = model.addressModel.sourceLng;
+                    addressHisModel.state = model.addressModel.sourceState;
+                    addressHisModel.name = model.addressModel.senderName;
+                    addressHisModel.instruction = model.addressModel.sourceInstruction;
+                    allHis.add(addressHisModel);
+                }
             }
 
             if(!containsDes(model)){
-                AddressHisModel addressHisModel = new AddressHisModel();
-                addressHisModel.address = model.addressModel.desAddress;
-                addressHisModel.area = model.addressModel.desArea;
-                addressHisModel.city = model.addressModel.desCity;
-                addressHisModel.landmark = model.addressModel.desLandMark;
-                addressHisModel.pincode = model.addressModel.desPinCode;
-                addressHisModel.phone = model.addressModel.desPhone;
-                addressHisModel.lat = model.addressModel.desLat;
-                addressHisModel.lng = model.addressModel.desLng;
-                addressHisModel.state = model.addressModel.desState;
-                addressHisModel.name = model.addressModel.desName;
-                addressHisModel.instruction = model.addressModel.desInstruction;
-                allHis.add(addressHisModel);
+                if(!pageType.equals("sender") && addressModel.senderName.equals(model.addressModel.desName)  || !pageType.equals("sender") && addressModel.sourceAddress.equals(model.addressModel.desAddress)  ||  !pageType.equals("sender") && addressModel.sourceLat == model.addressModel.desLat && addressModel.sourceLng == model.addressModel.desLng ){
+
+                }else{
+                    AddressHisModel addressHisModel = new AddressHisModel();
+                    addressHisModel.address = model.addressModel.desAddress;
+                    addressHisModel.area = model.addressModel.desArea;
+                    addressHisModel.city = model.addressModel.desCity;
+                    addressHisModel.landmark = model.addressModel.desLandMark;
+                    addressHisModel.pincode = model.addressModel.desPinCode;
+                    addressHisModel.phone = model.addressModel.desPhone;
+                    addressHisModel.lat = model.addressModel.desLat;
+                    addressHisModel.lng = model.addressModel.desLng;
+                    addressHisModel.state = model.addressModel.desState;
+                    addressHisModel.name = model.addressModel.desName;
+                    addressHisModel.instruction = model.addressModel.desInstruction;
+                    allHis.add(addressHisModel);
+                }
+
             }
         }
         contactsAdapter = new AddressAdapter(mContext,
@@ -1313,7 +1339,6 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
         });
         view.findViewById(R.id.btn_ok).setOnClickListener(this);
     }
-
 
     private boolean containsSource(OrderHisModel model){
         for(int k = 0; k < allHis.size(); k++){
@@ -1404,18 +1429,15 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                     new GetLocationFromPlaceId(mContext, place.getId(), selectedAddress, pickupLocation).execute();
                     DeviceUtil.hideSoftKeyboard(getActivity());
                     isCorrectLocation = true;
-                    if(snackbar != null)
-                        snackbar.dismiss();
+                    hideNotification();
+
 
                 }else{
                     hideReceiver();
                     isCorrectLocation = false;
                     showToast();
-
                 }
-
                 checkValidate();
-
             }else{
                 new GetLocationFromLatLng(mContext, place.getLatLng()).execute();
                 DeviceUtil.hideSoftKeyboard(getActivity());
@@ -1456,8 +1478,7 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
                 || Constants.DELIVERY_STATUS == Constants.INTERNATIONAL && pageType.equals("receiver") && !location.contains("India")){
 
             isCorrectLocation = true;
-            if(snackbar != null)
-                snackbar.dismiss();
+            hideNotification();
         }else{
             showToast();
             isCorrectLocation = false;
@@ -1467,7 +1488,6 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
 
         if(location.isEmpty() || area.isEmpty() || city.isEmpty() || state.isEmpty() ){
             //mNameTextView.setText("Choose Correct Location, Can not get location info");
-
         }else{
             try{
 //                this.location = location;
@@ -1479,6 +1499,8 @@ public class AddressDetailsNewFragment extends Fragment implements View.OnClickL
             }catch (Exception e){};
         }
     }
+
+
 
 
     private Toast mToastToShow;

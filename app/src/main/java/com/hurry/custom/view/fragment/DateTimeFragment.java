@@ -30,6 +30,9 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -46,11 +49,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.aigestudio.wheelpicker.WheelPicker;
 import com.aigestudio.wheelpicker.widgets.WheelDatePicker;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -63,6 +69,7 @@ import com.hurry.custom.common.db.PreferenceUtils;
 import com.hurry.custom.common.utils.DeviceUtil;
 import com.hurry.custom.common.utils.TimeHelper;
 import com.hurry.custom.common.utils.ValidationHelper;
+import com.hurry.custom.controller.GetLocationFromLatLng;
 import com.hurry.custom.controller.GetRoute;
 import com.hurry.custom.controller.WebClient;
 import com.hurry.custom.model.AddressModel;
@@ -73,6 +80,7 @@ import com.hurry.custom.model.Route;
 import com.hurry.custom.model.Step;
 import com.hurry.custom.view.activity.AddressDetailsNewActivity;
 import com.hurry.custom.view.activity.HomeActivity;
+import com.hurry.custom.view.activity.map.TouchMapActivity;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;
@@ -483,10 +491,20 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
     public void hideNext(){
         imgReceiver.setVisibility(View.GONE);
         txtNext.setVisibility(View.GONE);
+        imgReceiver.clearAnimation();
     }
     public void showNext(){
+
         imgReceiver.setVisibility(View.VISIBLE);
         txtNext.setVisibility(View.GONE);
+
+        Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+        animation.setDuration(1000); //1 second duration for each animation cycle
+        animation.setInterpolator(new LinearInterpolator());
+        animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+        animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+        imgReceiver.startAnimation(animation); //to start animation
+
     }
 
     private  void initView(View view){
@@ -582,7 +600,9 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
 
     }
 
-
+    boolean first_load = true;
+    int count = 0;
+    LatLng centerLocation;
     private void setUpMapView(GoogleMap mmap) {
         this.map = mmap;
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -619,6 +639,27 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
             drawPath(sourcePosition, destinationPosition);
 
 
+            map.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+                @Override
+                public void onCameraChange(CameraPosition arg0) {
+                    // TODO Auto-generated method stub
+//                    LatLng center = map.getCameraPosition().target;
+//                        count ++;
+//                        double lan = center.latitude + 0.1;
+//                        double lng = center.longitude ;
+//                        centerLocation = new LatLng(Double.valueOf(lan), Double.valueOf(lng));
+                }
+            });
+
+
+            map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                public void onMapLoaded() {
+//                    CameraUpdate update = CameraUpdateFactory.newLatLngZoom(centerLocation, map.getCameraPosition().zoom);
+//                    map.moveCamera(update);
+                }
+            });
+
         }
 
         if(mapView!=null){
@@ -645,11 +686,10 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
             }
             if(destinationMarker.getPosition().latitude != 0)
                 bld.include(destinationMarker.getPosition());
-
             //bld.include(userMarker.getPosition());
             LatLngBounds latLngBounds = bld.build();
             map.moveCamera(CameraUpdateFactory.newLatLngBounds(
-                    latLngBounds, 20));
+                        latLngBounds, 250));
         }
     }
 
@@ -667,7 +707,6 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
 
                     String endAddress = distanceObject.getString("end_address");
                     String startAddress = distanceObject.getString("start_address");
-
 
                     Route route = new Route();
                     parseRoute(response, route);
@@ -701,7 +740,8 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
                     //bld.include(userPosition);
                     LatLngBounds latLngBounds = bld.build();
                     map.moveCamera(CameraUpdateFactory.newLatLngBounds(
-                            latLngBounds, 20));
+                            latLngBounds, 250));
+
                 }else{
                     drawDotLine(sourcePosition, destinationPosition);
                 }
@@ -767,7 +807,9 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
         //bld.include(userPosition);
         LatLngBounds latLngBounds = bld.build();
         map.moveCamera(CameraUpdateFactory.newLatLngBounds(
-                latLngBounds, 20));
+                latLngBounds, 250));
+
+
     }
 
 
@@ -1340,8 +1382,6 @@ public class DateTimeFragment extends Fragment implements View.OnClickListener, 
 
                     hideNext();
                 }
-
-
                 break;
 
         }

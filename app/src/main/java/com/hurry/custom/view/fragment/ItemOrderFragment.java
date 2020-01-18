@@ -84,26 +84,37 @@ public class ItemOrderFragment extends Fragment implements View.OnClickListener{
             itemModel.dimension1 = "";
             itemModel.dimension2 = "";
             itemModel.dimension3 = "";
+            itemModel.package_cost = "";
             itemModel.weight = Constants.weight.get(0);
             itemModel.weight_value = Constants.weight_value.get(0);
             itemModel.quantity = Constants.quantity.get(0);
             Constants.itemOrderModel.itemModels.add(itemModel);
         }
-        initView();
+
         updateView();
         return view;
     }
 
+
+    @Override
+    public void onResume(){
+        initView();
+        super.onResume();
+    }
+
+
     private void initView(){
         txtMore.setOnClickListener(this);
         btnContinue.setOnClickListener(this);
-        if(type.equals("station")){
-            rlStation.setBackgroundResource(R.drawable.ic_triangle_right_teal);
-            txtHeader.setText(getString(R.string.out_station));
-        }else if(type.equals("city")){
+
+        if(Constants.DELIVERY_STATUS == Constants.SAME_CITY){
             rlCity.setBackgroundResource(R.drawable.ic_triangle_left_teal);
             txtHeader.setText(getString(R.string.same_city));
-        }else{
+
+        }else if(Constants.DELIVERY_STATUS == Constants.OUT_STATION){
+            rlStation.setBackgroundResource(R.drawable.ic_triangle_right_teal);
+            txtHeader.setText(getString(R.string.out_station));
+        }else if(Constants.DELIVERY_STATUS == Constants.INTERNATIONAL){
             rlInternational.setBackgroundResource(R.drawable.ic_triangle_right_teal);
             txtHeader.setText(getString(R.string.international_delivery));
         }
@@ -187,15 +198,36 @@ public class ItemOrderFragment extends Fragment implements View.OnClickListener{
             edtItem.setAdapter(cityAdapter);
             edtItem.setThreshold(1);//will start working from first character
 
+            EditText edtPackageCost = (EditText)v.findViewById(R.id.edt_cost);
             final EditText edtDimension1 = (EditText)v.findViewById(R.id.edt_dimension1);
             final EditText edtDimension2 = (EditText)v.findViewById(R.id.edt_dimension2);
             final EditText edtDimension3 = (EditText)v.findViewById(R.id.edt_dimension3);
 
             edtItem.setText(itemModel.title);
 
+            edtPackageCost.setText(itemModel.package_cost);
+            edtPackageCost.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    Constants.itemOrderModel.itemModels.get(finalK1).package_cost = edtPackageCost.getText().toString();
+                }
+            });
+
+
             edtDimension1.setText(itemModel.dimension1);
             edtDimension2.setText(itemModel.dimension2);
             edtDimension3.setText(itemModel.dimension3);
+
 
             final NiceSpinner spQuantity = (NiceSpinner)v.findViewById(R.id.sp_quantity);
             //spQuantity.type = 1;
@@ -271,21 +303,20 @@ public class ItemOrderFragment extends Fragment implements View.OnClickListener{
                     Constants.itemOrderModel.itemModels.get(finalK).dimension1 = edtDimension1.getText().toString().trim();
                 }
             });
+
             edtDimension2.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                 }
-
                 @Override
                 public void afterTextChanged(Editable s) {
                     Constants.itemOrderModel.itemModels.get(finalK).dimension2 = edtDimension2.getText().toString().trim();
                 }
             });
+
             edtDimension3.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -312,10 +343,7 @@ public class ItemOrderFragment extends Fragment implements View.OnClickListener{
 
             }
         });
-
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -338,13 +366,9 @@ public class ItemOrderFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.btn_continue:
                 if(checkInput()){
-
                     ((HomeActivity)mContext).updateFragment(HomeActivity.ADDRESS_DETAILS, "");
-
 //                    Intent intent = new Intent(mContext, AddressDetailsNewActivity.class);
 //                    startActivity(intent);
-
-
                 }else{
                     Toast.makeText(mContext, getResources().getString(R.string.input_all), Toast.LENGTH_SHORT).show();
                 }
@@ -354,7 +378,6 @@ public class ItemOrderFragment extends Fragment implements View.OnClickListener{
     }
 
     private boolean checkInput(){
-
         if(Constants.itemOrderModel.itemModels.size() == 0){
             return false;
         }
@@ -367,7 +390,6 @@ public class ItemOrderFragment extends Fragment implements View.OnClickListener{
                 return false;
             }
         }
-
         return true;
     }
 

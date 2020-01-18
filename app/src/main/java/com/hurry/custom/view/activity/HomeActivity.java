@@ -29,12 +29,14 @@ import com.hurry.custom.controller.GetPhone;
 import com.hurry.custom.model.AddressHisModel;
 import com.hurry.custom.model.ItemModel;
 import com.hurry.custom.view.BaseActivity;
+import com.hurry.custom.view.activity.login.LoginActivity;
 import com.hurry.custom.view.adapter.CityAdapter;
 import com.hurry.custom.view.adapter.MyViewPagerAdapter;
 import com.hurry.custom.view.adapter.NoTouchViewPager;
 import com.hurry.custom.view.fragment.AddressDetailsNewFragment;
 import com.hurry.custom.view.fragment.CameraOrderFragment;
 import com.hurry.custom.view.fragment.DateTimeFragment;
+import com.hurry.custom.view.fragment.HomeFragment;
 import com.hurry.custom.view.fragment.ItemOrderFragment;
 import com.hurry.custom.view.fragment.LocationTrackFragment;
 import com.hurry.custom.view.fragment.OrderConfirmFragment;
@@ -60,6 +62,7 @@ import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
+import static com.hurry.custom.common.Constants.ORDER_TYPE;
 import static com.hurry.custom.common.Constants.addressModel;
 import static com.hurry.custom.common.Constants.clearData;
 
@@ -96,6 +99,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     private int pageSelection = 2;
     private int pageFrameSelection = 0;
     private boolean isViewPager = true;
+    private boolean isShowingDialog = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,7 +117,15 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         }
         //autoLogin();
 
+
+        initView();
+        if(Constants.itemLists.size() != 0 && Constants.cityModels.size() != 0){
+            initNavigation();
+            initEvent();
+        }
     }
+
+
     private void autoLogin() {
         new GetBasic(this,"").execute();
     }
@@ -126,11 +138,17 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     public void onResume(){
         super.onResume();
 
-        initView();
-        if(Constants.itemLists.size() != 0 && Constants.cityModels.size() != 0){
-            initNavigation();
-            initEvent();
+        if(isViewPager){
+            showViewPager(-1);
+        }else{
+            hideViewPater();
         }
+
+//        initView();
+//        if(Constants.itemLists.size() != 0 && Constants.cityModels.size() != 0){
+//            initNavigation();
+//            initEvent();
+//        }
     }
 
     public void setTitle(String title){
@@ -218,12 +236,22 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                     }
                     return;
                 }
+
+                // update home page
+                if(old == 3 && index == 2 && ORDER_TYPE == 0){
+                    mNavigationController.setSelect(0);
+                    mNavigationController.setSelect(index);
+                }
             }
 
             @Override
             public void onRepeat(int index) {
 
-                if(frameLayout.getVisibility() == View.VISIBLE && !Constants.page_type.equals("confirm") && !Constants.page_type.equals("track") && index != 4){
+                if(frameLayout.getVisibility() == View.VISIBLE
+                        && !Constants.page_type.equals("confirm")
+                        && isShowingDialog == false
+                        && !Constants.page_type.equals("track") && index != 4){
+                    isShowingDialog = true;
                     new AlertDialog.Builder(HomeActivity.this)
                             .setMessage("Do you wish to discard the changes?")
                             //.setIcon(android.R.drawable.ic_dialog_alert)
@@ -237,11 +265,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
                                     }
                                     clearData();
+                                    isShowingDialog = false;
                                 }})
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     hideViewPater();
+                                    isShowingDialog = false;
                                 }
                             }).show();
                 }else{
@@ -251,8 +281,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                         linContainer.setVisibility(View.VISIBLE);
                     }
                 }
-
-
             }
         });
 
@@ -267,9 +295,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onPageSelected(int position) {
 
+                if(frameLayout.getVisibility() == View.VISIBLE && !Constants.page_type.equals("confirm")
+                        && !Constants.page_type.equals("track")
+                        && position != 4
+                        && position != 5
+                        && isShowingDialog == false
+                        && !Constants.page_type.equals("camera")){
 
-                if(frameLayout.getVisibility() == View.VISIBLE && !Constants.page_type.equals("confirm") && !Constants.page_type.equals("track") && position != 4 && !Constants.page_type.equals("camera")){
-
+                    isShowingDialog = true;
                     new AlertDialog.Builder(HomeActivity.this)
                             .setMessage("Do you wish to discard the changes?")
                             //.setIcon(android.R.drawable.ic_dialog_alert)
@@ -282,13 +315,20 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                                     setIndex(position);
                                     clearData();
 
+                                    if( currentFragment  != null && currentFragment instanceof  AddressDetailsNewFragment){
+                                        ((AddressDetailsNewFragment)currentFragment).hideNotification();
+                                    }
+                                    isShowingDialog = false;
+
                                 }})
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     hideViewPater();
+                                    isShowingDialog = false;
                                 }
                             }).show();
+                    return;
                 }else{
                     frameLayout.setVisibility(View.GONE);
                     mViewPager.setVisibility(View.VISIBLE);
@@ -304,7 +344,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
                             if(Constants.page_type.equals("confirm")){
                                 Constants.orderHisModels.clear();
-                                updateOrderHis(1);
+                                //updateOrderHis(1);
                                 linContainer.setVisibility(View.GONE);
                             }else{
                                 currentViewPaterFragment = pagerAdapter.getItem(1);
@@ -317,6 +357,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                         case 2:
 
                             currentViewPaterFragment = pagerAdapter.getItem(2);
+
+
+//                            if(currentViewPaterFragment instanceof HomeFragment){
+//                                ((HomeFragment)currentViewPaterFragment).updateImage();
+//                            }
                             setTitle("Home");
                             linContainer.setVisibility(View.VISIBLE);
                             setIndex(2);
@@ -339,6 +384,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                     }
                 }
 
+                if( currentFragment  != null && currentFragment instanceof  AddressDetailsNewFragment){
+                    ((AddressDetailsNewFragment)currentFragment).hideNotification();
+                }
             }
 
             @Override
@@ -377,8 +425,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                 updateFragment(CAMERA_ORDER, type);
             }
         }
-
-
     }
 
     @Override
@@ -548,14 +594,50 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.lin_share:
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
 
-                String shareBody = "http://play.google.com/store/apps/details?id=" + getPackageName();
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share via"));
+            case R.id.lin_share:
+                new AlertDialog.Builder(HomeActivity.this)
+                        .setMessage("Do you want to logout ?")
+                        //.setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                Constants.clearData();
+                                Constants.orderHisModels.clear();
+                                Constants.orderCorporateHisModels.clear();
+                                Constants.cityName = "";
+                                PreferenceUtils.setLogOut(HomeActivity.this);
+                                //if(Constants.MODE == Constants.PERSONAL){
+                                    PreferenceUtils.setEmail(HomeActivity.this,"");
+                                    PreferenceUtils.setPassword(HomeActivity.this, "");
+                                //}else if(Constants.MODE == Constants.CORPERATION){
+                                    PreferenceUtils.setCorEmail(HomeActivity.this, "");
+                                    PreferenceUtils.setCorPassword(HomeActivity.this, "");
+                                //}
+                                Constants.MODE = Constants.PERSONAL;
+                                PreferenceUtils.setMode(HomeActivity.this, Constants.PERSONAL);
+                                PreferenceUtils.setCityId(HomeActivity.this, -1);
+                                PreferenceUtils.setUserId(HomeActivity.this, "-1");
+                                Constants.orderHisModels.clear();
+
+                                Intent login = new Intent(HomeActivity.this, LoginActivity.class);
+                                login.putExtra("type", "close");
+                                startActivity(login);
+                                finish();
+                            }})
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
+
+//                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+//                sharingIntent.setType("text/plain");
+//
+//                String shareBody = "http://play.google.com/store/apps/details?id=" + getPackageName();
+//                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+//                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+//                startActivity(Intent.createChooser(sharingIntent, "Share via"));
                 break;
             case R.id.lin_rate:
                 Uri uri = Uri.parse("market://details?id=" + getPackageName());
@@ -571,13 +653,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                 }
 
                 break;
-            case R.id.lin_location:
-                if(Constants.cityModels.size() == 0){
-                    new GetCity(this,"show").execute();
-                }else{
-                    showConfirmDialog();
-                }
-                break;
+
         }
     }
 
@@ -596,7 +672,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     public void updateOrderHis(int selection){
         Constants.orderHisModels.clear();
         Constants.orderCorporateHisModels.clear();
-        onResume();
+        //onResume();
+        initView();
+        if(Constants.itemLists.size() != 0 && Constants.cityModels.size() != 0){
+            initNavigation();
+            initEvent();
+        }
         showViewPager(selection);
     }
 
@@ -605,6 +686,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
             ((OrderHisContainerFragment) currentFragment).orderHistory(100);
         }
     }
+
 
     public void updateFragment(int index, String type){
 
@@ -648,7 +730,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
             setTitle(Constants.cityName);
             linContainer.setVisibility(View.GONE);
             fragment = new LocationTrackFragment();
-
         }
 
         currentFragment = fragment;
@@ -713,7 +794,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         }catch (Exception e){};
     }
 
+
     public void hideViewPater(){
+        linContainer.setVisibility(View.GONE);
         isViewPager = false;
         frameLayout.setVisibility(View.VISIBLE);
         mViewPager.setVisibility(View.GONE);

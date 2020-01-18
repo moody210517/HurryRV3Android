@@ -379,31 +379,36 @@ public class ImagePickerActivity extends AppCompatActivity implements CameraHost
 
 
     private  void showAlertdialog(){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        //builder1.setMessage("Write your message here.");
-        builder1.setCancelable(false);
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = (View)inflater.inflate(R.layout.dialog_forgot, null);
-        builder1.setView(view);
-        final AlertDialog alert11 = builder1.create();
+        try{
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            //builder1.setMessage("Write your message here.");
+            builder1.setCancelable(false);
+            LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = (View)inflater.inflate(R.layout.dialog_forgot, null);
+            builder1.setView(view);
+            final AlertDialog alert11 = builder1.create();
 
 
-        TextView txtTitle = (TextView)view.findViewById(R.id.txt_title);
-        TextView txtContent  = (TextView)view.findViewById(R.id.txt_content);
+            TextView txtTitle = (TextView)view.findViewById(R.id.txt_title);
+            TextView txtContent  = (TextView)view.findViewById(R.id.txt_content);
 
-        txtTitle.setText("Notification");
-        txtContent.setText(getResources().getString(R.string.camera_alarm));
+            txtTitle.setText("Notification");
+            txtContent.setText(getResources().getString(R.string.camera_alarm));
 
-        Button btnOk = (Button)view.findViewById(R.id.btn_ok);
-        btnOk.setText("I Agree");
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alert11.hide();
-            }
-        });
-        alert11.getWindow().setLayout(600, 600);
-        alert11.show();
+            Button btnOk = (Button)view.findViewById(R.id.btn_ok);
+            btnOk.setText("I Agree");
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alert11.hide();
+                }
+            });
+            alert11.getWindow().setLayout(600, 600);
+            alert11.show();
+        }catch (Exception e){
+
+        }
+
 
     }
 

@@ -29,9 +29,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hurry.custom.R;
 import com.hurry.custom.common.Constants;
 import com.hurry.custom.common.db.PreferenceUtils;
@@ -51,8 +55,8 @@ public class HomeFragment extends BaseFragment implements  View.OnClickListener{
     @BindView(R.id.rl_station) RelativeLayout rlStation;
     @BindView(R.id.rl_city) RelativeLayout rlCity;
     @BindView(R.id.rl_international) RelativeLayout rlInternational;
-
-
+    @BindView(R.id.img_local) ImageView imgLocal;
+    @BindView(R.id.txt_location_name) TextView txtLocationName;
 
     private static final int INITIAL_REQUEST=1337;
     View view;
@@ -65,8 +69,13 @@ public class HomeFragment extends BaseFragment implements  View.OnClickListener{
         position = 2;
         mContext = getActivity();
         ButterKnife.bind(this, view);
-        initView();
         return view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        initView();
     }
 
     @Override
@@ -108,10 +117,41 @@ public class HomeFragment extends BaseFragment implements  View.OnClickListener{
         rlCity.setOnClickListener(this);
         rlInternational.setOnClickListener(this);
 
+        if(!PreferenceUtils.getCityName(mContext).isEmpty() && PreferenceUtils.getCityId(mContext) != -1){
+            try{
+                String sub[] = PreferenceUtils.getCityName(mContext).split("-");
+                txtLocationName.setText(sub[0]);
+            }catch (Exception e){};
+        }
+
+        Glide.with(mContext)
+                .load(Constants.PHOTO_URL + "employer/" +  Constants.cityModels.get(PreferenceUtils.getCityId(mContext)).image )
+                .dontAnimate()
+                .centerCrop()
+                .error(com.gun0912.tedpicker.R.drawable.no_image)
+                .into(imgLocal);
     }
 
+    public void updateImage(){
 
+        if(mContext != null && imgLocal != null){
 
+            if(!PreferenceUtils.getCityName(mContext).isEmpty() && PreferenceUtils.getCityId(mContext) != -1){
+                try{
+                    String sub[] = PreferenceUtils.getCityName(mContext).split("-");
+                    txtLocationName.setText(sub[0]);
+                }catch (Exception e){};
+            }
+
+            Glide.with(mContext)
+                    .load(Constants.PHOTO_URL + "employer/" +  Constants.cityModels.get(PreferenceUtils.getCityId(mContext)).image )
+                    .diskCacheStrategy(DiskCacheStrategy.NONE )
+                    .dontAnimate()
+                    .centerCrop()
+                    .error(com.gun0912.tedpicker.R.drawable.no_image)
+                    .into(imgLocal);
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -121,26 +161,23 @@ public class HomeFragment extends BaseFragment implements  View.OnClickListener{
                     Constants.DELIVERY_STATUS = Constants.OUT_STATION;
                     ChooseTypeDialog.show(getActivity(), "station");
                 }
-
                 break;
+
             case R.id.rl_city:
                 if(PreferenceUtils.getCityId(mContext) != -1){
                     Constants.DELIVERY_STATUS = Constants.SAME_CITY;
                     ChooseTypeDialog.show(getActivity(), "city");
                 }
-
                 break;
+
             case R.id.rl_international:
                 if(PreferenceUtils.getCityId(mContext) != -1){
                     Constants.DELIVERY_STATUS = Constants.INTERNATIONAL;
                     ChooseTypeDialog.show(getActivity(), "international");
                 }
-
                 break;
-
-
         }
-    }
 
+    }
 
 }
